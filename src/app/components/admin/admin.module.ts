@@ -1,9 +1,9 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CreateJobComponent } from './create-job/create-job.component';
 import { ListJobregisterComponent } from './list-jobregister/list-jobregister.component';
-import { ListUserComponent } from './list-user/list-user.component';
+import { ListUserComponent } from './list-JE/list-user.component';
 import { CompanyAdComponent } from './company-ad/company-ad.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateCompanyComponent } from './create-company/create-company.component';
@@ -15,6 +15,11 @@ import { ListJobAdComponent } from './list-job-ad/list-job-ad.component';
 import { HeaderAdComponent } from './header-ad/header-ad.component';
 import { EditAcademiclevelComponent } from './edit-academiclevel/edit-academiclevel.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddJEComponent } from './add-je/add-je.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { EditJeComponent } from './edit-je/edit-je.component'
+
+
 
 const Adminroutes: Routes = [
   {
@@ -39,6 +44,19 @@ const Adminroutes: Routes = [
       {
         path:'user',
         component: ListUserComponent,
+
+        pathMatch:'full'
+      },
+      {
+        path:'addJE',
+        component: AddJEComponent,
+
+        pathMatch:'full'
+      },
+      {
+        path:'editJE/:id',
+        component: EditJeComponent,
+
         pathMatch:'full'
       },
       {
@@ -76,11 +94,15 @@ const Adminroutes: Routes = [
     HeaderAdComponent,
     SidebarComponent,
     EditAcademiclevelComponent,
-    EditAcademiclevelComponent
+    ListUserComponent,
+
   ],
   imports: [
     RouterModule.forChild(Adminroutes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
+    // BrowserModule
+
   ],
   exports: [RouterModule],
 })

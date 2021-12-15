@@ -1,3 +1,5 @@
+import { EditJeComponent } from './components/admin/edit-je/edit-je.component';
+import { AddJEComponent } from './components/admin/add-je/add-je.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './routing/app-routing.module';
@@ -23,6 +25,10 @@ import { EmployeeAddComponent } from './components/authen/employee-add/employee-
 import { EmployeeListComponent } from './components/authen/employee-list/employee-list.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -40,15 +46,22 @@ import { ReactiveFormsModule } from '@angular/forms';
     EmployeeListComponent,
     EmployeeAddComponent,
     ChangePasswordComponent,
+    AddJEComponent,
+    EditJeComponent
 
-  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule, 
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatTableModule,
+
   ],
   providers: [JobService],
   bootstrap: [AppComponent]
