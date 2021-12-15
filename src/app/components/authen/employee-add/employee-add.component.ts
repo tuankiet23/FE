@@ -19,7 +19,7 @@ export class EmployeeAddComponent implements OnInit {
   btnDisable = false;
   url = 'http://localhost:8080/signup';
   constructor(private rest: RestApiService, private data: DataService) {
-    this.employee = new Employee();
+
   }
 
   ngOnInit() {

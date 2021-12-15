@@ -15,9 +15,9 @@ export class RestApiService {
     return this.http.get(link).toPromise();
   }
   getOne(link: string,id:string){
-    let headers = this.getHeaders();
-    if(headers instanceof HttpHeaders)
-    return this.http.get(link + '/'+id,{headers:headers}).toPromise();
+    // let headers = this.getHeaders();
+    // if(headers instanceof HttpHeaders)
+    // return this.http.get(link + '/'+id,{headers:headers}).toPromise();
 
     return this.http.get(link + '/'+id).toPromise();
   }
@@ -34,6 +34,7 @@ export class RestApiService {
 
     return this.http.put(link +"?otpCode="+body.otpCode+"&password=" + body.password,body).toPromise();
   }
+
   delete(link: string, id: string){
     let headers = this.getHeaders();
     if(headers instanceof HttpHeaders)
