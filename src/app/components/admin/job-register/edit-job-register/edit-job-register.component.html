@@ -1,0 +1,62 @@
+<form [formGroup]="editForm" (ngSubmit)="onUpdateJobRegister()">
+    <p>Thông tin cá nhân</p>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">Họ tên</label>
+            <input type="email" class="form-control" id="inputEmail4" value="{{jobregisterps.jobRegister.user.fullName}}" disabled="disabled">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputPassword4">Ngày sinh</label>
+            <input type="text" class="form-control" id="inputPassword4" value="{{jobregisterps.jobRegister.user.birthDay | date:'fullDate'}}" disabled="disabled">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputCity">Email </label>
+            <input type="text" class="form-control" id="inputAddress" value="{{jobregisterps.jobRegister.user.email}}"disabled="disabled">
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="inputCity">Địa chỉ</label>
+            <input type="text" class="form-control" id="inputAddress2" value="{{jobregisterps.jobRegister.user.homeTown}}" disabled="disabled">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputCity">SĐT </label>
+            <input type="text" class="form-control" id="inputCity" value="{{jobregisterps.jobRegister.user.phoneNumber}}" disabled="disabled">
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="inputCity">Giới tính</label>
+            <input type="text" class="form-control" id="inputCity" value="{{jobregisterps.jobRegister.user.gender}}" disabled="disabled">
+        </div>
+    </div>
+    <p>Thông tin ứng tuyển</p>
+    <input type="text" formControlName="id" name="id" class="form-control" id="id">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputCity">Ngày phỏng vấn</label>
+            <input type="date" class="form-control" id="dateinterview" formControlName="dateinterview" >
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="inputCity">Ngày nộp hồ sơ</label>
+            <input type="date" class="form-control" id="inputCity" formControlName="dateregister">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputCity">Phương thức phỏng vấn </label>
+            <input type="text" class="form-control" id="inputCity" formControlName="methodinterview" >
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="inputCity">Tình trạng hồ sơ</label>
+            <select id="inputState" class="form-control" formControlName="profilestatus">
+                <option *ngFor="let jobregister of jobregisterps.profileStatuses; let i = index " value="{{jobregisterps.profileStatuses[i].id}}">{{jobregisterps.profileStatuses[i].name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="text-nowrap" style="width: 1px;">
+        <button type="button" class="btn btn-info" style="margin-right: 5px;">CV</button>
+        <button class="btn btn-danger" style="margin-right: 5px;" type="submit" (click)="onUpdateJobRegister()">Chỉnh sửa</button>
+        <button type="button" class="btn btn-success" style="margin-right: 5px;">Cancel</button>
+    </div>
+</form>
