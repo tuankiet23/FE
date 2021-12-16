@@ -65,11 +65,6 @@ const Adminroutes: Routes = [
         pathMatch:'full'
       },
       {
-        path:'jobregister',
-        component: ListJobregisterComponent,
-        pathMatch:'full'
-      },
-      {
         path:'company',
         component: CompanyAdComponent,
         pathMatch:'full'
@@ -84,6 +79,10 @@ const Adminroutes: Routes = [
         component: EditAcademiclevelComponent,
         pathMatch:'full'
       },
+      {
+        path:'jobregister',
+        loadChildren: () => import("src/app/components/admin/job-register/job-register.module").then(m => m.JobRegisterModule) 
+      }
     ]
   },
 ]
