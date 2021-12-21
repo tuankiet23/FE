@@ -4,6 +4,7 @@ import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { addjobregister } from 'src/app/models/addjobregister';
 import { JobRegisterService } from 'src/app/services/job-register.service';
 import { __values } from 'tslib';
 
@@ -24,10 +25,9 @@ export class EditJobRegisterComponent implements OnInit {
   }, {
     updateOn: 'blur'
   });
-  // [x: string]: any;
-  // public jobregister: jobregister;
-  // public editJobRegister: any;
+
   public jobregisterps: any;
+
 
   constructor(
     private jobRegisterService: JobRegisterService,
@@ -49,13 +49,13 @@ export class EditJobRegisterComponent implements OnInit {
           res == ""
         }
         this.jobregisterps = res;
-        // this.editForm.patchValue({
-        //   id:this.jobregisterps.jobRegister.id,
-        //   dateinterview:formatDate(  this.jobregisterps.jobRegister.dateInterview , 'yyyy-MM-dd', 'en-Us' ) ,
-        //   dateregister:formatDate(  this.jobregisterps.jobRegister.dateRegister, 'yyyy-MM-dd', 'en-Us' ) ,
-        //   methodinterview: this.jobregisterps.jobRegister.methodInterview,
-        //   // profilestatus: this.jobregisterps.profileStatus.name
-        // })
+        this.editForm.patchValue({
+          id:this.jobregisterps.jobRegister.id,
+          dateinterview:formatDate(  this.jobregisterps.jobRegister.dateInterview , 'yyyy-MM-dd', 'en-Us' ) ,
+          dateregister:formatDate(  this.jobregisterps.jobRegister.dateRegister, 'yyyy-MM-dd', 'en-Us' ) ,
+          methodinterview: this.jobregisterps.jobRegister.methodInterview,
+          // profilestatus: this.jobregisterps.profileStatus.name
+        })
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -63,14 +63,28 @@ export class EditJobRegisterComponent implements OnInit {
     );
   }
 
+
+
   onUpdateJobRegister() {
-    
-    this.jobRegisterService.updateJobRegist(this.editForm.value).subscribe( 
+    this.jobRegisterService.updateJobRegist(this.editForm.value).subscribe(  
       res => {
-      console.log(this.editForm.valid);
+      console.log(this.editForm.value);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
+        console.log(this.editForm.value);
+      }
+    );
+  }
+
+  onDeleteJobRegister(id: any) {
+    this.jobRegisterService.delete(id).subscribe(
+      res => {
+        this.router.navigate(['/admin/jobregister']);
+      },
+      (error: HttpErrorResponse) => {
+        // alert(error.message);
+        this.router.navigate(['/admin/jobregister']);
       }
     );
   }

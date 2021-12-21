@@ -3,7 +3,7 @@ import { AddJEComponent } from './components/admin/add-je/add-je.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './routing/app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -29,6 +29,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { Interceptor } from './interceptor';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     EmployeeAddComponent,
     ChangePasswordComponent,
     AddJEComponent,
-    EditJeComponent
+    EditJeComponent,
 
   ],
   imports: [
@@ -63,7 +64,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatTableModule,
 
   ],
-  providers: [JobService],
+  providers: [JobService,
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,7 +18,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AddJEComponent } from './add-je/add-je.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { EditJeComponent } from './edit-je/edit-je.component'
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
+import { NgxPaginationModule } from 'ngx-pagination';
+import { JobRegisterComponent } from './job-register/job-register.component';
 
 
 const Adminroutes: Routes = [
@@ -94,14 +100,18 @@ const Adminroutes: Routes = [
     SidebarComponent,
     EditAcademiclevelComponent,
     ListUserComponent,
+    
 
   ],
   imports: [
     RouterModule.forChild(Adminroutes),
     ReactiveFormsModule,
-    CommonModule
-    // BrowserModule
-
+    CommonModule,
+    MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    NgxPaginationModule
   ],
   exports: [RouterModule],
 })

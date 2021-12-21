@@ -1,8 +1,8 @@
 export class addjobregister {
-    id!: number ;
-    profilestatus!: number;
-    dateregister!: Date;
-    dateinterview!:Date;
-    methodinterview!: string;
-    cv!: string;
+    id: String ;
+    profilestatus: String;
+    dateregister: String;
+    dateinterview:String;
+    methodinterview: String;
+    cv!: String;
 }

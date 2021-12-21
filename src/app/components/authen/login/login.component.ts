@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Employee } from './../../../models/employee';
 import { Component, OnInit } from '@angular/core';
 import { USER_ROLE_KEY } from 'src/app/models/config/local-storage-keys';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +12,12 @@ import { USER_ROLE_KEY } from 'src/app/models/config/local-storage-keys';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  private apiServerUrl = environment.apiBaseUrl;
   employee: Employee;
   btnDisable = false;
   url = 'http://localhost:8080/login';
-  constructor(private rest: RestApiService, private data: DataService,private router:Router) {
-    
+  constructor(private rest: RestApiService, private data: DataService, private router:Router) {
+    this.employee=new Employee();
   }
 
   ngOnInit(): void {}
@@ -30,11 +31,15 @@ export class LoginComponent implements OnInit {
         .post(this.url, this.employee)
         .then((data) => {
           console.log(data)
-          let value = data as{employeeId:string, token: string, rollId: string};
+          let value = data as{employeeId:string, token: string};
           localStorage.setItem('token',value.token);
-          localStorage.setItem(USER_ROLE_KEY, value.rollId)
+          this.rest.get(`${this.apiServerUrl}/user/getProfile`).then((res)=>{
+            console.log(res)
+            let value = res as any[];
+            localStorage.setItem('user-role-key', value.toString())
+          }
+          )
          // await this.data.getProfile();
-          console.log(value.rollId);
           this.router.navigate([''])
         })
         .catch((error) => {
