@@ -4,6 +4,7 @@ import { Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { addjobregister } from '../models/addjobregister';
 import { jobregister } from '../models/job-register';
+import { searchJobRegister } from '../models/jobregister/searchjobregister';
 import { jobregisterps } from '../models/jodregister-profilestatus';
 
 @Injectable({
@@ -28,8 +29,9 @@ export class JobRegisterService {
     );
   }
 
-  public updateJobRegist(body: Object={}): Observable<addjobregister> {
-    return this.http.put<addjobregister>(`${this.apiServerUrl}/user/jobregister`, body);
+  public updateJobRegist(jobregister: addjobregister): Observable<addjobregister> {
+    const url = `${this.apiServerUrl}` + "/user/jobregister";
+    return this.http.post<addjobregister>(url, jobregister);
   }
 
   public delete(id: number): Observable<jobregister>{
@@ -37,5 +39,15 @@ export class JobRegisterService {
     return this.http.delete<any>(url).pipe(
       tap(notyfy=>console.log("xóa thàng công"))
     )
+  }
+
+  public getAllJobregister(pageN: number, pageS: number): Observable<jobregister[]>{
+    const url =  `${this.apiServerUrl}` + "/user/jobregister/"+`${pageN}`+"/"+`${pageS}`
+    return this.http.get<jobregister[]>(url);
+  }
+
+  public getSearchJobRegister(search:searchJobRegister):Observable<jobregister[]>{
+    const url =  `${this.apiServerUrl}` + "/user/jobregister/search"
+    return this.http.put<jobregister[]>(url,search);
   }
 }

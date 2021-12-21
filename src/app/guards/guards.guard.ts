@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router} from '@angular/router';
 import {Observable} from 'rxjs';
-import { AuthService } from '../services/auth.service';
 import { USER_ROLE_KEY, USER_TOKEN_KEY } from '../models/config/local-storage-keys';
 import { ROLE_JE, ROLE_ADMIN } from '../models/config/user-roles-keys'; 
 
@@ -11,7 +10,6 @@ import { ROLE_JE, ROLE_ADMIN } from '../models/config/user-roles-keys';
 export class GuardsGuard implements CanActivate {
     constructor(
         private router: Router,
-        private auth: AuthService
     ) {
 
     }

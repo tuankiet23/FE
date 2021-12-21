@@ -1,4 +1,32 @@
-<table id="tb-view" class="table table-bordered table-sm table-hover table-striped">
+<form class="needs-validation"  [formGroup]="searchForm" (ngSubmit)="onSearchJobRegister()">
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="validationTooltip01">Họ tên</label>
+        <input type="text" class="form-control" placeholder="Họ tên" id="fullName" formControlName="fullName"> 
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationTooltip02">Tên công việc</label>
+        <input type="text" class="form-control" id="jobName" formControlName="jobName" placeholder="Tên công việc" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="validationTooltip03">Số điện thoại</label>
+        <input type="text" class="form-control" id="validationTooltip03" placeholder="Số điện thoại" formControlName="phoneNumber">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationTooltip04">Ngày ứng tuyển</label>
+        <input type="date" class="form-control" id="validationTooltip04" formControlName="dateRegister">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationTooltip05">Ngày phỏng vấn</label>
+        <input type="date" class="form-control" id="validationTooltip05" formControlName="dateInterview">
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit" style="margin-left: 1000px;" (click)="onSearchJobRegister" >Search</button>
+  </form>
+
+<table id="tb-view" class="table table-bordered table-sm table-hover table-striped" style="margin-top: 30px;">
     <thead>
     <tr>
         <th>Họ tên</th>
@@ -24,8 +52,22 @@
                 <td class="text-nowrap" style="width: 1px;">
                     <button type="button" class="btn btn-info" style="margin-right: 2px;"><a routerLink="/admin/jobregister/detail/{{jobregister.id}}">Chi tiết</a></button>
                     <button type="button" class="btn btn-danger" style="margin-right: 2px;"  routerLink="/admin/jobregister/edit/{{jobregister.id}}" >Chỉnh sửa</button>
-                    <button type="submit" class="btn btn-success" style="margin-right: 2px;" (click)="onDeleteJobRegister(jobregister.id)">Xóa</button>
                 </td>
             </tr>
     </tbody>
 </table>
+
+<!-- <div class="paging" >
+    <span>
+      <pagination [boundaryLinks]="true"
+      [totalItems]="totalRecord"
+      [(ngModel)]="pageN"
+      [itemsPerPage]="pageS"
+      previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
+      (pageChanged)="pageChanged($event)"
+      (click)="setPage(pageN)"
+      >
+      </pagination>
+    </span>
+
+  </div> -->
