@@ -25,7 +25,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { JobRegisterComponent } from './job-register/job-register.component';
-import { JobComponent } from './job/job.component';
 
 
 const Adminroutes: Routes = [
@@ -101,7 +100,6 @@ const Adminroutes: Routes = [
     SidebarComponent,
     EditAcademiclevelComponent,
     ListUserComponent,
-    JobComponent,
     
 
   ],
