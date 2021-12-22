@@ -30,6 +30,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { Interceptor } from './interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { Interceptor } from './interceptor';
     MatPaginatorModule,
     MatFormFieldModule,
     MatTableModule,
+    BrowserAnimationsModule,
 
   ],
   providers: [JobService,

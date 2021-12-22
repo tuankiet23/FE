@@ -1,10 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { jobregister } from 'src/app/models/job-register';
 import { JobRegisterService } from 'src/app/services/job-register.service';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { Form, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { searchJobRegister } from 'src/app/models/jobregister/searchjobregister';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list-job-register',
@@ -28,19 +29,16 @@ export class ListJobRegisterComponent implements OnInit {
   public jobregister: any;
   constructor(
     private jobregisterService: JobRegisterService,
-    public FB: FormBuilder) { }
-
-  totalRecord: number = 0;
-  pageN: number = 0;
-  pageS: number = 1;
-  page?: number;
+    public FB: FormBuilder) {
+     }
 
   ngOnInit(): void {
-    this.getJobRegister();
+    // this.getJobRegister();
+this.onSearchJobRegister();
   }
   public getJobRegister(): void {
 
-    this.jobregisterService.getJobRegister().subscribe(
+    this.jobregisterService.getJobRegister( this.currentPage, this.pageSize).subscribe(
       res => {
         if (res === null) {
           res == ''
@@ -56,7 +54,7 @@ export class ListJobRegisterComponent implements OnInit {
 
 
   onSearchJobRegister() {
-    this.jobregisterService.getSearchJobRegister(this.searchForm.value).subscribe(
+    this.jobregisterService.getSearchJobRegister(this.searchForm.value, this.currentPage, this.pageSize).subscribe(
       res => {
         this.jobregisters = res;
         console.log(this.searchForm.value);
@@ -68,12 +66,21 @@ export class ListJobRegisterComponent implements OnInit {
     )
   }
 
-  pageChanged(event: PageChangedEvent): void {
-    this.pageN = event.page - 1;
-    console.log("pageN " + this.pageN);
-    this.jobregisterService.getAllJobregister(this.pageN, this.pageS).subscribe(res => {
-      this.jobregisters = res;
-      console.log(res);
-    })
+  isLoading = false;
+  totalRows = 3;
+  pageSize = 1;
+  currentPage = 1;
+  pageSizeOptions: number[] = [1, 10, 25, 100];
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+  ngAfterViewInit() {
+    this.jobregister.paginator = this.paginator;
+  }
+
+  pageChanged(event: PageEvent) {
+    console.log({ event });
+    this.pageSize = event.pageSize;
+    this.currentPage = event.pageIndex;
+    this.onSearchJobRegister();
   }
 }

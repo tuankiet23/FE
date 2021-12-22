@@ -1,41 +1,69 @@
-<form [formGroup]="editForm" (ngSubmit)="onUpdateJobRegister()">
+<form>
     <p>Thông tin cá nhân</p>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputEmail4">Họ tên</label>
-            <input type="email" class="form-control" id="inputEmail4"
-                value="{{jobregisterps.jobRegister.user.fullName}}" disabled="disabled">
+            <input type="email" class="form-control" id="inputEmail4" value="{{jobregisterps.jobRegister.user.fullName}}" disabled>
         </div>
         <div class="form-group col-md-6">
             <label for="inputPassword4">Ngày sinh</label>
-            <input type="text" class="form-control" id="inputPassword4"
-                value="{{jobregisterps.jobRegister.user.birthDay | date:'fullDate'}}" disabled="disabled">
+            <input type="date" class="form-control" id="inputPassword4" value="{{jobregisterps.jobRegister.user.birthDay | date: 'yyyy-MM-dd'}}" disabled>
         </div>
     </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputCity">Email </label>
-            <input type="text" class="form-control" id="inputAddress" value="{{jobregisterps.jobRegister.user.email}}"
-                disabled="disabled">
-        </div>
-        <div class="form-group col-md-6 ">
-            <label for="inputCity">Địa chỉ</label>
-            <input type="text" class="form-control" id="inputAddress2"
-                value="{{jobregisterps.jobRegister.user.homeTown}}" disabled="disabled">
-        </div>
+    <div class="form-group">
+        <label for="inputAddress">Emial</label>
+        <input type="text" class="form-control" id="inputAddress" value="{{jobregisterps.jobRegister.user.email}}" disabled>
+    </div>
+    <div class="form-group">
+        <label for="inputAddress2">Địa chỉ</label>
+        <input type="text" class="form-control" id="inputAddress2" value="{{jobregisterps.jobRegister.user.homeTown}}" disabled>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputCity">SĐT </label>
-            <input type="text" class="form-control" id="inputCity"
-                value="{{jobregisterps.jobRegister.user.phoneNumber}}" disabled="disabled">
+            <input type="text" class="form-control" id="inputCity" value="{{jobregisterps.jobRegister.user.phoneNumber}}" disabled>
         </div>
         <div class="form-group col-md-6 ">
             <label for="inputCity">Giới tính</label>
-            <input type="text" class="form-control" id="inputCity" value="{{jobregisterps.jobRegister.user.gender}}"
-                disabled="disabled">
+            <input type="text" class="form-control" id="inputCity" value="{{jobregisterps.jobRegister.user.gender}}" disabled>
         </div>
     </div>
+    <p>Thông tin công việc</p>
+    <div class="form-row">    
+            <label for="inputEmail4">Tên công việc</label>
+            <input type="email" class="form-control" id="inputEmail4" value="{{jobregisterps.jobRegister.job.jobName}}" disabled>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputCity">Số lượng cần tuyển </label>
+            <input type="text" class="form-control" id="inputCity" value="{{jobregisterps.jobRegister.job.qtyPerson}}" disabled> 
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="inputCity">Trình độ học vấn</label>
+            <input type="text" class="form-control" id="inputCity" disabled >
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputCity">Mức lương </label>
+            <input type="text" class="form-control" id="inputCity" value="{{jobregisterps.jobRegister.job.salary}}" disabled>
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="inputCity">Phương thức làm việc</label>
+            <input type="text" class="form-control" id="inputCity" disabled >
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputAddress">Kĩ năng</label>
+        <input type="text" class="form-control" id="inputAddress" value="{{jobregisterps.jobRegister.job.skill}}" disabled>
+    </div>
+    <div class="form-group">
+        <label for="inputAddress2">Mô tả</label>
+        <input type="text" class="form-control" id="inputAddress2" value="{{jobregisterps.jobRegister.job.description}}" disabled>
+    </div>
+</form>
+
+<form [formGroup]="editForm" (ngSubmit)="onUpdateJobRegister()">
     <p>Thông tin ứng tuyển</p>
     <input type="hidden" formControlName="id" name="id" class="form-control" id="id">
     <div class="form-row">
@@ -55,15 +83,46 @@
         </div>
     </div>
     <div class="form-row" >
-        <div *ngFor=" jobregister of jobregisterps.profileStatuses; let i = index ">
-            <div *ngIf="jobregisterps.jobRegister.profileStatus.name === jobregisterps.profileStatuses[i].name" style="margin-left: 25px;">
-                <input type="checkbox" class="custom-control-input" id="customControlInline" formControlName="profilestatus">
-                <label class="custom-control-label" for="customControlInline">{{jobregisterps.profileStatuses[i].name}}</label>
+        <div style="margin-bottom: 10px;">
+            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 1" style="margin-left: 25px;">
+                <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="profilestatus">
+                    <mat-button-toggle value='2' >Chờ phỏng vấn</mat-button-toggle>
+                  </mat-button-toggle-group>
+            </div>
+            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 2" style="margin-left: 25px;">
+                <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="profilestatus">
+                    <mat-button-toggle value='3'>Đang phỏng vấn</mat-button-toggle>
+                  </mat-button-toggle-group>
+            </div>
+            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 3" style="margin-left: 25px;">
+                <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="profilestatus">
+                    <mat-button-toggle value="4"  >Tuyển</mat-button-toggle>
+                    <mat-button-toggle value="5">Ứng viên bị từ chối</mat-button-toggle>
+                  </mat-button-toggle-group>
+            </div>
+            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 4" style="margin-left: 25px;">
+                <div class="form-group col-md-12">
+                    <label for="inputCity">Trạng thái hồ sơ </label>
+                    <input type="text" class="form-control" id="inputCity" value="Đã tuyển">
+                </div>
+            </div>
+            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 5" style="margin-left: 25px;">
+                <div class="form-group col-md-12">
+                    <label for="inputCity">Trạng thái hồ sơ </label>
+                    <input type="text" class="form-control" id="inputCity" value="Ứng viên bị từ chối" disabled>
+                </div>
+            </div>
+            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 6" style="margin-left: 25px;" disabled>
+                <div class="form-group col-md-12">
+                    <label for="inputCity">Trạng thái hồ sơ </label>
+                    <input type="text" class="form-control" id="inputCity" value="Ứng viên từ chối ứng tuyển" disabled>
+                </div>
             </div>
         </div>     
     </div>
+
     <div class="text-nowrap" style="width: 1px;">
-        <button type="button" class="btn btn-info" style="margin-right: 5px;">CV</button>
+        <button type="button" class="btn btn-info" style="margin-right: 5px;"    (click)="onDowloadCV(jobregisterps.jobRegister.id)">Tải CV</button>
         <button class="btn btn-danger" style="margin-right: 5px;" type="submit" (click)="onUpdateJobRegister()">Chỉnh
             sửa</button>
         <button type="submit" class="btn btn-success" style="margin-right: 5px;"

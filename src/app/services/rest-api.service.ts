@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { USERNAME_KEY, USER_ID_KEY, USER_ROLE_KEY, USER_TOKEN_KEY } from '../models/config/local-storage-keys';
 
 @Injectable({
   providedIn: 'root'
@@ -42,4 +43,11 @@ export class RestApiService {
 
     return this.http.delete(link + '/'+id).toPromise();
   }
+
+  logout(): void {
+    localStorage.removeItem(USER_ID_KEY);
+    localStorage.removeItem(USER_ROLE_KEY);
+    localStorage.removeItem(USERNAME_KEY);
+    localStorage.removeItem('token');
+}
 }

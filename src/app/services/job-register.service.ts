@@ -16,8 +16,8 @@ export class JobRegisterService {
 
   constructor(private http: HttpClient) { }
 
-  public getJobRegister(): Observable<jobregister[]> {
-    return this.http.get<any>(`${this.apiServerUrl}/user/jobregister`).pipe(
+  public getJobRegister( currentPage: number, pageSize:number): Observable<jobregister[]> {
+    return this.http.get<any>(`${this.apiServerUrl}/user/jobregister/${currentPage}/${pageSize}`).pipe(
       tap(receivedJobRegister => console.log(`receivedJob=${JSON.stringify(receivedJobRegister)}`))
     );
   }
@@ -34,20 +34,25 @@ export class JobRegisterService {
     return this.http.post<addjobregister>(url, jobregister);
   }
 
-  public delete(id: number): Observable<jobregister>{
-    const url =  `${this.apiServerUrl}` + "/user/jobregister/" + `${id}`
+  public delete(id: number): Observable<jobregister> {
+    const url = `${this.apiServerUrl}` + "/user/jobregister/" + `${id}`
     return this.http.delete<any>(url).pipe(
-      tap(notyfy=>console.log("xóa thàng công"))
+      tap(notyfy => console.log("xóa thàng công"))
     )
   }
 
-  public getAllJobregister(pageN: number, pageS: number): Observable<jobregister[]>{
-    const url =  `${this.apiServerUrl}` + "/user/jobregister/"+`${pageN}`+"/"+`${pageS}`
+  public getAllJobregister(pageN: number, pageS: number): Observable<jobregister[]> {
+    const url = `${this.apiServerUrl}` + "/user/jobregister/" + `${pageN}` + "/" + `${pageS}`
     return this.http.get<jobregister[]>(url);
   }
 
-  public getSearchJobRegister(search:searchJobRegister):Observable<jobregister[]>{
-    const url =  `${this.apiServerUrl}` + "/user/jobregister/search"
-    return this.http.put<jobregister[]>(url,search);
+  public getSearchJobRegister(search: searchJobRegister,currentPage: number, pageSize: number ): Observable<jobregister[]> {
+    const url = `${this.apiServerUrl}` + "/user/jobregister/search"+`?pageIndex=${currentPage}&pageSize=${pageSize}`
+    return this.http.put<jobregister[]>(url, search);
+  }
+  public dowloadcv(id: number): Observable<jobregister> {
+    const url = `${this.apiServerUrl}` + "/user/jobregister/link/" + `${id}`
+    console.log(url)
+    return this.http.get<any>(url)
   }
 }
