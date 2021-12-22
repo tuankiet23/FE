@@ -5,6 +5,7 @@ import { Employee } from './../../../models/employee';
 import { Component, OnInit } from '@angular/core';
 import { USER_ROLE_KEY } from 'src/app/models/config/local-storage-keys';
 import { environment } from 'src/environments/environment';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -16,37 +17,36 @@ export class LoginComponent implements OnInit {
   employee: Employee;
   btnDisable = false;
   url = 'http://localhost:8080/login';
-  constructor(private rest: RestApiService, private data: DataService, private router:Router) {
-    this.employee=new Employee();
+  constructor(private rest: RestApiService, private data: DataService, private router: Router) {
+    this.employee = new Employee();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   validate() {
     return true;
   }
-  async login() {
+  login() {
     this.btnDisable = true;
+    debugger;
     if (this.validate()) {
       this.rest
         .post(this.url, this.employee)
-        .then((data) => {
+        .then(data => {
           console.log(data)
-          let value = data as{employeeId:string, token: string};
-          localStorage.setItem('token',value.token);
-          this.rest.get(`${this.apiServerUrl}/user/getProfile`).then((res)=>{
+          let value = data as { employeeId: string, token: string };
+          localStorage.setItem('token', value.token);
+          this.rest.get(`${this.apiServerUrl}/user/getProfile`).then((res) => {
             console.log(res)
             let value = res as any[];
             localStorage.setItem('user-role-key', value.toString())
           }
           )
-         // await this.data.getProfile();
-          this.router.navigate([''])
-        })
-        .catch((error) => {
-          this.data.error(error['error']);
-          this.btnDisable = false;
-        });
+          this.router.navigate(['/admin'])
+        }, 
+          (error: HttpErrorResponse) => {
+            alert(error.message);
+          }
+        )
     }
   }
-
 }

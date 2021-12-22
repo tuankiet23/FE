@@ -8,6 +8,7 @@ import { addjobregister } from 'src/app/models/addjobregister';
 import { JobRegisterService } from 'src/app/services/job-register.service';
 import { __values } from 'tslib';
 
+
 @Component({
   selector: 'app-edit-job-register',
   templateUrl: './edit-job-register.component.html',
@@ -69,6 +70,7 @@ export class EditJobRegisterComponent implements OnInit {
     this.jobRegisterService.updateJobRegist(this.editForm.value).subscribe(  
       res => {
       console.log(this.editForm.value);
+      this.router.navigate(['/admin/jobregister']);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -85,6 +87,17 @@ export class EditJobRegisterComponent implements OnInit {
       (error: HttpErrorResponse) => {
         // alert(error.message);
         this.router.navigate(['/admin/jobregister']);
+      }
+    );
+  }
+
+  onDowloadCV(id:any){
+    this.jobRegisterService.dowloadcv(id).subscribe(
+      res => {
+        alert("Dowlaod CV thành công.");
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
       }
     );
   }

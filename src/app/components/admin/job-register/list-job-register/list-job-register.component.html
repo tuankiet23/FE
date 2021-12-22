@@ -40,7 +40,7 @@
     </tr>
     </thead>
     <tbody>
-            <tr *ngFor="let jobregister of jobregisters">
+            <tr *ngFor="let jobregister of jobregisters ">
                 <td>{{jobregister.user.fullName}}</td>
                 <td>{{jobregister.job.jobName}}</td>
                 <td>{{jobregister.dateRegister | date:'fullDate'}}</td>  
@@ -50,24 +50,14 @@
                 <td>{{jobregister.user.email}}</td>
                 <td>{{jobregister.profileStatus.name}}</td>
                 <td class="text-nowrap" style="width: 1px;">
-                    <button type="button" class="btn btn-info" style="margin-right: 2px;"><a routerLink="/admin/jobregister/detail/{{jobregister.id}}">Chi tiết</a></button>
-                    <button type="button" class="btn btn-danger" style="margin-right: 2px;"  routerLink="/admin/jobregister/edit/{{jobregister.id}}" >Chỉnh sửa</button>
+                    <!-- <button type="button" class="btn btn-info" style="margin-right: 2px;"><a routerLink="/admin/jobregister/detail/{{jobregister.id}}">Chi tiết</a></button> -->
+                    <button type="button" class="btn btn-danger" style="margin-right: 2px;"  routerLink="/admin/jobregister/edit/{{jobregister.id}}" >Chi tiết</button>
                 </td>
             </tr>
     </tbody>
 </table>
 
-<!-- <div class="paging" >
-    <span>
-      <pagination [boundaryLinks]="true"
-      [totalItems]="totalRecord"
-      [(ngModel)]="pageN"
-      [itemsPerPage]="pageS"
-      previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
-      (pageChanged)="pageChanged($event)"
-      (click)="setPage(pageN)"
-      >
-      </pagination>
-    </span>
+<mat-paginator #paginator [length]="totalRows" [pageIndex]="currentPage" [pageSize]="pageSize"
+[pageSizeOptions]="pageSizeOptions" (page)="pageChanged($event)" aria-label="Select page">
+</mat-paginator>
 
-  </div> -->
