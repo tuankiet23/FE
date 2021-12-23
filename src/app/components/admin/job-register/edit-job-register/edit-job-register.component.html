@@ -3,63 +3,74 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputEmail4">Họ tên</label>
-            <input type="email" class="form-control" id="inputEmail4" value="{{jobregisterps.jobRegister.user.fullName}}" disabled>
+            <input type="email" class="form-control" id="inputEmail4"
+                value="{{jobregisterps.jobRegister.user.fullName}}" disabled>
         </div>
         <div class="form-group col-md-6">
             <label for="inputPassword4">Ngày sinh</label>
-            <input type="date" class="form-control" id="inputPassword4" value="{{jobregisterps.jobRegister.user.birthDay | date: 'yyyy-MM-dd'}}" disabled>
+            <input type="date" class="form-control" id="inputPassword4"
+                value="{{jobregisterps.jobRegister.user.birthDay | date: 'yyyy-MM-dd'}}" disabled>
         </div>
     </div>
     <div class="form-group">
         <label for="inputAddress">Emial</label>
-        <input type="text" class="form-control" id="inputAddress" value="{{jobregisterps.jobRegister.user.email}}" disabled>
+        <input type="text" class="form-control" id="inputAddress" value="{{jobregisterps.jobRegister.user.email}}"
+            disabled>
     </div>
     <div class="form-group">
         <label for="inputAddress2">Địa chỉ</label>
-        <input type="text" class="form-control" id="inputAddress2" value="{{jobregisterps.jobRegister.user.homeTown}}" disabled>
+        <input type="text" class="form-control" id="inputAddress2" value="{{jobregisterps.jobRegister.user.homeTown}}"
+            disabled>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputCity">SĐT </label>
-            <input type="text" class="form-control" id="inputCity" value="{{jobregisterps.jobRegister.user.phoneNumber}}" disabled>
+            <input type="text" class="form-control" id="inputCity"
+                value="{{jobregisterps.jobRegister.user.phoneNumber}}" disabled>
         </div>
         <div class="form-group col-md-6 ">
             <label for="inputCity">Giới tính</label>
-            <input type="text" class="form-control" id="inputCity" value="{{jobregisterps.jobRegister.user.gender}}" disabled>
+            <input type="text" class="form-control" id="inputCity" value="{{jobregisterps.jobRegister.user.gender}}"
+                disabled>
         </div>
     </div>
     <p>Thông tin công việc</p>
-    <div class="form-row">    
-            <label for="inputEmail4">Tên công việc</label>
-            <input type="email" class="form-control" id="inputEmail4" value="{{jobregisterps.jobRegister.job.jobName}}" disabled>
+    <div class="form-row">
+        <label for="inputEmail4">Tên công việc</label>
+        <input type="email" class="form-control" id="inputEmail4" value="{{jobregisterps.jobRegister.job.jobName}}"
+            disabled>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputCity">Số lượng cần tuyển </label>
-            <input type="text" class="form-control" id="inputCity" value="{{jobregisterps.jobRegister.job.qtyPerson}}" disabled> 
+            <input type="text" class="form-control" id="inputCity" value="{{jobregisterps.jobRegister.job.qtyPerson}}"
+                disabled>
         </div>
         <div class="form-group col-md-6 ">
             <label for="inputCity">Trình độ học vấn</label>
-            <input type="text" class="form-control" id="inputCity" disabled >
+            <input type="text" class="form-control" id="inputCity" disabled>
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputCity">Mức lương </label>
-            <input type="text" class="form-control" id="inputCity" value="{{jobregisterps.jobRegister.job.salary}}" disabled>
+            <input type="text" class="form-control" id="inputCity" value="{{jobregisterps.jobRegister.job.salary}}"
+                disabled>
         </div>
         <div class="form-group col-md-6 ">
             <label for="inputCity">Phương thức làm việc</label>
-            <input type="text" class="form-control" id="inputCity" disabled >
+            <input type="text" class="form-control" id="inputCity" disabled>
         </div>
     </div>
     <div class="form-group">
         <label for="inputAddress">Kĩ năng</label>
-        <input type="text" class="form-control" id="inputAddress" value="{{jobregisterps.jobRegister.job.skill}}" disabled>
+        <input type="text" class="form-control" id="inputAddress" value="{{jobregisterps.jobRegister.job.skill}}"
+            disabled>
     </div>
     <div class="form-group">
         <label for="inputAddress2">Mô tả</label>
-        <input type="text" class="form-control" id="inputAddress2" value="{{jobregisterps.jobRegister.job.description}}" disabled>
+        <input type="text" class="form-control" id="inputAddress2" value="{{jobregisterps.jobRegister.job.description}}"
+            disabled>
     </div>
 </form>
 
@@ -82,23 +93,102 @@
             <input type="text" class="form-control" id="inputCity" formControlName="methodinterview">
         </div>
     </div>
-    <div class="form-row" >
+    <div class="form-row">
         <div style="margin-bottom: 10px;">
             <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 1" style="margin-left: 25px;">
-                <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="profilestatus">
-                    <mat-button-toggle value='2' >Chờ phỏng vấn</mat-button-toggle>
-                  </mat-button-toggle-group>
+                <button type="button" class="btn btn-info" style="width: 81px;" (click)="onBrowsing()">Duyệt</button>
+                <button type="button" class="btn btn-info" (click)="openPopup1()">Từ chối ứng viên</button>
+                <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle1}">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Lý do từ chối</h4>
+                            </div>
+                            <div class="modal-body">
+                                <input type="text" class="form-control" id="inputCity" formControlName="reason">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" (click)="closePopup1()">
+                                    Close
+                                </button>
+                                <button class="btn btn-danger" style="margin-right: 5px;" type="submit"
+                                    (click)="onRefuse()">Lưu</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 2" style="margin-left: 25px;">
-                <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="profilestatus">
-                    <mat-button-toggle value='3'>Đang phỏng vấn</mat-button-toggle>
-                  </mat-button-toggle-group>
+                <button type="button" class="btn btn-info" (click)="openPopup1()">Từ chối ứng viên</button>
+                <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle1}">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Lý do từ chối</h4>
+                            </div>
+                            <div class="modal-body">
+                                <input type="text" class="form-control" id="reason" formControlName="reason">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" (click)="closePopup1()">
+                                    Close
+                                </button>
+                                <button class="btn btn-danger" style="margin-right: 5px;" type="submit"
+                                    (click)="onRefuse()">Lưu</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-info" (click)="openPopup()" style="width: 81px;">Đặt lịch</button>
+                <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Thời gian hẹn phỏng vấn </h4>
+                            </div>
+                            <div class="modal-body" style="margin: auto;">
+                                <input type="datetime-local" class="form-control" id="dateinterview"
+                                    formControlName="dateinterview">
+                            </div>
+                            <div class="modal-body" style="margin: auto;">
+                                <label for="inputCity">Phương thức phỏng vấn </label>
+                                <input type="text" class="form-control" id="inputCity"
+                                    formControlName="methodinterview">
+                            </div>
+                            <div style="margin-left: 20px; margin-bottom: 10px;">
+                                <button type="button" class="btn btn-danger" style="margin-right: 3px;"
+                                    (click)="closePopup()">Close</button>
+                                <button type="button" class="btn btn-danger" (click)="onSchedule()">Xác
+                                    nhận</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+  
+
             </div>
             <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 3" style="margin-left: 25px;">
-                <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="profilestatus">
-                    <mat-button-toggle value="4"  >Tuyển</mat-button-toggle>
-                    <mat-button-toggle value="5">Ứng viên bị từ chối</mat-button-toggle>
-                  </mat-button-toggle-group>
+                <button type="button" class="btn btn-info" style="width: 81px;" (click)="onRecruit()">Tuyển</button>
+                <button type="button" class="btn btn-info" (click)="openPopup1()">Từ chối ứng viên</button>
+                <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle1}">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Lý do từ chối</h4>
+                            </div>
+                            <div class="modal-body">
+                                <input type="text" class="form-control" id="reason" formControlName="reason">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" (click)="closePopup1()">
+                                    Close
+                                </button>
+                                <button class="btn btn-danger" style="margin-right: 5px;" type="submit"
+                                    (click)="onRefuse()">Lưu</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 4" style="margin-left: 25px;">
                 <div class="form-group col-md-12">
@@ -106,27 +196,62 @@
                     <input type="text" class="form-control" id="inputCity" value="Đã tuyển">
                 </div>
             </div>
-            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 5" style="margin-left: 25px;">
+            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 5" style="margin-left: 5px;">
+                <button type="button" class="btn btn-info btn-lg" (click)="openPopup()">Ứng viên bị từ chối</button>
+                <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Lý do từ chối</h4>
+                            </div>
+                            <div class="modal-body">
+                                <input type="text" class="form-control" id="reason" formControlName="reason">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" (click)="closePopup()">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 6" style="margin-left: 25px;">
                 <div class="form-group col-md-12">
-                    <label for="inputCity">Trạng thái hồ sơ </label>
-                    <input type="text" class="form-control" id="inputCity" value="Ứng viên bị từ chối" disabled>
+                    <button type="button" class="btn btn-info btn-lg" (click)="openPopup()">Ứng viên từ chối ứng
+                        tuyển</button>
+                    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Lý do từ chối</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="text" class="form-control" id="inputCity" formControlName="reason">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" (click)="closePopup()">
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 6" style="margin-left: 25px;" disabled>
-                <div class="form-group col-md-12">
-                    <label for="inputCity">Trạng thái hồ sơ </label>
-                    <input type="text" class="form-control" id="inputCity" value="Ứng viên từ chối ứng tuyển" disabled>
-                </div>
-            </div>
-        </div>     
+        </div>
     </div>
 
     <div class="text-nowrap" style="width: 1px;">
-        <button type="button" class="btn btn-info" style="margin-right: 5px;"    (click)="onDowloadCV(jobregisterps.jobRegister.id)">Tải CV</button>
+        <button type="button" class="btn btn-info" style="margin-right: 5px;"
+            (click)="onDowloadCV(jobregisterps.jobRegister.id)">Tải CV</button>
         <button class="btn btn-danger" style="margin-right: 5px;" type="submit" (click)="onUpdateJobRegister()">Chỉnh
             sửa</button>
         <button type="submit" class="btn btn-success" style="margin-right: 5px;"
             (click)="onDeleteJobRegister(jobregisterps.jobRegister.id)">Xóa</button>
+
         <button type="button" class="btn btn-success" style="margin-right: 5px;">Cancel</button>
     </div>
+
 </form>

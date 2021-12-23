@@ -6,6 +6,7 @@ import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { Form, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { searchJobRegister } from 'src/app/models/jobregister/searchjobregister';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { addjobregister } from 'src/app/models/addjobregister';
 
 @Component({
   selector: 'app-list-job-register',
@@ -22,7 +23,7 @@ export class ListJobRegisterComponent implements OnInit {
 
   })
   public searchJR: searchJobRegister;
-
+  public jobjr: addjobregister;
 
   showDirectionLinks = true;
   public jobregisters: Array<any> = [];
@@ -54,7 +55,7 @@ this.onSearchJobRegister();
 
 
   onSearchJobRegister() {
-    this.jobregisterService.getSearchJobRegister(this.searchForm.value, this.currentPage, this.pageSize).subscribe(
+    this.jobregisterService.getSearchJobRegister(this.searchForm.value, this.currentPage, this.pageSize).subscribe( 
       res => {
         this.jobregisters = res;
         console.log(this.searchForm.value);
@@ -83,4 +84,61 @@ this.onSearchJobRegister();
     this.currentPage = event.pageIndex;
     this.onSearchJobRegister();
   }
+
+  displayStyle = "none";
+  openPopup() {
+    this.displayStyle = "block";
+  }
+  closePopup() {
+    this.displayStyle = "none";
+  }
+
+
+  editForm: FormGroup = this.FB.group({
+    id: new FormControl(""),
+    dateinterview: new FormControl(""),
+    cv: new FormControl(""),
+  }, {
+    updateOn: 'blur'
+  });
+
+
+  onUpdateJobRegister() {
+    this.jobregisterService.updateJobRegist(this.editForm.value).subscribe(  
+      res => {
+      console.log(this.editForm.value);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        console.log(this.editForm.value);
+      }
+    );
+  }
+
+  onDowloadCV(id:any){
+    this.jobregisterService.dowloadcv(id).subscribe(
+      res => {
+        alert("Dowlaod CV thành công.");
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  onAccept(id: String){
+   this.jobjr=this.editForm.value;
+   this.jobjr.id=id;
+   this.jobjr.profilestatus='3'
+   console.log("kkk", this.jobjr);
+   
+   this.jobregisterService.updateJobRegist(this.jobjr).subscribe(  
+    res => {
+    console.log(this.jobjr);
+    this.displayStyle = "none"; 
+    },
+  );
+  this.displayStyle = "none"; 
+  }
+
 }

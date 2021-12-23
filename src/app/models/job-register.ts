@@ -11,5 +11,6 @@ export interface jobregister {
     dateinterview:Date;
     methodinterview: string;
     cv: string;
+    reason: string;
     is_delete:number;
 }

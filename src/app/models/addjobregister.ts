@@ -4,5 +4,6 @@ export class addjobregister {
     dateregister: String;
     dateinterview:String;
     methodinterview: String;
+    reason: String;
     cv!: String;
 }
