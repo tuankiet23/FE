@@ -1,3 +1,6 @@
+import { ListUserComponent } from './components/admin/list-user/list-user.component';
+import { ListJeComponent } from './components/admin/list-JE/list-user.component';
+import { FogotPassComponent } from './components/authen/fogot-pass/fogot-pass.component';
 import { EditJeComponent } from './components/admin/edit-je/edit-je.component';
 import { AddJEComponent } from './components/admin/add-je/add-je.component';
 import { NgModule } from '@angular/core';
@@ -51,6 +54,9 @@ import { SidebarComponent } from './components/admin/sidebar/sidebar.component';
     ChangePasswordComponent,
     AddJEComponent,
     EditJeComponent,
+    FogotPassComponent,
+    ListJeComponent,
+    ListUserComponent,
 
   ],
   imports: [

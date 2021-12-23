@@ -1,9 +1,10 @@
+import { ListUserComponent } from './list-user/list-user.component';
+import { ListJeComponent } from './list-JE/list-user.component';
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CreateJobComponent } from './create-job/create-job.component';
 import { ListJobregisterComponent } from './list-jobregister/list-jobregister.component';
-import { ListUserComponent } from './list-JE/list-user.component';
 import { CompanyAdComponent } from './company-ad/company-ad.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateCompanyComponent } from './create-company/create-company.component';
@@ -25,6 +26,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { JobRegisterComponent } from './job-register/job-register.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 
 const Adminroutes: Routes = [
@@ -45,6 +47,12 @@ const Adminroutes: Routes = [
       {
         path:'job/create',
         component: CreateJobComponent,
+        pathMatch:'full'
+      },
+      {
+        path:'je',
+        component: ListJeComponent,
+
         pathMatch:'full'
       },
       {
@@ -87,7 +95,7 @@ const Adminroutes: Routes = [
       },
       {
         path:'jobregister',
-        loadChildren: () => import("src/app/components/admin/job-register/job-register.module").then(m => m.JobRegisterModule) 
+        loadChildren: () => import("src/app/components/admin/job-register/job-register.module").then(m => m.JobRegisterModule)
       }
     ]
   },
@@ -99,8 +107,8 @@ const Adminroutes: Routes = [
     HeaderAdComponent,
     SidebarComponent,
     EditAcademiclevelComponent,
-    ListUserComponent,
-    
+    EditUserComponent,
+
 
   ],
   imports: [

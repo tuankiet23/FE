@@ -26,50 +26,56 @@ export class ChangePasswordComponent implements OnInit {
     return true;
   }
   async changePass() {
-    // debugger;
-    this.btnDisable = true;
-      this.post(this.url, this.changePassword)
-        .subscribe(
+     // debugger;
+     this.btnDisable = true;
+     this.post(this.url, this.changePassword)
+       .subscribe(
+         ()=>{
 
-          (data) => {
-          console.log(data);
-          // let value = data as{employeeId:string, token: string};
-          // localStorage.getItem('token');
-         // await this.data.getProfile();
-          let otp = prompt("Mã OTP:");
+         }
+         // (data) => {
+       //   console.log(data);
+       //   // let value = data as{employeeId:string, token: string};
+       //   // localStorage.getItem('token');
+       //  // await this.data.getProfile();
+       //   let otp = prompt("Mã OTP:");
 
-          this.rests.put(this.urlOtp,{
-            otpCode:otp,
-            password:this.changePassword.newPassword
-           }).then((data)=>{
-             alert("Doi mat khau thanh cong!")
-           }).catch((error)=>{
-             alert("Doi mat khau that bai")
-           })
+       //   this.rests.put(this.urlOtp,{
+       //     otpCode:otp,
+       //     password:this.changePassword.newPassword
+       //    }).then((data)=>{
+       //      alert("Doi mat khau thanh cong!")
+       //    }).catch((error)=>{
+       //      alert("Doi mat khau that bai")
+       //    })
 
-          // this.router.navigate(['user/otp'])
-        },(data) => {
-          console.log(data);
-          // let value = data as{employeeId:string, token: string};
-          // localStorage.getItem('token');
-         // await this.data.getProfile();
-          let otp = prompt("Mã OTP:");
+       //   // this.router.navigate(['user/otp'])
+       // }
 
-          this.rests.put(this.urlOtp,{
-            otpCode:otp,
-            password:this.changePassword.newPassword
-           }).then((data)=>{
-             alert("Doi mat khau thất bại!")
-           }).catch((error)=>{
-             alert("Doi mat khau thanh cong")
-           })
+       ,(data) => {
+         console.log(data);
+         // let value = data as{employeeId:string, token: string};
+         // localStorage.getItem('token');
+        // await this.data.getProfile();
+        alert("Vui lòng check email để lấy mã OTP!")
+         let otp = prompt("Mã OTP:");
 
-          // this.router.navigate(['user/otp'])
-        })
-        // .catch((error) => {
-        //   this.data.error(error['error']);
-        //   this.btnDisable = false;
-        // });
+         this.rests.put(this.urlOtp,{
+           otpCode:otp,
+           password:this.changePassword.newPassword
+          }).then((data)=>{
+            alert("Doi mat khau thất bại!")
+          }).catch((error)=>{
+            alert("Doi mat khau thanh cong")
+
+          })
+
+         // this.router.navigate(['user/otp'])
+       })
+       // .catch((error) => {
+       //   this.data.error(error['error']);
+       //   this.btnDisable = false;
+       // });
 
   }
   post(link: string,body: any){
