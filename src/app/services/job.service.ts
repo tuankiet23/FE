@@ -23,6 +23,10 @@ export class JobService {
     return this.http.get<any>(url).pipe(
       tap(receivedJob => console.log(`receivedJob=${JSON.stringify(receivedJob)}`))
     );
+
+  }
+  public addJob(formRequest:job): Observable<job[]>{
+    return this.http.post<job[]>(this.apiServerUrl + "/user/job/add" , formRequest);
   }
 
 }

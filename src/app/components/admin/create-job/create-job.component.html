@@ -1,1 +1,126 @@
-<p>create-job works!</p>
+<form  (ngSubmit)="onSave()">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Tên công việc</label>
+      <input type="text"  class="form-control"  formControlName="job_name" placeholder="tên công việc">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Địa chỉ</label>
+      <input type="text" class="form-control" formControlName="address_work" placeholder="địa chỉ">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Số năm kinh nghiệm</label>
+      <input type="text"  class="form-control" formControlName="number_experience" placeholder="số năm kinh nghiệm">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Quyền lợi</label>
+      <input type="text"  class="form-control" formControlName="interrest"  placeholder="quyền lợi">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Số lượng</label>
+      <input type="text" class="form-control" formControlName="qty_person" placeholder="số lượng">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Lương</label>
+      <input type="text"  class="form-control" formControlName="salary" placeholder="lương">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Kỹ năng</label>
+      <input type="text" class="form-control" formControlName="skills" placeholder="kỹ năng">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputState">Hình thưc làm việc</label>
+      <select id="inputState"  class="form-control" formControlName="method_work_id">
+        <option selected>Choose</option>
+        <option value="1">full time</option>
+        <option value="2">part time</option>
+        <option value="3">freelancer</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputState">Vị trí </label>
+      <select id="inputState" class="form-control" formControlName="job_position_id">
+        <option selected>Choose...</option>
+        <option value="1">dev</option>
+        <option value="2">tester</option>
+        <option value="3">BA</option>
+        <option value="4">PM</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">Người liên hệ</label>
+      <select id="inputState" class="form-control" >
+        <option selected>Choose</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">Trình độ</label>
+      <select id="inputState"  class="form-control" formControlName="academic_level_id">
+        <option>cao đẳng</option>
+        <option>đại học</option>
+        <option>thạc sĩ</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputState">Người tạo</label>
+      <select id="inputState"  class="form-control">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">Trạng thái </label>
+      <select id="inputState"  class="form-control" formControlName="job_status_id">
+        <option selected>Choose</option>
+        <option>đã duyệt</option>
+        <option>đã từ chối</option>
+        <option>đang tuyển</option>
+        <option>chưa đăng tuyển</option>
+        <option>chờ xét duyệt</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">Level</label>
+      <select id="inputState" class="form-control" formControlName="level_id">
+        <option selected>Choose</option>
+        <option>fresher</option>
+        <option>junnior</option>
+        <option>senior</option>
+        <option>master</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputEmail4">Ngày bắt đầu</label>
+      <input type="date" class="form-control" formControlName="start_recruitment_date" placeholder="ngày bắt đầu">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputEmail4">Ngày kết thúc</label>
+      <input type="date" class="form-control" formControlName="due_date" placeholder="ngày kết thúc">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputEmail4">Mô tả</label>
+      <input type="text" class="form-control" formControlName="description" placeholder="Description">
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Thêm</button>
+
+</form>
+
