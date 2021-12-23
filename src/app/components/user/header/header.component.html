@@ -35,6 +35,29 @@
         <li class="nav-item dropdown">
           <a class="nav-link" href="#" (click)="onLogout()">Logout</a>
       </li>
+      <li>
+        <a href="companies.html" [routerLink]="['/authen/change-password']"
+          >Đổi mật khẩu</a
+        >
+      </li>
+      <li>
+        <div>
+          <!--
+            còn chỗ này thì lấy id tự động của acccount rồi thay vào số 44 là được
+          -->
+          <img
+            [src]="'http://localhost:8080/api/user/files/44'"
+            (click)="uploadAvatar.click()"
+            style="width: 50px; height: 50px; margin: 14px;border-radius: 15px"
+          />
+          <input
+            type="file"
+            (change)="onChange($event, 44)"
+            #uploadAvatar
+            style="display: none"
+          />
+        </div>
+      </li>
       </ul>
     </div>
   </nav>

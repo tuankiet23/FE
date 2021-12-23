@@ -1,22 +1,24 @@
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DataService } from 'src/app/services/data.service';
-import { Employee } from '../../../models/employee';
-import { EmployeeService } from '../../../services/employee.service';
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-
+import { DataService } from './../../../services/data.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { EmployeeService } from './../../../services/employee.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Employee } from './../../../models/employee';
 @Component({
   selector: 'app-list-user',
   templateUrl: './list-user.component.html',
-  styleUrls: ['./list-user.component.css'],
+  styleUrls: ['./list-user.component.css']
 })
-export class ListJeComponent implements OnInit {
+export class ListUserComponent implements OnInit {
+
   showDirectionLinks = true;
   addForm!: FormGroup;
 
   btnDisable = false;
-  constructor(private employeeService: EmployeeService,
+  constructor(private EmployeeService: EmployeeService,
+    private router: Router,
+    private route: ActivatedRoute,
     private rest: EmployeeService,
     private data: DataService,
     private http: HttpClient,
@@ -48,27 +50,26 @@ export class ListJeComponent implements OnInit {
   // dataSource = Object.create(null)
   ngOnInit(): void {
     // this.loaddata();
-    this.employeeService.getAllJe().subscribe((data) => {
+    this.EmployeeService.getAllUser().subscribe((data) => {
       this.employees = data;
-      // this.dataSource = new MatTableDataSource<Employee>(data);
+
       console.log(this.employees);
     });
   }
-  deleteJE() {
-    // debugger;
-    this.btnDisable = true;
-    // console.log(this.addForm.value);
+  deleteJE(id: number) {
 
-    this.rest.deleteJE(this.addForm.value).subscribe((data) => {
+    this.btnDisable = true;
+
+    // debugger;
+    this.rest.deleteJE(id).subscribe(data => {
+
       this.data.success('Employee is save');
+      alert('xoa thanh cong');
       this.btnDisable = false;
-      console.log('xoa thanh cong');
-    });
+
+    },
+    // error => console.log(error)
+    );
   }
 
-  // @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  // ngAfterViewInit() {
-  //   this.dataSource.paginator = this.paginator;
-  // }
 }

@@ -18,14 +18,17 @@ export class EmployeeService {
     return this.http.post<Employee[]>(this.API_URL + 'singupje', employee);
   }
 
-  public deleteJE(employee: Employee): Observable<Employee[]> {
-    return this.http.post<Employee[]>(this.API_URL + 'delete', employee);
+  public deleteJE(id: number): Observable<Employee> {
+    return this.http.delete<any>(this.API_URL + 'delete/' + id );
   }
 
   public updateJE(employee: Employee, id: number): Observable<Employee[]> {
     return this.http.put<Employee[]>(this.API_URL + 'updateJE/' + id, employee);
   }
 
+  public getAllUser(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(this.API_URL + 'getallUser');
+  }
   public getEmployeeById(id: number) {
     return this.http.get<Employee>(this.API_URL + 'getje/' + id);
   }
