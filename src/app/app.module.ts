@@ -31,7 +31,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { Interceptor } from './interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { SidebarComponent } from './components/admin/sidebar/sidebar.component';
 @NgModule({
   declarations: [
     AppComponent,

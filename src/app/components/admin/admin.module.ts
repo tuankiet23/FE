@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CreateJobComponent } from './create-job/create-job.component';
-import { ListJobregisterComponent } from './list-jobregister/list-jobregister.component';
 import { ListUserComponent } from './list-JE/list-user.component';
 import { CompanyAdComponent } from './company-ad/company-ad.component';
 import { CreateUserComponent } from './create-user/create-user.component';
@@ -25,7 +24,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { JobRegisterComponent } from './job-register/job-register.component';
-import { JobComponent } from './job/job.component';
+
 
 
 const Adminroutes: Routes = [
@@ -101,7 +100,6 @@ const Adminroutes: Routes = [
     SidebarComponent,
     EditAcademiclevelComponent,
     ListUserComponent,
-    JobComponent,
     
 
   ],
@@ -113,7 +111,7 @@ const Adminroutes: Routes = [
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
   exports: [RouterModule],
 })

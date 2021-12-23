@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
   }
   login() {
     this.btnDisable = true;
-    debugger;
     if (this.validate()) {
       this.rest
         .post(this.url, this.employee)
@@ -41,7 +40,14 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('user-role-key', value.toString())
           }
           )
-          this.router.navigate(['/admin'])
+          if(localStorage.getItem('user-role-key')=== 'ROLE_ADMIN'){
+            this.router.navigate(['/admin'])
+          }
+         else{
+            this.router.navigate([''])
+          }
+
+          
         }, 
           (error: HttpErrorResponse) => {
             alert(error.message);

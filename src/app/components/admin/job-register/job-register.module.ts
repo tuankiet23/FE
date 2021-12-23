@@ -4,7 +4,6 @@ import { RouterModule, Routes } from "@angular/router";
 import { EditJobRegisterComponent } from "./edit-job-register/edit-job-register.component";
 import { JobRegisterComponent } from "./job-register.component";
 import { ListJobRegisterComponent } from "./list-job-register/list-job-register.component";
-import { DetailJobRegisterComponent } from './detail-job-register/detail-job-register.component';
 import { CommonModule } from "@angular/common";
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatDialogModule } from "@angular/material/dialog";
@@ -32,10 +31,6 @@ const JobRegisterRoutes: Routes = [
                 path: 'edit/:id',
                 component: EditJobRegisterComponent
             },
-            {
-                path: 'detail/:id',
-                component: DetailJobRegisterComponent
-            },
         ]
     }
 ];
@@ -44,7 +39,6 @@ const JobRegisterRoutes: Routes = [
         JobRegisterComponent, 
         ListJobRegisterComponent, 
         EditJobRegisterComponent, 
-        DetailJobRegisterComponent
     ],
     imports: [
         FormsModule,
@@ -57,7 +51,8 @@ const JobRegisterRoutes: Routes = [
         MatPaginatorModule,
         MatFormFieldModule,
         MatProgressBarModule,
-        MatButtonToggleModule
+        MatButtonToggleModule,
+
     ],
     
     exports: [RouterModule],

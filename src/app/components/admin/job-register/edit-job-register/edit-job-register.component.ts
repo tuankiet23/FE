@@ -3,16 +3,16 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { addjobregister } from 'src/app/models/addjobregister';
 import { JobRegisterService } from 'src/app/services/job-register.service';
 import { __values } from 'tslib';
 
-
 @Component({
   selector: 'app-edit-job-register',
   templateUrl: './edit-job-register.component.html',
-  styleUrls: ['./edit-job-register.component.css']
+  styleUrls: ['./edit-job-register.component.css'],
 })
 export class EditJobRegisterComponent implements OnInit {
 
@@ -22,21 +22,26 @@ export class EditJobRegisterComponent implements OnInit {
     dateregister: new FormControl(""),
     dateinterview: new FormControl(""),
     methodinterview: new FormControl(""),
-    cv: new FormControl(""),
+    reason: new FormControl(""),
+    cv: new FormControl("")
+    
   }, {
     updateOn: 'blur'
   });
 
   public jobregisterps: any;
-
+  public addjr: addjobregister;
 
   constructor(
     private jobRegisterService: JobRegisterService,
     private route: ActivatedRoute,
     public FB: FormBuilder,
-    private router: Router,
-  ) { }
+    private router: Router
 
+  ) {
+   }
+
+   
   ngOnInit(): void {
     this.getJobRegisterById();
   }
@@ -55,6 +60,7 @@ export class EditJobRegisterComponent implements OnInit {
           dateinterview:formatDate(  this.jobregisterps.jobRegister.dateInterview , 'yyyy-MM-dd', 'en-Us' ) ,
           dateregister:formatDate(  this.jobregisterps.jobRegister.dateRegister, 'yyyy-MM-dd', 'en-Us' ) ,
           methodinterview: this.jobregisterps.jobRegister.methodInterview,
+          reason:this.jobregisterps.jobRegister.reason,          
           // profilestatus: this.jobregisterps.profileStatus.name
         })
       },
@@ -71,12 +77,10 @@ export class EditJobRegisterComponent implements OnInit {
       res => {
       console.log(this.editForm.value);
       this.router.navigate(['/admin/jobregister']);
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-        console.log(this.editForm.value);
       }
+      
     );
+    this.router.navigate(['/admin/jobregister']);
   }
 
   onDeleteJobRegister(id: any) {
@@ -101,4 +105,75 @@ export class EditJobRegisterComponent implements OnInit {
       }
     );
   }
+
+  onRefuse(){
+      this.addjr=this.editForm.value;
+      this.addjr.profilestatus="5";
+      this.addjr.dateinterview="";
+      this.jobRegisterService.updateJobRegist(this.addjr).subscribe(  
+        res => {
+        console.log(this.addjr);
+        },
+      );
+      this.router.navigate(['/admin/jobregister']);
+      this.closePopup1();
+      this.getJobRegisterById();
+  }
+
+  onBrowsing(){
+    this.addjr=this.editForm.value;
+    this.addjr.profilestatus="2";
+    this.addjr.dateinterview="";
+    this.jobRegisterService.updateJobRegist(this.addjr).subscribe(  
+      res => {
+      console.log(this.addjr);
+      },
+    );
+    this.router.navigate(['/admin/jobregister']);
+    this.closePopup1();
+    this.getJobRegisterById();
+  }
+  onRecruit(){
+    this.addjr=this.editForm.value;
+    this.addjr.profilestatus="3";
+    this.addjr.dateinterview="";
+    this.jobRegisterService.updateJobRegist(this.addjr).subscribe(  
+      res => {
+      console.log(this.addjr);
+      },
+    );
+    this.router.navigate(['/admin/jobregister']);
+    this.closePopup1();
+    this.getJobRegisterById();
+  }
+  onSchedule(){
+    this.addjr=this.editForm.value;
+    this.addjr.profilestatus="4";
+    this.jobRegisterService.updateJobRegist(this.addjr).subscribe(  
+      res => {
+      console.log(this.addjr);
+      },
+    );
+    this.router.navigate(['/admin/jobregister']);
+    this.closePopup1();
+    this.getJobRegisterById();
+  }
+
+
+  displayStyle = "none";
+  openPopup() {
+    this.displayStyle = "block";
+  }
+  closePopup() {
+    this.displayStyle = "none";
+  }
+
+  displayStyle1 = "none";
+  openPopup1() {
+    this.displayStyle1 = "block";
+  }
+  closePopup1() {
+    this.displayStyle1 = "none";
+  }
+
 }
