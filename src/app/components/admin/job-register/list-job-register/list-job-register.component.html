@@ -25,8 +25,8 @@
       <input type="date" class="form-control" id="validationTooltip05" formControlName="dateInterview">
     </div>
   </div>
-  <button class="btn btn-primary" type="submit" style="margin-left: 1000px;"
-    (click)="onSearchJobRegister">Search</button>
+  <button class="btn btn-primary" type="submit" style="margin-left: 500px;" (click)="onSearchJobRegister">Tìm
+    kiếm</button>
 </form>
 <table id="tb-view" class="table table-bordered table-sm table-hover table-striped" style="margin-top: 30px;">
   <thead>
@@ -54,10 +54,11 @@
       <td class="text-nowrap" style="width: 1px;">
         <button type="button" class="btn btn-danger" style="margin-right: 1px;"
           routerLink="/admin/jobregister/edit/{{jobregister.id}}">Chi tiết</button>
-          <div>
-            <button type="button" class="btn btn-info" (click)="onDowloadCV(jobregister.id)" style="width: 81px;">Tải CV</button>
-          </div>
-          
+        <div>
+          <a href="http://localhost:8080/api/user/jobregister/link/{{jobregister.id}}"><button type="button" class="btn btn-info"  style="width: 81px;">Tải
+            CV </button></a>
+        </div>
+
         <div *ngIf="jobregister.profileStatus.id === 6|| jobregister.profileStatus.id === 5">
           <button type="button" class="btn btn-info" (click)="openPopup()" style="width: 81px;">Lý do</button>
           <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
@@ -86,20 +87,40 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title">Thời gian hẹn phỏng vấn </h4>
+                    <h4 class="modal-title">Hẹn phỏng vấn </h4>
                   </div>
-                  <div class="modal-body" style="margin: auto;">
-                    <input type="datetime-local" class="form-control" id="dateinterview"
-                      formControlName="dateinterview">
-                  </div>
-                  <div style="margin-left: 20px; margin-bottom: 10px;">
-                    <button type="button" class="btn btn-danger" style="margin-right: 3px;"
-                      (click)="closePopup()">Close</button>
-                    <button type="button" class="btn btn-danger" (click)="onAccept(jobregister.id)">Xác nhận</button>
+                  <div class="modal-body">
+                    <div class="form-row">
+                      <div class="col-md-12">
+                        <label for="validationTooltip03">Thời gian phonge vấn:</label>
+                        <input type="datetime-local" class="form-control" id="dateinterview"
+                          formControlName="dateinterview">
+                      </div>
+                      <div class="col-md-6">
+                        <label for="validationTooltip04">Hình thức phỏng vấn:</label>
+                        <mat-radio-group aria-label="Select an option">
+                          <mat-radio-button value="offline" formControlName="dateRegister">Offline</mat-radio-button>
+                          <mat-radio-button value="online" ng-model="isAgree">Online</mat-radio-button>
+                          <div ng-disabled="!isAgree">
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                              <option selected>Open this select menu</option>
+                              <option value="1">One</option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                            </select>
+                          </div>
+                        </mat-radio-group>
+                      </div>
+                    </div>
+                    </div>
+                    <div style="margin-left: 20px; margin-bottom: 10px;">
+                      <button type="button" class="btn btn-danger" style="margin-right: 3px;"
+                        (click)="closePopup()">Close</button>
+                      <button type="button" class="btn btn-danger" (click)="onAccept(jobregister.id)">Xác nhận</button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
           </form>
         </div>
       </td>
@@ -107,6 +128,7 @@
   </tbody>
 </table>
 
-<mat-paginator #paginator [length]="totalRows" [pageIndex]="currentPage" [pageSize]="pageSize"
-  [pageSizeOptions]="pageSizeOptions" (page)="pageChanged($event)" aria-label="Select page">
+<mat-paginator style="background: rgb(212, 212, 212); color: black; " #paginator [length]="totalRows"
+  [pageIndex]="currentPage" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageChanged($event)"
+  aria-label="Select page">
 </mat-paginator>

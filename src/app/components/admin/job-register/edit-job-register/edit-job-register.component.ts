@@ -135,7 +135,7 @@ export class EditJobRegisterComponent implements OnInit {
   }
   onRecruit(){
     this.addjr=this.editForm.value;
-    this.addjr.profilestatus="3";
+    this.addjr.profilestatus="4";
     this.addjr.dateinterview="";
     this.jobRegisterService.updateJobRegist(this.addjr).subscribe(  
       res => {
@@ -158,7 +158,9 @@ export class EditJobRegisterComponent implements OnInit {
     this.closePopup1();
     this.getJobRegisterById();
   }
-
+  onCancel(){
+    this.router.navigate(['/admin/jobregister']);
+  }
 
   displayStyle = "none";
   openPopup() {

@@ -50,9 +50,8 @@ export class JobRegisterService {
     const url = `${this.apiServerUrl}` + "/user/jobregister/search"+`?pageIndex=${currentPage}&pageSize=${pageSize}`
     return this.http.put<jobregister[]>(url, search);
   }
-  public dowloadcv(id: number): Observable<jobregister> {
+  public dowloadcv(id: number) {
     const url = `${this.apiServerUrl}` + "/user/jobregister/link/" + `${id}`
-    console.log(url)
-    return this.http.get<any>(url)
+    return this.http.get(url, {responseType: 'text'})
   }
 }

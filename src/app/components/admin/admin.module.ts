@@ -26,7 +26,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { JobRegisterComponent } from './job-register/job-register.component';
 
 
-
 const Adminroutes: Routes = [
   {
     path: '',

@@ -12,6 +12,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import {  MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {MatRadioModule} from '@angular/material/radio';
 
 const JobRegisterRoutes: Routes = [
     {
@@ -52,6 +53,7 @@ const JobRegisterRoutes: Routes = [
         MatFormFieldModule,
         MatProgressBarModule,
         MatButtonToggleModule,
+        MatRadioModule
 
     ],
     
