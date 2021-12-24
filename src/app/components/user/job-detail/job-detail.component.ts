@@ -1,8 +1,8 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { job } from 'src/app/models/job';
 import { JobService } from 'src/app/services/job.service';
 import { HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-job-detail',
@@ -19,7 +19,7 @@ export class JobDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getJobById();
-    
+
   }
   public getJobById(): void{
   const id= this.route.snapshot.params['id'];

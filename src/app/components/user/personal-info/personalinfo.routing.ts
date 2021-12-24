@@ -1,5 +1,5 @@
+import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from "@angular/compiler/src/core";
-import { RouterModule, Routes } from "@angular/router";
 import { DetailpersonalComponent } from "./detailpersonal/detailpersonal.component";
 import { EditpersonalComponent } from "./editpersonal/editpersonal.component";
 import { PersonalInfoComponent } from "./personal-info.component";

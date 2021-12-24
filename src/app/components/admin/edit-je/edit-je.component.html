@@ -8,7 +8,7 @@
         <form [formGroup]="editForm" (submit)="updateEmployee()">
           <div class="card">
             <div class="card-header">
-              <h3 class="text-center">Cập nhật JE</h3>
+              <h3 class="text-center">ADD NEW JOB_EDITER</h3>
             </div>
             <div class="card-body">
               <div class="form-group col-md-6">
@@ -22,9 +22,14 @@
                   aria-describedby="helpid"
                   placeholder="name"
                 />
-                <small id="nameid" class="form-text text-muted">
-                  name is required
-                </small>
+                <div *ngIf="fullName?.invalid && (fullName?.dirty || fullName?.touched)" class="alert alert-danger">
+                  <div *ngIf="fullName?.errors?.['required']">
+                    Tên không được để trống và phải lớn hơn 6 kí tự
+                  </div>
+                  <div *ngIf="fullName?.errors?.['minlength']">
+                    Tên phải ít nhất 6 kí tự
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label for="email">Email</label>
@@ -37,9 +42,14 @@
                   aria-describedby="emailHid"
                   placeholder="Email"
                 />
-                <small id="emailHid" class="form-text text-muted">
-                  Email is required
-                </small>
+                <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="alert alert-danger">
+                  <div *ngIf="email?.errors?.['required']">
+                    Email không được để trông
+                  </div>
+                  <div *ngIf="email?.errors?.['email']">
+                    Email phải đúng định dạng
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label for="userName">UserName</label>
@@ -52,23 +62,16 @@
                   aria-describedby="userNameHid"
                   placeholder="userName"
                 />
-                <small id="userNameHid" class="form-text text-muted">
-                  UserName is required
-                </small>
+                <div *ngIf="userName?.invalid && (userName?.dirty || userName?.touched)" class="alert alert-danger">
+                  <div *ngIf="userName?.errors?.['required']">
+                    Tên tài khoản  không được để trống và phải nhỏ hơn 5 kí tự
+                  </div>
+                  <div *ngIf="userName?.errors?.['minlength']">
+                    Tên tài khoản  phải lớn hơn 5 kí tự
+                  </div>
+                </div>
               </div>
-              <div class="form-group col-md-6">
-                <label for="password">PassWord</label>
-                <input
-                  type="password"
-                  formControlName="password"
-                  class="form-control"
-                  name="password"
-                  id="password"
-                  aria-describedby="passwordHid"
-                  placeholder="password"
-                />
-                <small id="userNameHid" class="form-text text-muted"> </small>
-              </div>
+
               <div class="form-group col-md-6">
                 <label for="phone">Phone</label>
                 <input
@@ -80,7 +83,10 @@
                   aria-describedby="phoneHid"
                   placeholder="phone"
                 />
-                <small id="phoneHid" class="form-text text-muted">
+                <small
+                  id="phoneHid"
+                  class="form-text text-muted"
+                >
                   Phone is required
                 </small>
               </div>
@@ -89,15 +95,18 @@
                 <input
                   type="homeTown"
                   formControlName="homeTown"
+
                   class="form-control"
                   name="homeTown"
                   id="homeTown"
                   aria-describedby="homeTownHid"
                   placeholder="homeTown"
                 />
-                <small id="homeTownHid" class="form-text text-muted">
-                  HomeTown is required
-                </small>
+                <div *ngIf="homeTown?.invalid && (homeTown?.dirty || homeTown?.touched)" class="alert alert-danger">
+                  <div *ngIf="homeTown?.errors?.['required']">
+                    Địa chỉ  không được để trống
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label for="gender">Gender</label>
@@ -110,9 +119,11 @@
                   aria-describedby="genderHid"
                   placeholder="gender"
                 />
-                <small id="genderHid" class="form-text text-muted">
-                  gender is required
-                </small>
+                <div *ngIf="gender?.invalid && (gender?.dirty || gender?.touched)" class="alert alert-danger">
+                  <div *ngIf="gender?.errors?.['required']">
+                    Giới tính không được để trống
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label for="birthDay">BirthDay</label>
@@ -125,13 +136,22 @@
                   aria-describedby="birthDayHid"
                   placeholder="birthDay"
                 />
-                <small id="birthDayHid" class="form-text text-muted">
-                  birthDay is required
-                </small>
+                <div *ngIf="birthDay?.invalid && (birthDay?.dirty || birthDay?.touched)" class="alert alert-danger">
+                  <div *ngIf="birthDay?.errors?.['required']">
+                    Ngày sinh không được để trống
+                  </div>
+                </div>
+
               </div>
-              <button type="submit" class="btn btn-primary">Cập nhật</button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="!editForm.valid"
+              >
+                Đăng kí
+              </button>
             </div>
-            <div class="card-footer text-muted"></div>
+            <div class="card-footer text-muted" ></div>
           </div>
         </form>
       </div>

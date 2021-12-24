@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { RestApiService } from 'src/app/services/rest-api.service';
 import { Otp } from './../../../models/otp';
-import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-otp',
@@ -30,9 +30,10 @@ export class OtpComponent implements OnInit {
         .then((data) => {
           let value = data as{employeeId:string, token: string};
           localStorage.getItem('token');
+          alert("Đổi mật khẩu thành công")
          // await this.data.getProfile();
 
-          this.router.navigate(['/user/otp'])
+          this.router.navigate(['/user/home'])
         })
         .catch((error) => {
           this.data.error(error['error']);

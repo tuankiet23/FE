@@ -1,11 +1,12 @@
-import { NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { RouterModule, Routes } from "@angular/router";
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import { EditJobRegisterComponent } from "./edit-job-register/edit-job-register.component";
 import { JobRegisterComponent } from "./job-register.component";
-import { ListJobRegisterComponent } from "./list-job-register/list-job-register.component";
+
 import { CommonModule } from "@angular/common";
-import { NgxPaginationModule } from 'ngx-pagination';
+// import { NgxPaginationModule } from 'ngx-pagination';
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatTableModule } from "@angular/material/table";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -23,10 +24,7 @@ const JobRegisterRoutes: Routes = [
                 redirectTo: 'list',
                 pathMatch: 'full',
             },
-            {
-                path: 'list',
-                component: ListJobRegisterComponent
-            },
+
             {
                 path: 'edit/:id',
                 component: EditJobRegisterComponent
@@ -36,16 +34,15 @@ const JobRegisterRoutes: Routes = [
 ];
 @NgModule({
     declarations: [
-        JobRegisterComponent, 
-        ListJobRegisterComponent, 
-        EditJobRegisterComponent, 
+        JobRegisterComponent,
+        EditJobRegisterComponent,
     ],
     imports: [
         FormsModule,
         CommonModule,
         ReactiveFormsModule,
         RouterModule.forChild(JobRegisterRoutes),
-        NgxPaginationModule,
+        // NgxPaginationModule,
         MatDialogModule,
         MatTableModule,
         MatPaginatorModule,
@@ -54,7 +51,7 @@ const JobRegisterRoutes: Routes = [
         MatButtonToggleModule,
 
     ],
-    
+
     exports: [RouterModule],
     providers: []
 })

@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+// import { Injectable } from '@angular/core';
 import { Employee } from './../models/employee';
 import { Observable } from 'rxjs';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
@@ -26,9 +27,9 @@ export class EmployeeService {
     return this.http.put<Employee[]>(this.API_URL + 'updateJE/' + id, employee);
   }
 
-  public getAllUser(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.API_URL + 'getallUser');
-  }
+  // public getAllUser(): Observable<Employee[]> {
+  //   return this.http.get<Employee[]>(this.API_URL + 'getallUser');
+  // }
   public getEmployeeById(id: number) {
     return this.http.get<Employee>(this.API_URL + 'getje/' + id);
   }

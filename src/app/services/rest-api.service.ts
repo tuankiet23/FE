@@ -27,7 +27,6 @@ export class RestApiService {
     // let headers = this.getHeaders();
     // if(headers instanceof HttpHeaders)
     // return this.http.post(link,body,{headers:headers}).toPromise();
-    debugger;
     return this.http.post(link,body).toPromise();
   }
   put(link: string,body: any){
