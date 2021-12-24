@@ -14,9 +14,8 @@ import { FooterAdComponent } from './footer-ad/footer-ad.component';
 import { ListJobAdComponent } from './list-job-ad/list-job-ad.component';
 import { HeaderAdComponent } from './header-ad/header-ad.component';
 import { EditAcademiclevelComponent } from './edit-academiclevel/edit-academiclevel.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddJEComponent } from './add-je/add-je.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { EditJeComponent } from './edit-je/edit-je.component'
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
@@ -87,7 +86,7 @@ const Adminroutes: Routes = [
       },
       {
         path:'jobregister',
-        loadChildren: () => import("src/app/components/admin/job-register/job-register.module").then(m => m.JobRegisterModule) 
+        loadChildren: () => import("src/app/components/admin/job-register/job-register.module").then(m => m.JobRegisterModule)
       }
     ]
   },
@@ -100,11 +99,13 @@ const Adminroutes: Routes = [
     SidebarComponent,
     EditAcademiclevelComponent,
     ListUserComponent,
-    
+    ListJobAdComponent,
+    CreateJobComponent
 
   ],
   imports: [
     RouterModule.forChild(Adminroutes),
+    FormsModule,
     ReactiveFormsModule,
     CommonModule,
     MatDialogModule,
@@ -113,6 +114,9 @@ const Adminroutes: Routes = [
     MatFormFieldModule,
     NgxPaginationModule
   ],
-  exports: [RouterModule],
+  exports: [
+    RouterModule,
+    // ReactiveFormsModule
+  ],
 })
 export class AdminModule { }

@@ -1,7 +1,9 @@
+import { status_job } from './status_job';
+import { job_position } from './job_position';
 export interface job {
     id: number ;
     job_name: string;
-    job_position: string ;
+    job_position: job_position ;
     number_experience: number ;
     method_work_id: number ;
     address_work: string ;
@@ -14,7 +16,7 @@ export interface job {
     interrest: string ;
     salary:number
     contact_id: number;
-    job_status_id: number;
+    job_status_id: status_job;
     views:number;
     create_id:number;
     is_delete:number;

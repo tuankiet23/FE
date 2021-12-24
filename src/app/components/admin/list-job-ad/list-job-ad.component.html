@@ -1,7 +1,9 @@
-<table class="table table-striped">
+<button type="button" style="text-align: center" class="btn btn-success" style="margin-right: 2px"
+[routerLink]="['/admin/job/create']">Thêm</button>
+
+<table id="tb-view" class="table table-bordered table-sm table-hover table-striped">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Tên công việc</th>
       <th scope="col">Vị trí công việc</th>
       <th scope="col">Hạn nộp hồ sơ</th>
@@ -10,12 +12,31 @@
       <th scope="col">Lượt xem</th>
     </tr>
   </thead>
-  <tbody>
-    <tr *ngFor="let job of jobs">
-      <td></td>
-
+  <tbody *ngFor="let job of jobs" >
+    <tr >
+      <td>{{ job.jobName }}</td>
+      <td>{{ job.jobPositionId }}</td>
+      <td>{{ job.dueDate }}</td>
+      <td>{{ job.salary }}</td>
+      <td>{{ job.statusJobId}}</td>
+      <td>{{ job.views }}</td>
+      <td>
+        <button type="button" class="btn btn-danger"   >
+          Xóa
+        </button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-info " [routerLink]="['/admin/job/create']">
+         Cập nhật
+        </button>
+      </td>
     </tr>
+
   </tbody>
 </table>
+<mat-paginator #paginator [length]="totalRows" [pageIndex]="currentPage" [pageSize]="pageSize"
+[pageSizeOptions]="pageSizeOptions" (page)="pageChanged($event)" aria-label="Select page">
+</mat-paginator>
+
 
 
