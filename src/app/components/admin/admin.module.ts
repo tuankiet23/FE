@@ -1,22 +1,23 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { ListUserComponent } from './list-user/list-user.component';
 import { ListJeComponent } from './list-JE/list-user.component';
 import { CommonModule } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+// import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CreateJobComponent } from './create-job/create-job.component';
-import { ListUserComponent } from './list-JE/list-user.component';
+// import { ListUserComponent } from './list-JE/list-user.component';
 //import { ListJobregisterComponent } from './list-jobregister/list-jobregister.component';
 import { CompanyAdComponent } from './company-ad/company-ad.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateCompanyComponent } from './create-company/create-company.component';
 import { HomeAdComponent } from './home-ad/home-ad.component';
-import { RouterModule, Routes } from '@angular/router';
+// import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { FooterAdComponent } from './footer-ad/footer-ad.component';
 import { ListJobAdComponent } from './list-job-ad/list-job-ad.component';
 import { HeaderAdComponent } from './header-ad/header-ad.component';
 import { EditAcademiclevelComponent } from './edit-academiclevel/edit-academiclevel.component';
-import { ReactiveFormsModule } from '@angular/forms';
+// import { ReactiveFormsModule } from '@angular/forms';
 import { AddJEComponent } from './add-je/add-je.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { EditJeComponent } from './edit-je/edit-je.component'
@@ -27,6 +28,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { JobRegisterComponent } from './job-register/job-register.component';
+import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
 
 //kiet
 //import { EditUserComponent } from './edit-user/edit-user.component';
