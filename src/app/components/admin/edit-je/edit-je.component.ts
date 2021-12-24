@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Employee } from './../../../models/employee';
 import { DataService } from './../../../services/data.service';
 import { RestApiService } from './../../../services/rest-api.service';
@@ -33,14 +33,13 @@ export class EditJeComponent implements OnInit {
   }
   public initForm() {
     this.editForm = this.Fb.group({
-      fullName: new FormControl(''),
-      email: new FormControl(''),
-      userName: new FormControl(''),
-      password: new FormControl(''),
-      phoneNumber: new FormControl(''),
-      homeTown: new FormControl(''),
-      gender: new FormControl(''),
-      birthDay: new FormControl(''),
+      fullName: new FormControl('',[Validators.required,Validators.minLength(6)]),
+      email: new FormControl('',[Validators.required,Validators.email]),
+      userName: new FormControl('',[Validators.required,Validators.minLength(5)]),
+      phoneNumber: new FormControl('',[Validators.required,Validators.pattern("^[0-9]*$"),Validators.minLength(10),Validators.maxLength(10)]),
+      homeTown: new FormControl('',[Validators.required]),
+      gender: new FormControl('',[Validators.required]),
+      birthDay: new FormControl('',[Validators.required]),
     });
   }
   public getEmployee() {
@@ -65,12 +64,20 @@ export class EditJeComponent implements OnInit {
     this.employeeService
       .updateJE(this.editForm.value, this.route.snapshot.params['id'])
       .subscribe((data) => {
-        console.log('data', data);
         alert("update thanh cong")
+        console.log('data', data);
+
       });
   }
 
   get f() {
     return this.editForm.controls;
   }
+  get fullName() { return this.editForm.get('fullName'); }
+  get birthDay() { return this.editForm.get('birthDay'); }
+  get email() { return this.editForm.get('email'); }
+  get homeTown() { return this.editForm.get('homeTown'); }
+  get phoneNumber() { return this.editForm.get('phoneNumber'); }
+  get gender() { return this.editForm.get('gender'); }
+  get userName() { return this.editForm.get('numberYearsExperience'); }
 }

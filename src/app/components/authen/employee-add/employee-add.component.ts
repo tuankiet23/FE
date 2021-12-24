@@ -1,12 +1,13 @@
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+// import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Employee } from '../../../models/employee';
 // import { EmployeeComponent } from './../employee/employee.component';
 import { DataService } from 'src/app/services/data.service';
 
 
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+// import { Component, OnInit } from '@angular/core';
+// import { FormsModule } from '@angular/forms';
 import { RestApiService } from 'src/app/services/rest-api.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-user-add',

@@ -1,10 +1,10 @@
+import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { formatDate } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
 import { addjobregister } from 'src/app/models/addjobregister';
 import { JobRegisterService } from 'src/app/services/job-register.service';
 import { __values } from 'tslib';
@@ -24,7 +24,7 @@ export class EditJobRegisterComponent implements OnInit {
     methodinterview: new FormControl(""),
     reason: new FormControl(""),
     cv: new FormControl("")
-    
+
   }, {
     updateOn: 'blur'
   });
@@ -41,7 +41,7 @@ export class EditJobRegisterComponent implements OnInit {
   ) {
    }
 
-   
+
   ngOnInit(): void {
     this.getJobRegisterById();
   }
@@ -60,7 +60,7 @@ export class EditJobRegisterComponent implements OnInit {
           dateinterview:formatDate(  this.jobregisterps.jobRegister.dateInterview , 'yyyy-MM-dd', 'en-Us' ) ,
           dateregister:formatDate(  this.jobregisterps.jobRegister.dateRegister, 'yyyy-MM-dd', 'en-Us' ) ,
           methodinterview: this.jobregisterps.jobRegister.methodInterview,
-          reason:this.jobregisterps.jobRegister.reason,          
+          reason:this.jobregisterps.jobRegister.reason,
           // profilestatus: this.jobregisterps.profileStatus.name
         })
       },
@@ -73,12 +73,12 @@ export class EditJobRegisterComponent implements OnInit {
 
 
   onUpdateJobRegister() {
-    this.jobRegisterService.updateJobRegist(this.editForm.value).subscribe(  
+    this.jobRegisterService.updateJobRegist(this.editForm.value).subscribe(
       res => {
       console.log(this.editForm.value);
       this.router.navigate(['/admin/jobregister']);
       }
-      
+
     );
     this.router.navigate(['/admin/jobregister']);
   }
@@ -110,7 +110,7 @@ export class EditJobRegisterComponent implements OnInit {
       this.addjr=this.editForm.value;
       this.addjr.profilestatus="5";
       this.addjr.dateinterview="";
-      this.jobRegisterService.updateJobRegist(this.addjr).subscribe(  
+      this.jobRegisterService.updateJobRegist(this.addjr).subscribe(
         res => {
         console.log(this.addjr);
         },
@@ -124,7 +124,7 @@ export class EditJobRegisterComponent implements OnInit {
     this.addjr=this.editForm.value;
     this.addjr.profilestatus="2";
     this.addjr.dateinterview="";
-    this.jobRegisterService.updateJobRegist(this.addjr).subscribe(  
+    this.jobRegisterService.updateJobRegist(this.addjr).subscribe(
       res => {
       console.log(this.addjr);
       },
@@ -137,7 +137,7 @@ export class EditJobRegisterComponent implements OnInit {
     this.addjr=this.editForm.value;
     this.addjr.profilestatus="3";
     this.addjr.dateinterview="";
-    this.jobRegisterService.updateJobRegist(this.addjr).subscribe(  
+    this.jobRegisterService.updateJobRegist(this.addjr).subscribe(
       res => {
       console.log(this.addjr);
       },
@@ -149,7 +149,7 @@ export class EditJobRegisterComponent implements OnInit {
   onSchedule(){
     this.addjr=this.editForm.value;
     this.addjr.profilestatus="4";
-    this.jobRegisterService.updateJobRegist(this.addjr).subscribe(  
+    this.jobRegisterService.updateJobRegist(this.addjr).subscribe(
       res => {
       console.log(this.addjr);
       },
