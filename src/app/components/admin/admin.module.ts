@@ -1,10 +1,10 @@
-import { ListUserComponent } from './list-user/list-user.component';
+
 import { ListJeComponent } from './list-JE/list-user.component';
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CreateJobComponent } from './create-job/create-job.component';
-import { ListUserComponent } from './list-JE/list-user.component';
+
 //import { ListJobregisterComponent } from './list-jobregister/list-jobregister.component';
 import { CompanyAdComponent } from './company-ad/company-ad.component';
 import { CreateUserComponent } from './create-user/create-user.component';
@@ -56,12 +56,6 @@ const Adminroutes: Routes = [
       {
         path:'je',
         component: ListJeComponent,
-
-        pathMatch:'full'
-      },
-      {
-        path:'user',
-        component: ListUserComponent,
 
         pathMatch:'full'
       },
