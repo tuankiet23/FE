@@ -1,15 +1,19 @@
 import { HttpClient } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { job } from '../models/job';
+import { environment } from 'src/environments/environment';
+import { JobModel } from '../components/user/home/JobModel';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomeUserService {
-  newjob : job;
 
-  url : string = 'http://localhost:8080/api/user/job/home-page'
+  private urlBase =  environment.apiBaseUrl;
+  url : string = this.urlBase + '/user/job/home-page'
+
   // modjob:number = 0;
   // startrow:number = 0;
   // pagesize: number = 20;
@@ -17,9 +21,13 @@ export class HomeUserService {
 
   constructor(private http: HttpClient) { }
 
-  public getJob(modjob: number, startrow:number, endrow:number): Observable<job[]> {
-    return this.http.get<any>(this.url + '?modjob='+modjob+'&startrow='+startrow + '&endrow='+endrow).pipe(
-      tap(newjob => console.log(`receivedJob=${JSON.stringify(newjob)}`))
-    );
+   getJob(modjob: number, startrow:number, endrow:number): Observable<JobModel[]> {
+    return this.http.get<JobModel[]>(this.url + '?modjob='+modjob+'&startrow='+startrow + '&endrow='+endrow).pipe();
   }
+
+  // public getJob(modjob: number, startrow:number, endrow:number): Observable<job[]> {
+  //   return this.http.get<any>(this.url + '?modjob='+modjob+'&startrow='+startrow + '&endrow='+endrow).pipe(
+  //     tap(newjob => console.log(`receivedJob=${JSON.stringify(newjob)}`))
+  //   );
+  // }
 }

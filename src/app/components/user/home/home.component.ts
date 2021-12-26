@@ -1,18 +1,24 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { job } from 'src/app/models/job';
 import { HomeUserService } from 'src/app/services/home-user.service';
+import { JobModel } from './JobModel';
+
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
+
+
 export class HomeComponent implements OnInit {
+  datas: JobModel[]=[];
 
   modjob:number = 0;
   startrow:number = 0;
-  pagesize: number = 20;
+  pagesize: number = 1;
   endrow:number =0;
   endrowDaedLine =0;
   endrowHeightSalary =0;
@@ -23,44 +29,42 @@ export class HomeComponent implements OnInit {
   modSalary =1;
   modNewJob =0;
   modDeadLine=2;
-  newjob:job[];
 
-  constructor(private homeUserService : HomeUserService)  {
-    // this.modjob = 0;
-    // this.startrow= 0;
-    // this.pagesize = 20;
-    // this.endrow =0;
-    // this.endrowDaedLine =20;
-    // this.endrowHeightSalary =20;
-    // this.endrowNewJob =20
+  constructor(
+    private homeUserService : HomeUserService,
+    )  {
+    this.modjob = 0;
+    this.startrow= 0;
+    this.pagesize = 1;
+    this.endrow =0;
+    this.endrowDaedLine =1;
+    this.endrowHeightSalary =1;
+    this.endrowNewJob =1
 
 
    }
 
 
   ngOnInit(): void {
-
-    this.getbody();
+   this.getbody();
   //  this.jobHeightSalary =  this.getjobHomePage(1,0,20);
   //  console.log(this.jobHeightSalary);
   //  this.jobDeadLine =  this.getjobHomePage(2,0,20);
   //  console.log(this.jobDeadLine);
   }
   getbody(){
-    this.getjobHomePage(0,0,20);
-    console.log(this.newjob);
+    // debugger;
+    this.getjobHomePage(0,0,1);
+    console.log(this.datas);
   }
 
-  public getjobHomePage(modjob: number, startrow:number, endrow:number): void{
-    this.homeUserService.getJob(modjob, startrow,endrow ).subscribe(
-      (Response: job[] )=>{
-          this.newjob = Response;
-          console.log(this.newjob);
-      },
-      (error:HttpErrorResponse)=>{
-        alert(error.message);
-      }
-    );
+  public getjobHomePage(modjob: number, startrow:number, endrow:number){
+    // debugger;
+    this.homeUserService.getJob(modjob,startrow, endrow ).subscribe((response) => {
+    this.datas = response;
+      // this.dataSource = new MatTableDataSource<Employee>(data);
+      console.log(this.datas);
+    })
   }
 
   showmoreJobDeadLineOnclick(){

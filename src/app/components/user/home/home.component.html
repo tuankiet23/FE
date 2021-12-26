@@ -8,59 +8,60 @@
   </ul>
   <div class="tab-content">
     <div id="tab1" class="tab-pane active">
-      <div class="company-list">
-        <div class="row">
+      <div class="company-list" *ngFor="let item of datas">
+        <div class="row" routerLink="/user/job/{{item.id}}">
           <div class="col-md-2 col-sm-2">
             <div class="company-logo">
-              <img src="assets/img/google.png" class="img-responsive" alt="" />
+              <img src="assets/img/itsol1.png" class="img-responsive" alt="" />
             </div>
           </div>
           <div class="col-md-10 col-sm-10">
             <div class="company-content">
               <h3>
-                Tên công việc<span class="full-time"
-                  ><i class="fa fa-money"></i>Mức lương</span
+                {{item.jobName}}<span class="full-time"
+                  ><i class="fa fa-money"></i> {{item.salary | number: '1.0-0'}}</span
                 >
               </h3>
               <p>
                 <span class="company-name"
-                  ><i class="fa fa-briefcase"></i>Google</span
+                  ><i class="fa fa-briefcase"></i>ITSOL</span
                 ><span class="company-location"
-                  ><i class="fa fa-map-marker"></i> Địa điểm làm việc</span
+                  ><i class="fa fa-map-marker"></i> {{item.addressWork}}</span
                 ><span class="package"
-                  ><i class="fas fa-calendar-alt"></i>Hạn nộp hồ sơ</span
+                  ><i class="fas fa-calendar-alt"></i>Hạn nộp hồ sơ: {{item.dueDate  | date:'dd-MM-yyyy'}}</span
                 >
               </p>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row" >
         <input type="button" class="btn brows-btn" value="Xem thêm" (click)="showmoreJobHeightSalaryOnclick()" />
       </div>
     </div>
     <div id="tab2" class="tab-pane">
-      <div class="company-list">
-        <div class="row">
+      <div class="company-list" *ngFor="let item of datas">
+
+        <div class="row" >
           <div class="col-md-2 col-sm-2">
             <div class="company-logo">
-              <img src="assets/img/google.png" class="img-responsive" alt="" />
+              <a href="job/{{item.id}}"> <img src="assets/img/itsol1.png" class="img-responsive" alt=""  routerLink="/user/job/{{item.id}}"/></a>
             </div>
           </div>
           <div class="col-md-10 col-sm-10">
             <div class="company-content">
               <h3>
-                Tên công việc<span class="full-time"
-                  ><i class="fa fa-money"></i>Mức lương</span
+                {{item.jobName}}<span class="full-time"
+                  ><i class="fa fa-money"></i> {{item.salary | number: '1.0-0'}}</span
                 >
               </h3>
               <p>
                 <span class="company-name"
-                  ><i class="fa fa-briefcase"></i>Google</span
+                  ><i class="fa fa-briefcase"></i>ITSOL</span
                 ><span class="company-location"
-                  ><i class="fa fa-map-marker"></i> Địa điểm làm việc</span
+                  ><i class="fa fa-map-marker"></i> {{item.addressWork}}</span
                 ><span class="package"
-                  ><i class="fas fa-calendar-alt"></i>Hạn nộp hồ sơ</span
+                  ><i class="fas fa-calendar-alt"></i>Hạn nộp hồ sơ: {{item.dueDate  | date:'dd-MM-yyyy'}}</span
                 >
               </p>
             </div>
@@ -72,27 +73,27 @@
       </div>
     </div>
     <div id="tab3" class="tab-pane">
-      <div class="company-list">
-        <div class="row">
+      <div class="company-list" *ngFor="let item of datas">
+        <div class="row" routerLink="/user/job/{{item.id}}">
           <div class="col-md-2 col-sm-2">
             <div class="company-logo">
-              <img src="assets/img/google.png" class="img-responsive" alt="" />
+              <img src="assets/img/itsol1.png" class="img-responsive" alt="" />
             </div>
           </div>
           <div class="col-md-10 col-sm-10">
             <div class="company-content">
               <h3>
-                Tên công việc<span class="full-time"
-                  ><i class="fa fa-money"></i>Mức lương</span
+                {{item.jobName}}<span class="full-time"
+                  ><i class="fa fa-money"></i> {{item.salary | number: '1.0-0'}}</span
                 >
               </h3>
               <p>
                 <span class="company-name"
-                  ><i class="fa fa-briefcase"></i>Google</span
+                  ><i class="fa fa-briefcase"></i>ITSOL</span
                 ><span class="company-location"
-                  ><i class="fa fa-map-marker"></i> Địa điểm làm việc</span
+                  ><i class="fa fa-map-marker"></i> {{item.addressWork}}</span
                 ><span class="package"
-                  ><i class="fas fa-calendar-alt"></i>Hạn nộp hồ sơ</span
+                  ><i class="fas fa-calendar-alt"></i>Hạn nộp hồ sơ: {{item.dueDate  | date:'dd-MM-yyyy'}}</span
                 >
               </p>
             </div>
