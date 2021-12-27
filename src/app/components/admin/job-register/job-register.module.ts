@@ -1,6 +1,5 @@
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EditJobRegisterComponent } from "./edit-job-register/edit-job-register.component";
 import { JobRegisterComponent } from "./job-register.component";
@@ -11,8 +10,13 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatTableModule } from "@angular/material/table";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatPaginatorModule } from "@angular/material/paginator";
-import {  MatButtonToggleModule} from '@angular/material/button-toggle';
+ import {  MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ListJobRegisterComponent } from './list-job-register/list-job-register.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import {MatRadioModule} from '@angular/material/radio';
+import { NgModule } from '@angular/core';
+
 
 const JobRegisterRoutes: Routes = [
     {
@@ -24,7 +28,10 @@ const JobRegisterRoutes: Routes = [
                 redirectTo: 'list',
                 pathMatch: 'full',
             },
-
+            {
+                path: 'list',
+                component: ListJobRegisterComponent
+            },
             {
                 path: 'edit/:id',
                 component: EditJobRegisterComponent
@@ -35,6 +42,7 @@ const JobRegisterRoutes: Routes = [
 @NgModule({
     declarations: [
         JobRegisterComponent,
+        ListJobRegisterComponent,
         EditJobRegisterComponent,
     ],
     imports: [
@@ -42,13 +50,14 @@ const JobRegisterRoutes: Routes = [
         CommonModule,
         ReactiveFormsModule,
         RouterModule.forChild(JobRegisterRoutes),
-        // NgxPaginationModule,
+        NgxPaginationModule,
         MatDialogModule,
         MatTableModule,
         MatPaginatorModule,
         MatFormFieldModule,
         MatProgressBarModule,
         MatButtonToggleModule,
+        MatRadioModule
 
     ],
 

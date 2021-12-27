@@ -34,68 +34,35 @@
                 disabled>
         </div>
     </div>
-    <p>Thông tin công việc</p>
     <div class="form-row">
-        <label for="inputEmail4">Tên công việc</label>
-        <input type="email" class="form-control" id="inputEmail4" value="{{jobregisterps.jobRegister.job.jobName}}"
-            disabled>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputCity">Số lượng cần tuyển </label>
-            <input type="text" class="form-control" id="inputCity" value="{{jobregisterps.jobRegister.job.qtyPerson}}"
-                disabled>
-        </div>
-        <div class="form-group col-md-6 ">
-            <label for="inputCity">Trình độ học vấn</label>
-            <input type="text" class="form-control" id="inputCity" disabled>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputCity">Mức lương </label>
-            <input type="text" class="form-control" id="inputCity" value="{{jobregisterps.jobRegister.job.salary}}"
-                disabled>
-        </div>
-        <div class="form-group col-md-6 ">
-            <label for="inputCity">Phương thức làm việc</label>
-            <input type="text" class="form-control" id="inputCity" disabled>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="inputAddress">Kĩ năng</label>
-        <input type="text" class="form-control" id="inputAddress" value="{{jobregisterps.jobRegister.job.skill}}"
-            disabled>
-    </div>
-    <div class="form-group">
-        <label for="inputAddress2">Mô tả</label>
-        <input type="text" class="form-control" id="inputAddress2" value="{{jobregisterps.jobRegister.job.description}}"
-            disabled>
+        <p>Thông tin chi tiết công việc <button type="button" class="btn btn-info">Chi tiết</button></p>
     </div>
 </form>
-
-<form [formGroup]="editForm" (ngSubmit)="onUpdateJobRegister()">
     <p>Thông tin ứng tuyển</p>
-    <input type="hidden" formControlName="id" name="id" class="form-control" id="id">
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputCity">Ngày phỏng vấn</label>
-            <input type="date" class="form-control" id="dateinterview" formControlName="dateinterview">
+            <input type="datetime" class="form-control" id="dateinterview" value="{{jobregisterps.jobRegister.dateInterview | date:'dd/MM/yyyy, h:mm a'}}"
+            disabled>
         </div>
         <div class="form-group col-md-6 ">
             <label for="inputCity">Ngày nộp hồ sơ</label>
-            <input type="date" class="form-control" id="inputCity" formControlName="dateregister">
+            <input type="datetime" class="form-control" id="inputCity" value="{{jobregisterps.jobRegister.dateRegister | date:'dd/MM/yyyy, h:mm a'}}"
+            disabled>
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-12">
             <label for="inputCity">Phương thức phỏng vấn </label>
-            <input type="text" class="form-control" id="inputCity" formControlName="methodinterview">
+            <input type="text" class="form-control" id="inputCity" value="{{jobregisterps.jobRegister.methodInterview}}"
+            disabled>
         </div>
     </div>
+<form [formGroup]="editForm" (ngSubmit)="onUpdateJobRegister()">
+    <input type="hidden" formControlName="id" name="id" class="form-control" id="id">
     <div class="form-row">
         <div style="margin-bottom: 10px;">
-            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 1" style="margin-left: 25px;">
+            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 1" style="margin-left: 5px;">
                 <button type="button" class="btn btn-info" style="width: 81px;" (click)="onBrowsing()">Duyệt</button>
                 <button type="button" class="btn btn-info" (click)="openPopup1()">Từ chối ứng viên</button>
                 <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle1}">
@@ -118,7 +85,7 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 2" style="margin-left: 25px;">
+            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 2" style="margin-left: 5px;">
                 <button type="button" class="btn btn-info" (click)="openPopup1()">Từ chối ứng viên</button>
                 <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle1}">
                     <div class="modal-dialog" role="document">
@@ -144,16 +111,35 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Thời gian hẹn phỏng vấn </h4>
+                                <h4 class="modal-title">Hẹn phỏng vấn </h4>
                             </div>
-                            <div class="modal-body" style="margin: auto;">
-                                <input type="datetime-local" class="form-control" id="dateinterview"
-                                    formControlName="dateinterview">
-                            </div>
-                            <div class="modal-body" style="margin: auto;">
-                                <label for="inputCity">Phương thức phỏng vấn </label>
-                                <input type="text" class="form-control" id="inputCity"
-                                    formControlName="methodinterview">
+                            <div class="modal-body">
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <label for="validationTooltip03">Thời gian phonge vấn:</label>
+                                        <input type="datetime-local" class="form-control" id="dateinterview"
+                                            formControlName="dateinterview">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="validationTooltip04">Hình thức phỏng vấn:</label>
+                                        <mat-radio-group aria-label="Select an option">
+                                            <mat-radio-button value="offline" formControlName="methodinterview"
+                                                style="margin-right: 5px;" (change)="closeCombobox()">Offline
+                                            </mat-radio-button>
+                                            <mat-radio-button value="online" (change)="openCombobox()">Online
+                                            </mat-radio-button>
+                                            <div [ngStyle]="{'display': licensed}">
+                                                <select class="form-select form-select-lg mb-3"
+                                                    aria-label=".form-select-lg example"
+                                                    formControlName="methodinterview">
+                                                    <option value="Skype">Skype</option>
+                                                    <option value="Google meet">Google meet</option>
+                                                    <option value="Classroom">Classroom</option>
+                                                </select>
+                                            </div>
+                                        </mat-radio-group>
+                                    </div>
+                                </div>
                             </div>
                             <div style="margin-left: 20px; margin-bottom: 10px;">
                                 <button type="button" class="btn btn-danger" style="margin-right: 3px;"
@@ -164,10 +150,8 @@
                         </div>
                     </div>
                 </div>
-  
-
             </div>
-            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 3" style="margin-left: 25px;">
+            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 3" style="margin-left: 5px;">
                 <button type="button" class="btn btn-info" style="width: 81px;" (click)="onRecruit()">Tuyển</button>
                 <button type="button" class="btn btn-info" (click)="openPopup1()">Từ chối ứng viên</button>
                 <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle1}">
@@ -190,10 +174,10 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 4" style="margin-left: 25px;">
+            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 4" style="margin-left: -9px;">
                 <div class="form-group col-md-12">
                     <label for="inputCity">Trạng thái hồ sơ </label>
-                    <input type="text" class="form-control" id="inputCity" value="Đã tuyển">
+                    <input type="text" class="form-control" style="width: 600px;" id="inputCity" value="Đã tuyển" disabled>
                 </div>
             </div>
             <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 5" style="margin-left: 5px;">
@@ -217,7 +201,7 @@
                 </div>
 
             </div>
-            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 6" style="margin-left: 25px;">
+            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 6" style="margin-left: 5px;">
                 <div class="form-group col-md-12">
                     <button type="button" class="btn btn-info btn-lg" (click)="openPopup()">Ứng viên từ chối ứng
                         tuyển</button>
@@ -242,10 +226,9 @@
             </div>
         </div>
     </div>
-
     <div class="text-nowrap" style="width: 1px;">
         <button type="button" class="btn btn-info" style="margin-right: 5px;"
-            (click)="onDowloadCV(jobregisterps.jobRegister.id)">Tải CV</button>
+            (click)="onDownloadCV(jobregisterps.jobRegister.id)">Tải CV</button>
         <button class="btn btn-danger" style="margin-right: 5px;" type="submit" (click)="onUpdateJobRegister()">Chỉnh
             sửa</button>
         <button type="submit" class="btn btn-success" style="margin-right: 5px;"

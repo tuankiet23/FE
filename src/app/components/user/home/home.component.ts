@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { HomeUserService } from 'src/app/services/home-user.service';
+// import { HomeUserService } from 'src/app/services/home-user.service';
 import { JobModel } from './JobModel';
 
 

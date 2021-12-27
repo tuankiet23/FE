@@ -1,5 +1,4 @@
 
-// import { NgxPaginationModule } from 'ngx-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { CommonModule } from '@angular/common';
@@ -28,8 +27,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { JobRegisterComponent } from './job-register/job-register.component';
 import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
 import { ListJeComponent } from './list-je/list-je.component';
+import { NgModule } from '@angular/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 const Adminroutes: Routes = [
   {
     path: '',
@@ -122,7 +122,7 @@ const Adminroutes: Routes = [
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    // NgxPaginationModule,
+    NgxPaginationModule,
   ],
   exports: [RouterModule],
 })

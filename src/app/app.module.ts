@@ -36,9 +36,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { Interceptor } from './interceptor';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarComponent } from './components/admin/sidebar/sidebar.component';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { NgModule } from '@angular/core';
     MatFormFieldModule,
     MatTableModule,
     BrowserAnimationsModule,
+    // BrowserAnimationsModule,
 
   ],
   providers: [JobService,
