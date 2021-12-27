@@ -1,9 +1,9 @@
-import { tap, catchError } from 'rxjs';
 import { Router } from '@angular/router';
+import { OnInit, Component } from '@angular/core';
+import { tap, catchError } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 import { RestApiService } from './../../../services/rest-api.service';
 import { ChangePassword } from './../../../models/changePassword';
-import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-change-password',
@@ -58,17 +58,18 @@ export class ChangePasswordComponent implements OnInit {
          // localStorage.getItem('token');
         // await this.data.getProfile();
         alert("Vui lòng check email để lấy mã OTP!")
-         let otp = prompt("Mã OTP:");
+        this.router.navigate(['/authen/otp'])
+        //  let otp = prompt("Mã OTP:");
 
-         this.rests.put(this.urlOtp,{
-           otpCode:otp,
-           password:this.changePassword.newPassword
-          }).then((data)=>{
-            alert("Doi mat khau thất bại!")
-          }).catch((error)=>{
-            alert("Doi mat khau thanh cong")
+        //  this.rests.put(this.urlOtp,{
+        //    otpCode:otp,
+        //    password:this.changePassword.newPassword
+        //   }).then((data)=>{
+        //     alert("Doi mat khau thất bại!")
+        //   }).catch((error)=>{
+        //     alert("Doi mat khau thanh cong")
 
-          })
+        //   })
 
          // this.router.navigate(['user/otp'])
        })

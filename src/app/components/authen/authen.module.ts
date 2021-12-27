@@ -1,7 +1,7 @@
-import { OtpComponent } from './otp/otp.component';
 import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { OtpComponent } from './otp/otp.component';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
 import { AuthenComponent } from './authen.component';
 import { LoginComponent } from './login/login.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';

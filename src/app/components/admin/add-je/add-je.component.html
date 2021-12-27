@@ -5,6 +5,7 @@
         <!-- <app-message>
         </app-message> -->
         <hr />
+        {{addForm.valid}}
         <form [formGroup]="addForm" (ngSubmit)="saveJE()">
           <div class="card">
             <div class="card-header">
@@ -22,13 +23,14 @@
                   aria-describedby="helpid"
                   placeholder="name"
                 />
-                <small
-
-                  id="nameid"
-                  class="form-text text-muted"
-                >
-                  name is required
-                </small>
+                <div *ngIf="fullName?.invalid && (fullName?.dirty || fullName?.touched)" class="alert alert-danger">
+                  <div *ngIf="fullName?.errors?.['required']">
+                    Tên không được để trống
+                  </div>
+                  <div *ngIf="fullName?.errors?.['minlength']">
+                    Tên phải ít nhất 6 kí tự
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label for="email">Email</label>
@@ -41,12 +43,14 @@
                   aria-describedby="emailHid"
                   placeholder="Email"
                 />
-                <small
-                  id="emailHid"
-                  class="form-text text-muted"
-                >
-                  Email is required
-                </small>
+                <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="alert alert-danger">
+                  <div *ngIf="email?.errors?.['required']">
+                    Email không được để trông
+                  </div>
+                  <div *ngIf="email?.errors?.['email']">
+                    Email phải đúng định dạng
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label for="userName">UserName</label>
@@ -59,12 +63,14 @@
                   aria-describedby="userNameHid"
                   placeholder="userName"
                 />
-                <small
-                  id="userNameHid"
-                  class="form-text text-muted"
-                >
-                  UserName is required
-                </small>
+                <div *ngIf="userName?.invalid && (userName?.dirty || userName?.touched)" class="alert alert-danger">
+                  <div *ngIf="userName?.errors?.['required']">
+                    Tên tài khoản  không được để trông
+                  </div>
+                  <div *ngIf="userName?.errors?.['minlength']">
+                    Tên tài khoản  phải lớn hơn 5 kí tự
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label for="password">Password</label>
@@ -77,11 +83,17 @@
                   aria-describedby="passwordHid"
                   placeholder="Password"
                 />
-                <small
-                  id="passwordHid"
-                  class="form-text text-muted">
-                  Password is required
-                </small>
+                <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="alert alert-danger">
+                  <div *ngIf="password?.errors?.['required']">
+                    Mật khẩu không được để trống
+                  </div>
+                  <div *ngIf="password?.errors?.['minlength']">
+                    Mật khẩu phải lớn hơn 6 kí tự
+                  </div>
+                  <div *ngIf="password?.errors?.['maxlength']">
+                    Mật khẩu phải nhỏ hơn 8 kí tự
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label for="phone">Phone</label>
@@ -113,12 +125,11 @@
                   aria-describedby="homeTownHid"
                   placeholder="homeTown"
                 />
-                <small
-                  id="homeTownHid"
-                  class="form-text text-muted"
-                >
-                  HomeTown is required
-                </small>
+                <div *ngIf="homeTown?.invalid && (homeTown?.dirty || homeTown?.touched)" class="alert alert-danger">
+                  <div *ngIf="homeTown?.errors?.['required']">
+                    Địa chỉ  không được để trống
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label for="gender">Gender</label>
@@ -131,10 +142,11 @@
                   aria-describedby="genderHid"
                   placeholder="gender"
                 />
-                <small
-                 id="genderHid" class="form-text text-muted">
-                  gender is required
-                </small>
+                <div *ngIf="gender?.invalid && (gender?.dirty || gender?.touched)" class="alert alert-danger">
+                  <div *ngIf="gender?.errors?.['required']">
+                    Giới tính không được để trống
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label for="birthDay">BirthDay</label>
@@ -147,21 +159,22 @@
                   aria-describedby="birthDayHid"
                   placeholder="birthDay"
                 />
-                <small
-                id="birthDayHid" class="form-text text-muted">
-                  birthDay is required
-                </small>
+                <div *ngIf="birthDay?.invalid && (birthDay?.dirty || birthDay?.touched)" class="alert alert-danger">
+                  <div *ngIf="birthDay?.errors?.['required']">
+                    Ngày sinh không được để trống
+                  </div>
+                </div>
 
               </div>
               <button
                 type="submit"
                 class="btn btn-primary"
-               
+[disabled]="!addForm.valid"
               >
                 Đăng kí
               </button>
             </div>
-            <div class="card-footer text-muted"></div>
+            <div class="card-footer text-muted" ></div>
           </div>
         </form>
       </div>
