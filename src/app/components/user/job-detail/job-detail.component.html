@@ -5,37 +5,40 @@
                 <div class="basic-information">
                     <div class="col-md-3 col-sm-3">
                      <img src="assets/img/itsol1.png" alt="" class="img-responsive">
+                      <button class="mt-5 btn form-control btn-primary bg-primary text-white"  (click)="applyJobNow()">Ứng Tuyển Ngay</button>
                     </div>
+
                     <div class="col-md-9 col-sm-9">
                         <div class="profile-content">
-                                <h2>ITSOL<span>Internet and computer software</span></h2>
-                                <h3>TUYỂN DỤNG {{job.job_name}}</h3>
+                                <h2>CÔNG TY ITSOL</h2>
+                                <h3>TUYỂN DỤNG:  {{job.jobName}}</h3>
                                 <ul class="information">
-                                    <li><span>Địa chỉ làm việc:</span>{{job.address_work}}</li>
-                                    <li><span>Vị trí:</span>{{job.academic_level.academic_name}}</li>
-                                    <li><span>Lương:</span>{{job.salary}}</li>
-                                    <li><span>Số lượng cần tuyển:</span>{{job.qty_person}}</li>
-                                    <li><span>Thời hạn:</span>{{job.due_date}}</li>
-                                    <li><span>Liên hệ:</span>{{job.contact.fullName}}: {{job.contact.phoneNumber}}</li>
+                                    <li><span>Địa chỉ làm việc:</span>{{job.addressWork}}</li>
+                                    <li><span>Vị trí:</span>{{job.jobPosition.name}}</li>
+                                    <li><span>Lương:</span>{{job.salary | number: '1.0-0'}}</li>
+                                    <li><span>Số lượng cần tuyển:</span>{{job.qtyPerson}}</li>
+                                    <li><span>Kỹ năng:</span>{{job.skills}}</li>
+                                    <li><span>Quyền lợi:</span>{{job.interrest}}</li>
+                                    <li><span>Thời hạn:</span>{{job.dueDate | date:'dd-MM-yyyy'}}</li>
+                                    <li><span>Liên hệ:</span>Họ và tên: {{job.contact.fullName}} -  SĐT: {{job.contact.phoneNumber}}</li>
                                 </ul>
                             </div>
                         </div>
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-user fa-fw"></i>Thông tin chi tiết
+                        <div >
+                           <h2 class = "text-center">CHI TIẾT CÔNG VIỆC</h2>
                         </div>
                                             <!-- /.panel-heading -->
                         <div class="panel-body">
                         <p>{{job.description}}</p>
-                        
-                        <ul>
-                            <li>Skill: {{job.skill}}</li>
-                            <li>Năm kinh nghiệm: {{job.number_experience}}</li>
+
+                        <!-- <ul>
+
                             <li>Software testing in a Web Applications environment.</li>
                             <li>Translate designs into responsive web interfaces</li>
                             <li>Software testing in a Web Applications/Mobile environment.</li>
                             <li>Software testing in a Web Applications environment.</li>
-                        </ul>
+                        </ul> -->
                         </div>
                     </div>
                 </div>

@@ -1,8 +1,14 @@
+
 // import { NgxPaginationModule } from 'ngx-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
+
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CreateJobComponent } from './create-job/create-job.component';
+
+
+//import { ListJobregisterComponent } from './list-jobregister/list-jobregister.component';
+
 import { CompanyAdComponent } from './company-ad/company-ad.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateCompanyComponent } from './create-company/create-company.component';
@@ -50,12 +56,14 @@ const Adminroutes: Routes = [
 
         pathMatch:'full'
       },
+
       // {
       //   path:'user',
       //   component: ListUserComponent,
 
       //   pathMatch:'full'
       // },
+
       {
         path:'addJE',
         component: AddJEComponent,
