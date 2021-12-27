@@ -11,6 +11,11 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { DetailpersonalComponent } from './personal-info/detailpersonal/detailpersonal.component';
 import { EditpersonalComponent } from './personal-info/editpersonal/editpersonal.component';
+import { PopupApplyjobComponent } from './popup-applyjob/popup-applyjob.component';
+import { FormUploadComponent } from './popup-applyjob/upload/form-upload/form-upload.component';
+import { ListUploadComponent } from './popup-applyjob/upload/list-upload/list-upload.component';
+import { DetailsUploadComponent } from './popup-applyjob/upload/details-upload/details-upload.component';
+import { FormContactComponent } from './popup-applyjob/form-contact/form-contact.component';
 
 const UserRoutes: Routes = [
   {
@@ -34,21 +39,22 @@ const UserRoutes: Routes = [
       },
       {
         path: 'recruitment',
-        component: RecruitmentComponent,
+        component: PopupApplyjobComponent,
         pathMatch: 'full'
       },
+      
       {
         path: 'info',
         loadChildren: () => import("src/app/components/user/personal-info/personal-info.module").then(m => m.PersonalInfoModule)
       },
-      
+
     ],
   }
 
 ];
 
 @NgModule({
-  declarations: [UserComponent,HomeComponent, HeaderComponent,  FooterComponent ],
+  declarations: [UserComponent,HomeComponent, HeaderComponent,  FooterComponent, PopupApplyjobComponent, FormUploadComponent, ListUploadComponent, DetailsUploadComponent, FormContactComponent ],
   imports: [
     CommonModule,
 
