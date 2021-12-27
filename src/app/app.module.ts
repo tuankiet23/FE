@@ -1,9 +1,12 @@
-import { ListUserComponent } from './components/admin/list-user/list-user.component';
-import { ListJeComponent } from './components/admin/list-JE/list-user.component';
+import { ListJeComponent } from './components/admin/list-je/list-je.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+// import { ListUserComponent } from './components/admin/list-user/list-user.component';
+// import { ListJeComponent } from './components/admin/list-JE/list-user.component';
 import { FogotPassComponent } from './components/authen/fogot-pass/fogot-pass.component';
 import { EditJeComponent } from './components/admin/edit-je/edit-je.component';
 import { AddJEComponent } from './components/admin/add-je/add-je.component';
-import { NgModule } from '@angular/core';
+// import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './routing/app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -26,8 +29,8 @@ import { OtpComponent } from './components/authen/otp/otp.component';
 import { ChangePasswordComponent } from './components/authen/change-password/change-password.component';
 import { EmployeeAddComponent } from './components/authen/employee-add/employee-add.component';
 import { EmployeeListComponent } from './components/authen/employee-list/employee-list.component';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+// import { FormsModule } from '@angular/forms';
+// import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -35,6 +38,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { Interceptor } from './interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarComponent } from './components/admin/sidebar/sidebar.component';
+import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -56,7 +60,8 @@ import { SidebarComponent } from './components/admin/sidebar/sidebar.component';
     EditJeComponent,
     FogotPassComponent,
     ListJeComponent,
-    ListUserComponent,
+    
+    // ListUserComponent,
 
   ],
   imports: [
