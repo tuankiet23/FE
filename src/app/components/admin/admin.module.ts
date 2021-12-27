@@ -110,6 +110,7 @@ const Adminroutes: Routes = [
     HeaderAdComponent,
     SidebarComponent,
     EditAcademiclevelComponent,
+    HomeAdComponent
    // ListUserComponent,
   //  EditUserComponent,
 

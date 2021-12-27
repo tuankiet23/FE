@@ -1,0 +1,19 @@
+<form [formGroup]="dateRangeForm">
+    <input type="date" class="form-control" name="fromDate" id="fromDate" formControlName="fromDate"
+        (change)="changeDateEvent($event)" />
+
+    <input type="date" class="form-control" name="toDate" id="toDate" formControlName="toDate"
+        (change)="changeDateEvent($event)" />
+</form>
+
+<div>
+    <h1>1. Pie chart</h1>
+    <canvas #pieCanvas style="height:20vh; width:40vw"></canvas>
+    <hr color="red">
+</div>
+
+<div>
+    <h1>2. Line chart</h1>
+    <canvas #lineCanvas style="height:10vh; width:20vw"></canvas>
+    <hr color="red">
+</div>

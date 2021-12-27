@@ -54,3 +54,5 @@ baseline.json
 .husky/_
 
 .angular/
+
+package-lock.json
