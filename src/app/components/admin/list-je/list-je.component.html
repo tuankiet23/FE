@@ -1,4 +1,4 @@
-<buton
+<button
   type="button"
   style="text-align: center"
   class="btn btn-info"
@@ -6,7 +6,7 @@
   routerLink="/admin/addJE"
 >
   Thêm
-</buton>
+</button>
 <!-- <form [formGroup]="addForm"> -->
 
 <table
@@ -40,9 +40,10 @@
 <ng-template #elseBlock> Dừng hoạt động</ng-template>
       </td>
       <td class="text-nowrap" style="width: 1px">
-        <button type="button" class="btn btn-success" style="margin-right: 2px" [routerLink]="['/admin/editJE/'+ employee.id]">
+        <!-- <button type="button" class="btn btn-success" style="margin-right: 2px" [routerLink]="['/admin/editJE/'+ employee.id]">
           Sửa
-        </button>
+        </button> -->
+        <button class="btn btn-success" style="margin-right: 2px"></button>
         <button type="button" class="btn btn-danger" style="margin-right: 2px" (click)="deleteJE(employee.id)" *ngIf="employee.active == true" >
           Xóa
         </button>

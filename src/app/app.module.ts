@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { ListJeComponent } from './components/admin/list-je/list-je.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -40,9 +41,11 @@ import { Interceptor } from './interceptor';
 import { SidebarComponent } from './components/admin/sidebar/sidebar.component';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './routing/app-routing.module';
 
 @NgModule({
   declarations: [
+
     AppComponent,
     // HeaderComponent,
     // FooterComponent,
@@ -67,8 +70,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
   ],
   imports: [
+
+    RouterModule ,
     BrowserModule,
-    // AppRoutingModule,
+    AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
