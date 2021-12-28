@@ -1,8 +1,13 @@
-// import { NgxPaginationModule } from 'ngx-pagination';
+
 import { ReactiveFormsModule } from '@angular/forms';
+
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CreateJobComponent } from './create-job/create-job.component';
+
+
+//import { ListJobregisterComponent } from './list-jobregister/list-jobregister.component';
+
 import { CompanyAdComponent } from './company-ad/company-ad.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateCompanyComponent } from './create-company/create-company.component';
@@ -22,8 +27,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { JobRegisterComponent } from './job-register/job-register.component';
 import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
 import { ListJeComponent } from './list-je/list-je.component';
+import { NgModule } from '@angular/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 const Adminroutes: Routes = [
   {
     path: '',
@@ -50,12 +56,14 @@ const Adminroutes: Routes = [
 
         pathMatch:'full'
       },
+
       // {
       //   path:'user',
       //   component: ListUserComponent,
 
       //   pathMatch:'full'
       // },
+
       {
         path:'addJE',
         component: AddJEComponent,
@@ -114,7 +122,7 @@ const Adminroutes: Routes = [
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    // NgxPaginationModule,
+    NgxPaginationModule,
   ],
   exports: [RouterModule],
 })

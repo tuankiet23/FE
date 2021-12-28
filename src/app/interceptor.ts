@@ -2,7 +2,6 @@ import { catchError, map, Observable, tap, throwError } from 'rxjs';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from "@angular/common/http";
 // import { Router } from '@angular/router';
 // import { Injectable } from '@angular/core';
-import { JobRegisterService } from './services/job-register.service';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
