@@ -1,6 +1,7 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Employee } from './../../../models/employee';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { DataService } from './../../../services/data.service';
 import { RestApiService } from './../../../services/rest-api.service';
 import { HttpClient } from '@angular/common/http';
@@ -11,31 +12,25 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FogotPassComponent implements OnInit {
 
-  exform: FormGroup;
+  fogotForm!: FormGroup;
   employee: Employee;
   btnDisable = false;
   url = 'http://localhost:8080/api/user/fogotpass';
-  constructor(private rest: RestApiService, private data: DataService,private http:HttpClient) {
+  constructor(private rest: RestApiService,
+     private data: DataService,
+     private http:HttpClient,
+     private router: Router,
+     private Fb: FormBuilder,
+     ) {
     this.employee = new Employee();
   }
 
   ngOnInit() {
-    this.exform = new FormGroup({
-      fullName: new FormControl(null,Validators.required),
-      email: new FormControl(null,[Validators.required,Validators.email]),
-      userName: new FormControl(null,[Validators.required,Validators.minLength(5),Validators.maxLength(20)]),
-      password: new FormControl(null,[Validators.required,Validators.minLength(6),Validators.maxLength(8)]),
-      phone: new FormControl(null,[Validators.required,Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$')]),
-      homeTown: new FormControl(null,[Validators.required,Validators.maxLength(50)]),
-      gender: new FormControl(null,Validators.required),
-      birthDay: new FormControl(null,Validators.required),
-    })
+    this.fogotForm = this.Fb.group({
+      email: new FormControl('',[Validators.required,Validators.email]),
 
-  }
+    });
 
-
-  get f(){
-    return this.exform.controls;
   }
   validate() {
     return true;
@@ -46,12 +41,15 @@ export class FogotPassComponent implements OnInit {
       this
         .put(this.url, this.employee)
         .then((data) => {
-          this.data.success('Employee is save');
+          // this.data.success('Employee is save');
           alert("Vui lòng check email để lấy lại mật khẩu!");
+          this.router.navigate(['/login'])
           this.btnDisable = false;
 
         })
         .catch((error) => {
+          alert("Lấy lại mật khẩu thất bại vui lòng kiểm tra lại email!");
+
           this.data.error(error['message']);
           this.btnDisable = false;
         });
@@ -62,5 +60,7 @@ export class FogotPassComponent implements OnInit {
 
     return this.http.put(link +'/' ,body).toPromise();
   }
+  get email() { return this.fogotForm.get('email'); }
+
 
 }

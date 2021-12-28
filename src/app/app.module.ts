@@ -1,3 +1,4 @@
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { ListJeComponent } from './components/admin/list-je/list-je.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -20,8 +21,8 @@ import { RecruitmentComponent } from './components/user/recruitment/recruitment.
 import { ContactComponent } from './components/user/contact/contact.component';
 import { ListJobComponent } from './components/user/list-job/list-job.component';
 import { PersonalInfoComponent } from './components/user/personal-info/personal-info.component';
-
-
+import {MatSelectModule} from '@angular/material/select';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { JobService } from './services/job.service';
 import { AuthenComponent } from './components/authen/authen.component';
 import { AdminComponent } from './components/admin/admin.component';
@@ -34,7 +35,6 @@ import { EmployeeListComponent } from './components/authen/employee-list/employe
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import { Interceptor } from './interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarComponent } from './components/admin/sidebar/sidebar.component';
@@ -61,6 +61,10 @@ import { NgModule } from '@angular/core';
     FogotPassComponent,
     ListJeComponent,
     
+
+
+
+
     // ListUserComponent,
 
   ],

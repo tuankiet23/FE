@@ -15,11 +15,7 @@ const AuthenRoutes: Routes = [
     path: '',
     component: AuthenComponent,
     children: [
-      {
-        path: 'login',
-        component: LoginComponent,
-        pathMatch: 'full'
-      },
+   
       {
         path: 'employee-list',
         component: EmployeeListComponent,
@@ -41,9 +37,7 @@ const AuthenRoutes: Routes = [
       {
         path: 'employee-list', component:EmployeeListComponent
       },
-      {
-        path: 'login', component:LoginComponent
-      },
+
 
       {
         path: 'change-password', component:ChangePasswordComponent

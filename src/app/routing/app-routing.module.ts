@@ -26,9 +26,17 @@ const routes: Routes = [
         loadChildren: () => import("src/app/components/authen/authen.module").then((m) => m.AuthenModule)
     },
     {
+      path: 'login', component:LoginComponent
+    },
+    {
+      path: 'login',
+      component: LoginComponent,
+      pathMatch: 'full'
+    },
+    {
         path: 'admin',
         loadChildren: () => import('src/app/components/admin/admin.module').then(m => m.AdminModule),
-        // canActivate:[GuardsGuard],
+        canActivate:[GuardsGuard],
     }
 
 ]
