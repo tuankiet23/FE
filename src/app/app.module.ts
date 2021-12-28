@@ -70,8 +70,6 @@ import { AppRoutingModule } from './routing/app-routing.module';
 
   ],
   imports: [
-
-    RouterModule ,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

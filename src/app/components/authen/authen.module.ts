@@ -41,9 +41,9 @@ const AuthenRoutes: Routes = [
       {
         path: 'employee-list', component:EmployeeListComponent
       },
-      {
-        path: 'login', component:LoginComponent
-      },
+      // {
+      //   path: 'login', component:LoginComponent
+      // },
 
       {
         path: 'change-password', component:ChangePasswordComponent
@@ -64,6 +64,7 @@ const AuthenRoutes: Routes = [
   declarations: [
   ],
   imports: [
+
     CommonModule,
     RouterModule.forChild(AuthenRoutes),
 
