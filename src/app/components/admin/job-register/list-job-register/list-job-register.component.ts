@@ -1,13 +1,13 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { JobRegisterService } from 'src/app/services/job-register.service';
 import { Form, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { searchJobRegister } from 'src/app/models/jobregister/searchjobregister';
 import { addjobregister } from 'src/app/models/addjobregister';
-import { Component, OnInit, ViewChild } from '@angular/core';
+
 import { PageEvent } from '@angular/material/paginator';
 import { formatDate } from '@angular/common';
 import { saveAs } from 'file-saver';
-
 @Component({
   selector: 'app-list-job-register',
   templateUrl: './list-job-register.component.html',
@@ -28,7 +28,7 @@ export class ListJobRegisterComponent implements OnInit {
   public searchJR: searchJobRegister;
   public jobjr: addjobregister;
   public jobregisterps: any;
-  
+
   showDirectionLinks = true;
   public jobregisters: Array<any> = [];
   public jobregister: any;
