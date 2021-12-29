@@ -8,6 +8,7 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { EmployeeAddComponent } from './employee-add/employee-add.component';
 import { FogotPassComponent } from './fogot-pass/fogot-pass.component';
+import { Login2Component } from './login2/login2.component';
 
 
 const AuthenRoutes: Routes = [
@@ -15,11 +16,7 @@ const AuthenRoutes: Routes = [
     path: '',
     component: AuthenComponent,
     children: [
-      {
-        path: 'login',
-        component: LoginComponent,
-        pathMatch: 'full'
-      },
+
       {
         path: 'employee-list',
         component: EmployeeListComponent,
@@ -38,13 +35,10 @@ const AuthenRoutes: Routes = [
       {
         path: 'employee-add', component:EmployeeAddComponent
       },
+     
       {
         path: 'employee-list', component:EmployeeListComponent
       },
-      {
-        path: 'login', component:LoginComponent
-      },
-
       {
         path: 'change-password', component:ChangePasswordComponent
       },
@@ -64,6 +58,7 @@ const AuthenRoutes: Routes = [
   declarations: [
   ],
   imports: [
+
     CommonModule,
     RouterModule.forChild(AuthenRoutes),
 
