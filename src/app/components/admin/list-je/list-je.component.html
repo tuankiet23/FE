@@ -1,3 +1,4 @@
+
 <form class="needs-validation" [formGroup]="searchForm" (ngSubmit)="onSearchJE()">
   <div class="form-row">
     <div class="col-md-4 mb-3">
@@ -18,10 +19,7 @@
   <button class="btn btn-primary" type="submit" style="margin-left: 500px;" (click)="onSearchJE()">Tìm
     kiếm</button>
 </form>
-
-
-
-<buton
+<button
   type="button"
   style="text-align: center"
   class="btn btn-info"
@@ -29,7 +27,7 @@
   routerLink="/admin/addJE"
 >
   Thêm
-</buton>
+</button>
 <!-- <form [formGroup]="addForm"> -->
 
 <table
@@ -63,14 +61,16 @@
          <ng-template #elseBlock> Dừng hoạt động</ng-template>
       </td>
       <td class="text-nowrap" style="width: 1px">
-        <button type="button" class="btn btn-success" style="margin-right: 2px" [routerLink]="['/admin/editJE/'+ employee.id]">
+         <button type="button" class="btn btn-success" style="margin-right: 2px" [routerLink]="['/admin/editJE/'+ employee.id]">
           Sửa
+
         </button>
         <button type="button" class="btn btn-danger" style="margin-right: 5px" (click)="deleteJE(employee)" *ngIf="employee.active == true" >
           Hủy kích hoạt
         </button>
         <button type="button" class="btn btn-danger" style="margin-right: 2px" (click)="activeJE(employee)" *ngIf="employee.active == false" >
           Kích hoạt
+
         </button>
       </td>
     </tr>

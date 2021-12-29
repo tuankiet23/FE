@@ -1,4 +1,3 @@
-
 <section class="loginPage">
   <div class="container">
     <div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
@@ -10,8 +9,6 @@
             [(ngModel)]="employee.username"
             class="form-control"
             name="username"
-            id="username"
-            aria-describedby="usernameHid"
             placeholder="User Name"
           />
           <small id="usernameHid" class="form-text text-muted">
@@ -24,15 +21,12 @@
           [(ngModel)]="employee.password"
           class="form-control"
           name="password"
-          id="password"
-          aria-describedby="passwordHid"
           placeholder="Password"
         />
         <small id="passwordHid" class="form-text text-muted">
           Password is required
         </small>
         </div>
-
         <a type="submit" class="btn btn-primary" href="" [routerLink]="['/authen/fogot-password']">Lấy lại mật khẩu</a>
         <button type="submit" class="btn btn-primary"  (click)="login()" style="margin: 30px;" >Đăng nhập</button>
         <a type="submit" class="btn btn-primary" href="" [routerLink]="['/authen/employee-add']">Tạo mới tài khoản</a>

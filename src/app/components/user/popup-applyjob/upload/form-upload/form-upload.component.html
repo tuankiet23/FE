@@ -1,0 +1,30 @@
+<!-- <div *ngIf="currentFileUpload" class="progress">
+  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+    aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+    {{progress.percentage}}%</div>
+</div> -->
+
+<!-- <label class="btn btn-default">
+  <input type="file" (change)="selectFile($event)">
+</label> -->
+
+<!-- <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button> -->
+
+<div class="container mt-5">
+  <div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+    <div class="file btn btn-lg btn-primary btn-upload">
+      Gửi CV của bạn tại đây <span><small><i class="text-danger">Chỉ chấp nhận file định dang .pdf</i></small></span>
+      <input class="file-upload form-control" type="file" name="file" accept=".pdf" (change)="selectFile($event)"/>
+    </div>
+    <div class="mt-2">
+      <h2>Giới thiệu bản thân</h2>
+      <span><i class="text-danger"><small>Hãy giới thiệu bản thân ngắn gọn tại đây để giúp chúng tôi hiểu hơn về bạn</small></i></span>
+      <textarea class="form-control"></textarea>
+    </div>
+    <div>
+      <button type="button" class="btn btn-primary" (click)="upload()">Gửi CV</button>
+    </div>
+  </div>
+</div>
+
+

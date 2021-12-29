@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { addjobregister } from 'src/app/models/addjobregister';
 import { JobRegisterService } from 'src/app/services/job-register.service';
 import { __values } from 'tslib';
+import * as saveAs from 'file-saver';
 
 @Component({
   selector: 'app-edit-job-register',
@@ -18,12 +19,9 @@ export class EditJobRegisterComponent implements OnInit {
 
   editForm: FormGroup = this.FB.group({
     id: new FormControl(""),
-    profilestatus: new FormControl(""),
-    dateregister: new FormControl(""),
     dateinterview: new FormControl(""),
     methodinterview: new FormControl(""),
     reason: new FormControl(""),
-    cv: new FormControl("")
 
   }, {
     updateOn: 'blur'
@@ -31,6 +29,7 @@ export class EditJobRegisterComponent implements OnInit {
 
   public jobregisterps: any;
   public addjr: addjobregister;
+  private cvFileName: string;
 
   constructor(
     private jobRegisterService: JobRegisterService,
@@ -55,6 +54,7 @@ export class EditJobRegisterComponent implements OnInit {
           res == ""
         }
         this.jobregisterps = res;
+        this.cvFileName = this.getCvFileName(this.jobregisterps.jobRegister.cv);
         this.editForm.patchValue({
           id:this.jobregisterps.jobRegister.id,
           dateinterview:formatDate(  this.jobregisterps.jobRegister.dateInterview , 'yyyy-MM-dd', 'en-Us' ) ,
@@ -95,15 +95,21 @@ export class EditJobRegisterComponent implements OnInit {
     );
   }
 
-  onDowloadCV(id:any){
+  onDownloadCV(id: any) {
+    debugger
     this.jobRegisterService.dowloadcv(id).subscribe(
-      res => {
-        alert("Dowlaod CV thành công.");
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
+
+      blod => saveAs(blod, this.cvFileName)
     );
+  }
+
+
+  getCvFileName(cvFilePath: string) {
+    if (!cvFilePath) {
+      console.error("File path is null or undefined")
+    }
+    let cvFilePaths = cvFilePath.split("/");
+    return cvFilePaths[cvFilePaths.length - 1];
   }
 
   onRefuse(){
@@ -135,8 +141,8 @@ export class EditJobRegisterComponent implements OnInit {
   }
   onRecruit(){
     this.addjr=this.editForm.value;
-    this.addjr.profilestatus="3";
-    this.addjr.dateinterview="";
+    this.addjr.profilestatus="4";
+    // this.addjr.dateinterview=this.jobregisterps.jobRegister.dateRegister, 'yyyy-MM-dd', 'en-Us';
     this.jobRegisterService.updateJobRegist(this.addjr).subscribe(
       res => {
       console.log(this.addjr);
@@ -148,7 +154,8 @@ export class EditJobRegisterComponent implements OnInit {
   }
   onSchedule(){
     this.addjr=this.editForm.value;
-    this.addjr.profilestatus="4";
+    this.addjr.profilestatus="3";
+    console.log("đff",this.addjr);
     this.jobRegisterService.updateJobRegist(this.addjr).subscribe(
       res => {
       console.log(this.addjr);
@@ -159,6 +166,14 @@ export class EditJobRegisterComponent implements OnInit {
     this.getJobRegisterById();
   }
 
+
+  licensed = "none";
+  openCombobox(){
+    this.licensed="block";
+  }
+  closeCombobox(){
+    this.licensed="none";
+  }
 
   displayStyle = "none";
   openPopup() {

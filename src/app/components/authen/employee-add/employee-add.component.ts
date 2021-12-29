@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { EmployeeService } from 'src/app/services/employee.service';
 // import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Employee } from '../../../models/employee';
@@ -27,7 +28,7 @@ export class EmployeeAddComponent implements OnInit {
   employee: Employee;
   btnDisable = false;
   url = 'http://localhost:8080/signup';
-    constructor(private rest: EmployeeService, private data: DataService, private Fb: FormBuilder) {
+    constructor(private rest: EmployeeService, private data: DataService, private Fb: FormBuilder,private router: Router) {
 
   }
 
@@ -56,6 +57,7 @@ export class EmployeeAddComponent implements OnInit {
     this.rest.addUser(this.addUser.value).subscribe((data) => {
      alert('đăng kí thành công! Vui lòng check mail và xác nhận.');
       this.data.success('Employee is save');
+      this.router.navigate(['/login'])
       this.btnDisable = false;
     });
   }

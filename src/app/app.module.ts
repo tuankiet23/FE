@@ -1,4 +1,6 @@
+
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { RouterModule } from '@angular/router';
 import { ListJeComponent } from './components/admin/list-je/list-je.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -9,7 +11,7 @@ import { EditJeComponent } from './components/admin/edit-je/edit-je.component';
 import { AddJEComponent } from './components/admin/add-je/add-je.component';
 // import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './routing/app-routing.module';
+// import { AppRoutingModule } from './routing/app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
@@ -36,12 +38,16 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { Interceptor } from './interceptor';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarComponent } from './components/admin/sidebar/sidebar.component';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './routing/app-routing.module';
+import { Login2Component } from './components/authen/login2/login2.component';
 
 @NgModule({
   declarations: [
+
     AppComponent,
     // HeaderComponent,
     // FooterComponent,
@@ -60,13 +66,11 @@ import { NgModule } from '@angular/core';
     EditJeComponent,
     FogotPassComponent,
     ListJeComponent,
-    
-
-
+    FogotPassComponent,
+    Login2Component
 
 
     // ListUserComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -80,6 +84,7 @@ import { NgModule } from '@angular/core';
     MatFormFieldModule,
     MatTableModule,
     BrowserAnimationsModule,
+    // BrowserAnimationsModule,
 
   ],
   providers: [JobService,
