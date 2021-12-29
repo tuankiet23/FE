@@ -3,6 +3,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
+
+import { CreaterJobComponent } from './job/creater-job/creater-job.component';
+
+
 //import { ListJobregisterComponent } from './list-jobregister/list-jobregister.component';
 
 import { CompanyAdComponent } from './company-ad/company-ad.component';
@@ -25,6 +29,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListJeComponent } from './list-je/list-je.component';
 import { NgModule } from '@angular/core';
 import { NgxPaginationModule } from 'ngx-pagination';
+
 import { JobComponent } from './job/job.component';
 
 const Adminroutes: Routes = [
@@ -42,6 +47,14 @@ const Adminroutes: Routes = [
         component: ListJeComponent,
         pathMatch:'full'
       },
+
+      // {
+      //   path:'user',
+      //   component: ListUserComponent,
+
+      //   pathMatch:'full'
+      // },
+
       {
         path:'addJE',
         component: AddJEComponent,

@@ -138,7 +138,7 @@ export class EditJobRegisterComponent implements OnInit {
     this.closePopup1();
     this.getJobRegisterById();
   }
-  
+
   onRecruit(){
     this.addjr=this.editForm.value;
     this.addjr.profilestatus="4";

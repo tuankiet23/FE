@@ -3,7 +3,9 @@ import { Employee } from './../models/employee';
 import { Observable } from 'rxjs';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { searchJE } from '../models/searchje';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -30,9 +32,11 @@ export class EmployeeService {
   public updateJE(employee: Employee, id: number): Observable<Employee[]> {
     return this.http.put<Employee[]>(this.API_URL + 'updateJE/' + id, employee);
   }
+
   public activeJE(id: number): Observable<string> {
     return this.http.delete<string>(this.API_URL + 'active/' + id );
   }
+
 
   // public getAllUser(): Observable<Employee[]> {
   //   return this.http.get<Employee[]>(this.API_URL + 'getallUser');

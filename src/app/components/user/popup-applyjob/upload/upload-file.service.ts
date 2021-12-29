@@ -1,23 +1,29 @@
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { TransfereServiceService } from 'src/app/services/transfere-service.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UploadFileService {
-  url : string = "http://localhost:8080/upload?username=kietpt&jobid=1"
+  data = this.transfereService.getData();
+  // username: string = this.data.username;
+  // jobid = this.data.jobId;
+  username ="giaphn";
+  jobid=1;
+  private urlBase =  environment.apiBaseUrl;
+  url : string = this.urlBase + '/user/upload?username='+ this.username + '&jobid='+ this.jobid;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private transfereService :TransfereServiceService ) { }
 
   pushFileToStorage(file: File):Observable<any> {
-
     const formdata: FormData = new FormData();
-
     formdata.append('file', file);
     console.log("file: " + file);
     console.log("formdata: " + formdata);
-
+    
     return this.http.post(this.url, formdata)
   }
 

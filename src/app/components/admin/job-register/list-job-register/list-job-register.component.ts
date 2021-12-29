@@ -29,7 +29,7 @@ export class ListJobRegisterComponent implements OnInit {
   public searchJR: searchJobRegister;
   public jobjr: addjobregister;
   public jobregisterps: any;
-  
+
   showDirectionLinks = true;
   public jobregisters: Array<any> = [];
   public jobregister: any;
@@ -81,7 +81,7 @@ export class ListJobRegisterComponent implements OnInit {
   }
 
   isLoading = false;
-  
+
   totalRows=1;
   pageSize = 1;
   currentPage = 1;
@@ -167,9 +167,9 @@ export class ListJobRegisterComponent implements OnInit {
     this.jobjr = this.editForm.value;
     this.jobjr.id = id;
     this.jobjr.profilestatus = '3';
-    var re = /T/gi; 
+    var re = /T/gi;
     var str = this.jobjr.dateinterview;
-    var newstr = str.replace(re, " "); 
+    var newstr = str.replace(re, " ");
     newstr=newstr +":00"
     this.jobjr.dateinterview= newstr;
     console.log(this.jobjr);
@@ -187,4 +187,3 @@ export class ListJobRegisterComponent implements OnInit {
 function MatPaginator(MatPaginator: any) {
   throw new Error('Function not implemented.');
 }
-

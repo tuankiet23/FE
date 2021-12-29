@@ -32,7 +32,9 @@ export class OtpComponent implements OnInit {
           localStorage.getItem('token');
           alert("Đổi mật khẩu thành công")
          // await this.data.getProfile();
+
           this.router.navigate([''])
+
         })
         .catch((error) => {
           alert("OTP không chính xác vui lòng kiểm tra lại")

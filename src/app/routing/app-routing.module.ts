@@ -1,5 +1,7 @@
+
 import { GuardsGuard } from './../guards/guards.guard';
 import { LoginComponent } from './../components/authen/login/login.component';
+
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 const routes: Routes = [

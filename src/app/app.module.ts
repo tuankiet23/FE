@@ -1,4 +1,3 @@
-
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterModule } from '@angular/router';
 import { ListJeComponent } from './components/admin/list-je/list-je.component';
@@ -41,9 +40,13 @@ import { Interceptor } from './interceptor';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarComponent } from './components/admin/sidebar/sidebar.component';
 import { NgModule } from '@angular/core';
+
+import { HomeComponent } from './components/user/home/home.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './routing/app-routing.module';
 import { Login2Component } from './components/authen/login2/login2.component';
+
 
 @NgModule({
   declarations: [
@@ -66,11 +69,14 @@ import { Login2Component } from './components/authen/login2/login2.component';
     EditJeComponent,
     FogotPassComponent,
     ListJeComponent,
+
+
+
+    HomeComponent,
+
     FogotPassComponent,
     Login2Component
 
-
-    // ListUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,7 +89,7 @@ import { Login2Component } from './components/authen/login2/login2.component';
     MatPaginatorModule,
     MatFormFieldModule,
     MatTableModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
     // BrowserAnimationsModule,
 
   ],

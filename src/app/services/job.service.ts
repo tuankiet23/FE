@@ -26,7 +26,8 @@ export class JobService {
     );
   }
 
-  
+
+
   public getJobAd(id: number): Observable<any> {
     const url = `${this.apiServerUrl}` + "/user/job/detail/" + `${id}`
     return this.http.get<any>(url)
@@ -36,5 +37,6 @@ export class JobService {
     const url = `${this.apiServerUrl}` + "/user/job/search"+`?pageIndex=${currentPage}&pageSize=${pageSize}`
     return this.http.put<job[]>(url, search);
   }
+
 
 }

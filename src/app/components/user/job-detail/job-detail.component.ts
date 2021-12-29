@@ -44,7 +44,7 @@ export class JobDetailComponent implements OnInit {
     };
       console.log("is click apply button");
       this.transfereService.setData(datatransfer);
-      this.route.navigate(['/recruitment']);
+      this.route.navigate(['/popup-applyjob']);
       // Chec
       // check token xem da login chua
           //1. Neu chua login thi quay ra trang login, sau khi login xong thi nhay luon poppup
@@ -60,7 +60,6 @@ export class JobDetailComponent implements OnInit {
     const token = localStorage.getItem("token");
     const username = localStorage.getItem("username");
     if (token) return true;
-
     return false;
   }
 

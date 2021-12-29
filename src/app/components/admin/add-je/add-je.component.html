@@ -1,12 +1,11 @@
-<section id="addJE">
+<section id="userEdit">
   <div class="container p-2">
     <div class="row mt-2">
       <div class="col-8 offset-2">
         <!-- <app-message>
         </app-message> -->
         <hr />
-        <!-- {{addForm.valid}} -->
-        <form [formGroup]="addForm" (ngSubmit)="saveJE()">
+        <form [formGroup]="editForm" (submit)="updateEmployee()">
           <div class="card">
             <div class="card-header">
               <h3 class="text-center">ADD NEW JOB_EDITER</h3>
@@ -25,7 +24,7 @@
                 />
                 <div *ngIf="fullName?.invalid && (fullName?.dirty || fullName?.touched)" class="alert alert-danger">
                   <div *ngIf="fullName?.errors?.['required']">
-                    Tên không được để trống
+                    Tên không được để trống và phải lớn hơn 6 kí tự
                   </div>
                   <div *ngIf="fullName?.errors?.['minlength']">
                     Tên phải ít nhất 6 kí tự
@@ -65,36 +64,14 @@
                 />
                 <div *ngIf="userName?.invalid && (userName?.dirty || userName?.touched)" class="alert alert-danger">
                   <div *ngIf="userName?.errors?.['required']">
-                    Tên tài khoản  không được để trông
+                    Tên tài khoản  không được để trống và phải nhỏ hơn 5 kí tự
                   </div>
                   <div *ngIf="userName?.errors?.['minlength']">
                     Tên tài khoản  phải lớn hơn 5 kí tự
                   </div>
                 </div>
               </div>
-              <div class="form-group col-md-6">
-                <label for="password">Password</label>
-                <input
-                  type="password"
-                  formControlName="password"
-                  class="form-control"
-                  name="password"
-                  id="password"
-                  aria-describedby="passwordHid"
-                  placeholder="Password"
-                />
-                <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="alert alert-danger">
-                  <div *ngIf="password?.errors?.['required']">
-                    Mật khẩu không được để trống
-                  </div>
-                  <div *ngIf="password?.errors?.['minlength']">
-                    Mật khẩu phải lớn hơn 6 kí tự
-                  </div>
-                  <div *ngIf="password?.errors?.['maxlength']">
-                    Mật khẩu phải nhỏ hơn 8 kí tự
-                  </div>
-                </div>
-              </div>
+
               <div class="form-group col-md-6">
                 <label for="phone">Phone</label>
                 <input
@@ -106,20 +83,12 @@
                   aria-describedby="phoneHid"
                   placeholder="phone"
                 />
-                <div *ngIf="phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched)" class="alert alert-danger">
-                  <div *ngIf="phoneNumber?.errors?.['required']">
-                    Sdt không được để trống.
-                  </div>
-                  <div *ngIf="phoneNumber?.errors?.['minlength']">
-                    Sđt phải 10 số.
-                  </div>
-                  <div *ngIf="phoneNumber?.errors?.['maxlength']">
-                    Sđt phải 10 số.
-                  </div>
-                  <div *ngIf="phoneNumber?.errors?.['pattern']">
-                     Sđt phải là số.
-                  </div>
-                </div>
+                <small
+                  id="phoneHid"
+                  class="form-text text-muted"
+                >
+                  Phone is required
+                </small>
               </div>
               <div class="form-group col-md-6">
                 <label for="homeTown">HomeTown</label>
@@ -141,15 +110,6 @@
               </div>
               <div class="form-group col-md-6">
                 <label for="gender">Gender</label>
-                <!-- <input
-                  type="gender"
-                  formControlName="gender"
-                  class="form-control"
-                  name="gender"
-                  id="gender"
-                  aria-describedby="genderHid"
-                  placeholder="gender"
-                /> -->
                 <select
                 formControlName="gender"
                 class="form-control"
@@ -160,16 +120,6 @@
                   <option  value="Nam">Nam</option>
                   <option  value="Nữ">Nữ</option>
               </select>
-
-              <!-- <mat-form-field appearance="fill">
-                <mat-label>Favorite food</mat-label>
-                <mat-select [(ngModel)]="selectedValue" name="food">
-                  <mat-option *ngFor="let food of foods" [value]="food.value">
-                    {{food.viewValue}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field> -->
-
                 <div *ngIf="gender?.invalid && (gender?.dirty || gender?.touched)" class="alert alert-danger">
                   <div *ngIf="gender?.errors?.['required']">
                     Giới tính không được để trống
@@ -197,9 +147,9 @@
               <button
                 type="submit"
                 class="btn btn-primary"
-[disabled]="!addForm.valid"
+                [disabled]="!editForm.valid"
               >
-                Đăng kí
+                Cập nhật
               </button>
             </div>
             <div class="card-footer text-muted" ></div>
@@ -209,4 +159,3 @@
     </div>
   </div>
 </section>
-

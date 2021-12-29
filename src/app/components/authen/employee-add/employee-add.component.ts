@@ -10,12 +10,14 @@ import { DataService } from 'src/app/services/data.service';
 // import { FormsModule } from '@angular/forms';
 import { RestApiService } from 'src/app/services/rest-api.service';
 import { Component, OnInit } from '@angular/core';
+
 import {
   FormControl,
   FormGroup,
   Validators,
   FormBuilder,
 } from '@angular/forms';
+
 
 @Component({
   selector: 'app-user-add',
