@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { EmployeeService } from './../../../services/employee.service';
 import { HttpClient } from '@angular/common/http';
 import {
@@ -11,12 +12,15 @@ import { DataService } from './../../../services/data.service';
 import { RestApiService } from './../../../services/rest-api.service';
 import { Component, OnInit } from '@angular/core';
 
+
+
 @Component({
   selector: 'app-add-je',
   templateUrl: './add-je.component.html',
   styleUrls: ['./add-je.component.css'],
 })
 export class AddJEComponent implements OnInit {
+  selectedValue: string;
   employee: Employee;
   addForm!: FormGroup;
   btnDisable = false;
@@ -25,7 +29,8 @@ export class AddJEComponent implements OnInit {
     private rest: EmployeeService,
     private data: DataService,
     private http: HttpClient,
-    private Fb: FormBuilder
+    private Fb: FormBuilder,
+    private router : Router
   ) {
 
   }
@@ -40,7 +45,7 @@ export class AddJEComponent implements OnInit {
       password: new FormControl('',[Validators.required,Validators.minLength(6),Validators.maxLength(8)]),
       phoneNumber: new FormControl('',[Validators.required,Validators.pattern("^[0-9]*$"),Validators.minLength(10),Validators.maxLength(10)]),
       homeTown: new FormControl('',[Validators.required]),
-      gender: new FormControl('',[Validators.required]),
+      gender: new FormControl(''),
       birthDay: new FormControl('',[Validators.required]),
     });
   }
@@ -53,6 +58,7 @@ export class AddJEComponent implements OnInit {
 
     this.rest.addJE(this.addForm.value).subscribe((data) => {
      alert('đăng kí thành công! Vui lòng check mail và xác nhận.');
+     this.router.navigate(['/admin/je'])
       this.data.success('Employee is save');
       this.btnDisable = false;
     });
