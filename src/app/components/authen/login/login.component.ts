@@ -38,17 +38,15 @@ export class LoginComponent implements OnInit {
           this.rest.get(`${this.apiServerUrl}/user/getProfile`).then((res) => {
             console.log(res)
             let value = res as any[];
+            if(value.toString()==='ROLE_ADMIN' || value.toString()==='ROLE_JE'){
+              this.router.navigate(['/admin'])
+            }
+            else{
+              this.router.navigate([''])
+            }
             localStorage.setItem('user-role-key', value.toString())
           }
           )
-          if(localStorage.getItem('user-role-key')=== 'ROLE_ADMIN'){
-            this.router.navigate(['/admin'])
-          }
-         else{
-            this.router.navigate([''])
-          }
-
-
         },
           (error: HttpErrorResponse) => {
             alert("Sai tài khoản hoặc mật khẩu!")
