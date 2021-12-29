@@ -35,7 +35,7 @@
         </div>
     </div>
     <div class="form-row">
-        <p>Thông tin chi tiết công việc <button type="button" class="btn btn-info">Chi tiết</button></p>
+        <p>Thông tin chi tiết công việc <button type="button" class="btn btn-info" routerLink="/admin/job/detail/{{jobregisterps.jobRegister.job.id}}">Chi tiết</button></p>
     </div>
 </form>
     <p>Thông tin ứng tuyển</p>
@@ -62,7 +62,7 @@
     <input type="hidden" formControlName="id" name="id" class="form-control" id="id">
     <div class="form-row">
         <div style="margin-bottom: 10px;">
-            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 1" style="margin-left: 5px;">
+            <div *ngIf="jobregisterps.jobRegister.profileStatus.name === 'WAITING'" style="margin-left: 5px;">
                 <button type="button" class="btn btn-info" style="width: 81px;" (click)="onBrowsing()">Duyệt</button>
                 <button type="button" class="btn btn-info" (click)="openPopup1()">Từ chối ứng viên</button>
                 <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle1}">
@@ -85,7 +85,7 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 2" style="margin-left: 5px;">
+            <div *ngIf="jobregisterps.jobRegister.profileStatus.name === 'INTERVIEW'" style="margin-left: 5px;">
                 <button type="button" class="btn btn-info" (click)="openPopup1()">Từ chối ứng viên</button>
                 <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle1}">
                     <div class="modal-dialog" role="document">
@@ -151,7 +151,7 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 3" style="margin-left: 5px;">
+            <div *ngIf="jobregisterps.jobRegister.profileStatus.name === 'INTERVIEWING'" style="margin-left: 5px;">
                 <button type="button" class="btn btn-info" style="width: 81px;" (click)="onRecruit()">Tuyển</button>
                 <button type="button" class="btn btn-info" (click)="openPopup1()">Từ chối ứng viên</button>
                 <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle1}">
@@ -174,13 +174,13 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 4" style="margin-left: -9px;">
+            <div *ngIf="jobregisterps.jobRegister.profileStatus.name === 'SUCCESS'" style="margin-left: -9px;">
                 <div class="form-group col-md-12">
                     <label for="inputCity">Trạng thái hồ sơ </label>
                     <input type="text" class="form-control" style="width: 600px;" id="inputCity" value="Đã tuyển" disabled>
                 </div>
             </div>
-            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 5" style="margin-left: 5px;">
+            <div *ngIf="jobregisterps.jobRegister.profileStatus.name === 'LOST'" style="margin-left: 5px;">
                 <button type="button" class="btn btn-info btn-lg" (click)="openPopup()">Ứng viên bị từ chối</button>
                 <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
                     <div class="modal-dialog" role="document">
@@ -201,7 +201,7 @@
                 </div>
 
             </div>
-            <div *ngIf="jobregisterps.jobRegister.profileStatus.id === 6" style="margin-left: 5px;">
+            <div *ngIf="jobregisterps.jobRegister.profileStatus.name === 'REJECT_INTERVIEW'" style="margin-left: 5px;">
                 <div class="form-group col-md-12">
                     <button type="button" class="btn btn-info btn-lg" (click)="openPopup()">Ứng viên từ chối ứng
                         tuyển</button>

@@ -1,21 +1,31 @@
+import { academic_level } from "./academic_level";
+import { job_position } from "./job_position";
+import { level_rank } from "./level_rank";
+import { method_work } from "./method_work";
+import { status_job } from "./status_job";
+import { user } from "./user";
+
 export interface job {
     id: number ;
-    job_name: string;
-    job_position: string ;
-    number_experience: number ;
-    method_work_id: number ;
-    address_work: string ;
-    academic_level_id: number ;
-    level_id: number;
-    qty_person: number;
-    due_date: Date;
-    skill: string ;
+    jobName: string;
+    jobPosition: job_position ;
+    numberExperience: number ;
+    method_work: method_work ;
+    addressWork: string ;
+    academic_level: academic_level ;
+    levelRank: level_rank;
+    qtyPerson: number;
+    createrte_date: Date;
+    dueDate: Date;
+    skills: string ;
+    start_recruitment_date: Date;
     description: string ;
     interrest: string ;
-    salary:number
-    contact_id: number;
-    job_status_id: number;
+    salaryMax:number
+    salaryMin:number
+    contact: user;
+    statusJob: status_job;
     views:number;
-    create_id:number;
+    creater:user;
     is_delete:number;
 }

@@ -1,0 +1,49 @@
+<form class="needs-validation" [formGroup]="searchForm" (ngSubmit)="onSearchJob()">
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="validationTooltip01">Tên công việc</label>
+        <input type="text" class="form-control" placeholder="Tên công việc" id="jobName" formControlName="jobName">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationTooltip02">Mức lương tối thiểu</label>
+        <input type="text" class="form-control" id="salarymin" formControlName="salaryMin" placeholder="Mức lương tối thiểu"
+          required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationTooltip02">Mức lương tối đa</label>
+        <input type="text" class="form-control" id="salarymax" formControlName="salaryMax" placeholder="Mức lương tối đa"
+          required>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit" style="margin-left: 549px;" (click)="onSearchJob">Tìm
+      kiếm</button>
+  </form>
+  <table id="tb-view" class="table table-bordered table-sm table-hover table-striped" style="margin-top: 30px;">
+    <thead>
+      <tr>
+        <th>Tên công việc</th>
+        <th>Vị trí tuyển dụng</th>
+        <th>Mức lương đề xuất</th>
+        <th>Hạn nộp hồ sơ</th>
+        <th>Trạng thái</th>
+        <th>View</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let job of jobs ">
+        <td>{{job.jobName}}</td>
+        <td>{{job.jobPosition.name}}</td>
+        <td>{{job.salaryMax}}VNĐ</td>
+        <td>{{job.dueDate| date:'fullDate'}}</td>
+         <td>{{job.statusJob.name}}</td> 
+        <td>{{job.views}}</td>
+        <td class="text-nowrap" style="width: 1px;">
+          <button type="button" class="btn btn-danger" style="margin-right: 1px;"
+            routerLink="/admin/job/detail/{{job.id}}">Chi tiết</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <mat-paginator style="background: rgb(192, 192, 192); color: black;" style-paginator showFirstLastButtons [length]="totalRows"
+[pageIndex]="currentPage" [pageSize]="pageSize"  [pageSizeOptions]="pageSizeOptions" (page)="pageChanged($event)"> </mat-paginator>

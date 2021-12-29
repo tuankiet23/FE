@@ -25,7 +25,7 @@
       <input type="date" class="form-control" id="validationTooltip05" formControlName="dateInterview">
     </div>
   </div>
-  <button class="btn btn-primary" type="submit" style="margin-left: 500px;" (click)="onSearchJobRegister">Tìm
+  <button class="btn btn-primary" type="submit" style="margin-left: 549px;" (click)="onSearchJobRegister">Tìm
     kiếm</button>
 </form>
 <table id="tb-view" class="table table-bordered table-sm table-hover table-striped" style="margin-top: 30px;">
@@ -45,8 +45,8 @@
     <tr *ngFor="let jobregister of jobregisters ">
       <td>{{jobregister.user.fullName}}</td>
       <td>{{jobregister.job.jobName}}</td>
-      <td>{{jobregister.dateRegister | date:'fullDate'}}</td>
-      <td>{{jobregister.dateInterview | date:'fullDate'}}</td>
+      <td>{{jobregister.dateRegister | date:'dd-mm-yyyy'}}</td>
+      <td>{{jobregister.dateInterview | date:'dd-mm-yyyy'}}</td>
       <td>{{jobregister.user.gender}}</td>
       <td>{{jobregister.user.phoneNumber}}</td>
       <td>{{jobregister.user.email}}</td>
@@ -59,7 +59,7 @@
             CV </button></a>
         </div>
 
-        <div *ngIf="jobregister.profileStatus.id === 6|| jobregister.profileStatus.id === 5">
+        <div *ngIf="jobregister.profileStatus.name === 'LOST'|| jobregister.profileStatus.name === 'REJECT_INTERVIEW'">
           <button type="button" class="btn btn-info" (click)="openPopup()" style="width: 81px;">Lý do</button>
           <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
             <div class="modal-dialog" role="document">
@@ -79,11 +79,11 @@
             </div>
           </div>
         </div>
-        <div *ngIf="jobregister.profileStatus.id === 2">
-          <button type="button" class="btn btn-info" (click)="openPopup()" style="width: 81px;">Đặt lịch</button>
+        <div *ngIf="jobregister.profileStatus.name === 'INTERVIEW'">
+          <button type="button" class="btn btn-info" (click)="openPopup1()" style="width: 81px;">Đặt lịch</button>
           <form [formGroup]="editForm" (ngSubmit)="onUpdateJobRegister()">
             <input type="hidden" formControlName="id" name="id" class="form-control" id="id" value="{{jobregister.id}}">
-            <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+            <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle1}">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -114,7 +114,7 @@
                     </div>
                     <div style="margin-left: 20px; margin-bottom: 10px;">
                       <button type="button" class="btn btn-danger" style="margin-right: 3px;"
-                        (click)="closePopup()">Close</button>
+                        (click)="closePopup1()">Close</button>
                       <button type="button" class="btn btn-danger" (click)="onAccept(jobregister.id)">Xác nhận</button>
                     </div>
                   </div>
@@ -126,5 +126,5 @@
     </tr>
   </tbody>
 </table>
-<mat-paginator style-paginator showFirstLastButtons [length]="totalRows"
+<mat-paginator style="background: rgb(192, 192, 192); color: black;" style-paginator showFirstLastButtons [length]="totalRows"
 [pageIndex]="currentPage" [pageSize]="pageSize"  [pageSizeOptions]="pageSizeOptions" (page)="pageChanged($event)"> </mat-paginator>
