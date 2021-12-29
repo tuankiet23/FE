@@ -1,32 +1,107 @@
-
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<section class="main-banner" style="background:#242c36 url(img/slider-01.jpg) no-repeat">
+  <div class="container">
+      <div class="caption">
+          <h2>TÌM VIỆC NGAY</h2>
+          <form [formGroup]="searchJobForm" (ngSubmit)="searchJob()">
+              <fieldset>
+                  <div class="col-md-4 col-sm-4 no-pad">
+                      <input type="text" class="form-control border-right"
+                          placeholder="java , c# , php, angular, nodejs ..." formControlName = "jobName"/>
+                  </div>
+                  <div class="col-md-3 col-sm-3 no-pad">
+                      <select class="selectpicker border-right"  formControlName="nubmerExperence">
+                          <option>Kinh Nghiệm</option>
+                          <option value="0">0 Năm</option>
+                          <option value="1">1 Năm</option>
+                          <option value="2">2 Năm</option>
+                          <option value="3">3 Năm</option>
+                          <option value="4">4 Năm</option>
+                          <option value="5">5 Năm</option>
+                          <option value="6">6 Năm</option>
+                          <option value="7">7 Năm</option>
+                          <option value="8">8 Năm</option>
+                          <option value="9">9 Năm</option>
+                          <option value="10">10 Năm</option>
+                      </select>
+                  </div>
+                  <div class="col-md-3 col-sm-3 no-pad">
+                      <select class="selectpicker" formControlName="jobPosition">
+                          <option>INTERN</option>
+                          <option>FRESHER</option>
+                          <option>JUNIOR</option>
+                          <option>SENIOR</option>
+                      </select>
+                  </div>
+                  <div class="col-md-2 col-sm-2 no-pad">
+                      <input type="button" class="btn seub-btn" value="Tìm kiếm" (click)="searchJob()" />
+                  </div>
+              </fieldset>
+          </form>
+      </div>
+  </div>
+</section>
 <section class="jobs">
   <ul class="nav nav-tabs">
-    <li class="active"><a data-target=".tab-pane" data-toggle="tab">All</a></li>
+    <li><a data-target="#tab0" data-toggle="tab">All</a></li>
     <li><a data-target="#tab1" data-toggle="tab">Việc lương cao</a></li>
     <li><a data-target="#tab2" data-toggle="tab">Việc mới đăng</a></li>
     <li><a data-target="#tab3" data-toggle="tab">Việc tuyển gấp</a></li>
   </ul>
+  <!-- class="tab-pane active" -->
   <div class="tab-content">
-    <div id="tab1" class="tab-pane active">
-      <div class="company-list" *ngFor="let item of datas">
+    <div id="tab0" class="tab-pane " >
+      <div class="company-list" *ngFor="let item of datasAll">
         <div class="row" routerLink="/user/job/{{item.id}}">
           <div class="col-md-2 col-sm-2">
             <div class="company-logo">
-              <img src="assets/img/itsol1.png" class="img-responsive" alt="" />
+              <a href="job/{{item.id}}"> <img src="assets/img/itsol1.png" class="img-responsive" alt=""  routerLink="/user/job/{{item.id}}"/></a>
             </div>
           </div>
           <div class="col-md-10 col-sm-10">
             <div class="company-content">
               <h3>
                 {{item.jobName}}<span class="full-time"
-                  ><i class="fa fa-money"></i> {{item.salary | number: '1.0-0'}}</span
+                  ><i class="fa fa-money"></i> Từ:{{item.salaryMin | number: '1.0-0'}} -  Đến  {{item.salaryMax | number: '1.0-0'}}</span
                 >
               </h3>
               <p>
                 <span class="company-name"
                   ><i class="fa fa-briefcase"></i>ITSOL</span
                 ><span class="company-location"
-                  ><i class="fa fa-map-marker"></i> {{item.addressWork}}</span
+                  ><i class="fa fa-map-marker"></i>{{item.addressWork}}</span
+                ><span class="package"
+                  ><i class="fas fa-calendar-alt"></i>Hạn nộp hồ sơ: {{item.dueDate  | date:'dd-MM-yyyy'}}</span
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" >
+        <input type="button" class="btn brows-btn" value="Xem thêm" (click)="showmoreJobAllOnclick()" />
+      </div>
+    </div>
+    <div id="tab1" class="tab-pane ">
+      <div class="company-list" *ngFor="let item of datasJobHeightSalary">
+        <div class="row" routerLink="/user/job/{{item.id}}">
+          <div class="col-md-2 col-sm-2">
+            <div class="company-logo">
+              <a href="job/{{item.id}}"> <img src="assets/img/itsol1.png" class="img-responsive" alt=""  routerLink="/user/job/{{item.id}}"/></a>
+            </div>
+          </div>
+          <div class="col-md-10 col-sm-10">
+            <div class="company-content">
+              <h3>
+                {{item.jobName}}<span class="full-time"
+                  ><i class="fa fa-money"></i> Từ:{{item.salaryMin | number: '1.0-0'}} -  Đến  {{item.salaryMax | number: '1.0-0'}}</span
+                >
+              </h3>
+              <p>
+                <span class="company-name"
+                  ><i class="fa fa-briefcase"></i>ITSOL</span
+                ><span class="company-location"
+                  ><i class="fa fa-map-marker"></i>{{item.addressWork}}</span
                 ><span class="package"
                   ><i class="fas fa-calendar-alt"></i>Hạn nộp hồ sơ: {{item.dueDate  | date:'dd-MM-yyyy'}}</span
                 >
@@ -39,8 +114,8 @@
         <input type="button" class="btn brows-btn" value="Xem thêm" (click)="showmoreJobHeightSalaryOnclick()" />
       </div>
     </div>
-    <div id="tab2" class="tab-pane">
-      <div class="company-list" *ngFor="let item of datas">
+    <div id="tab2" class="tab-pane active">
+      <div class="company-list" *ngFor="let item of datasJobNew">
 
         <div class="row" >
           <div class="col-md-2 col-sm-2">
@@ -52,7 +127,7 @@
             <div class="company-content">
               <h3>
                 {{item.jobName}}<span class="full-time"
-                  ><i class="fa fa-money"></i> {{item.salary | number: '1.0-0'}}</span
+                  ><i class="fa fa-money"></i>Từ:{{item.salaryMin | number: '1.0-0'}} -  Đến  {{item.salaryMax | number: '1.0-0'}}</span
                 >
               </h3>
               <p>
@@ -73,18 +148,18 @@
       </div>
     </div>
     <div id="tab3" class="tab-pane">
-      <div class="company-list" *ngFor="let item of datas">
+      <div class="company-list" *ngFor="let item of datasJobDeadLine">
         <div class="row" routerLink="/user/job/{{item.id}}">
           <div class="col-md-2 col-sm-2">
             <div class="company-logo">
-              <img src="assets/img/itsol1.png" class="img-responsive" alt="" />
+              <a href="job/{{item.id}}"> <img src="assets/img/itsol1.png" class="img-responsive" alt=""  routerLink="/user/job/{{item.id}}"/></a>
             </div>
           </div>
           <div class="col-md-10 col-sm-10">
             <div class="company-content">
               <h3>
                 {{item.jobName}}<span class="full-time"
-                  ><i class="fa fa-money"></i> {{item.salary | number: '1.0-0'}}</span
+                  ><i class="fa fa-money"></i> Từ:{{item.salaryMin | number: '1.0-0'}} -  Đến  {{item.salaryMax | number: '1.0-0'}}</span
                 >
               </h3>
               <p>

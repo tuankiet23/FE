@@ -15,6 +15,7 @@ import { PopupApplyjobComponent } from './popup-applyjob/popup-applyjob.componen
 import { FormUploadComponent } from './popup-applyjob/upload/form-upload/form-upload.component';
 import { ListUploadComponent } from './popup-applyjob/upload/list-upload/list-upload.component';
 import { DetailsUploadComponent } from './popup-applyjob/upload/details-upload/details-upload.component';
+import { FormContactComponent } from './popup-applyjob/form-contact/form-contact.component';
 
 const UserRoutes: Routes = [
   {
@@ -37,11 +38,11 @@ const UserRoutes: Routes = [
         pathMatch: 'full'
       },
       {
-        path: 'recruitment',
+        path: 'popup-applyjob',
         component: PopupApplyjobComponent,
         pathMatch: 'full'
       },
-      
+
       {
         path: 'info',
         loadChildren: () => import("src/app/components/user/personal-info/personal-info.module").then(m => m.PersonalInfoModule)
@@ -53,7 +54,7 @@ const UserRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [UserComponent,HomeComponent, HeaderComponent,  FooterComponent, PopupApplyjobComponent, FormUploadComponent, ListUploadComponent, DetailsUploadComponent ],
+  declarations: [UserComponent, HeaderComponent,  FooterComponent, PopupApplyjobComponent, FormUploadComponent, ListUploadComponent, DetailsUploadComponent, FormContactComponent ],
   imports: [
     CommonModule,
 

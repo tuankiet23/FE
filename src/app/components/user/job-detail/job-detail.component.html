@@ -15,7 +15,7 @@
                                 <ul class="information">
                                     <li><span>Địa chỉ làm việc:</span>{{job.addressWork}}</li>
                                     <li><span>Vị trí:</span>{{job.jobPosition.name}}</li>
-                                    <li><span>Lương:</span>{{job.salary | number: '1.0-0'}}</li>
+                                    <li><span>Lương:</span>Từ:{{job.salaryMin | number: '1.0-0'}} -  Đến  {{job.salaryMax | number: '1.0-0'}}</li>
                                     <li><span>Số lượng cần tuyển:</span>{{job.qtyPerson}}</li>
                                     <li><span>Kỹ năng:</span>{{job.skills}}</li>
                                     <li><span>Quyền lợi:</span>{{job.interrest}}</li>

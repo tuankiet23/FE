@@ -1,6 +1,82 @@
-<app-form-upload></app-form-upload>
 
-<!-- <br/>
-<br/>
+<!-- <app-form-upload></app-form-upload> -->
 
-<app-list-upload></app-list-upload> -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+      <form id="contact-form" method="post" action="" role="form" *ngIf="visible">
+      <div class="messages"></div>
+      <div class="controls">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="form_name">Kỹ Năng *</label>
+              <input id="form_name" type="text" name="name" class="form-control" placeholder="Kỹ năng *" required="required" data-error="nhập kỹ năng">
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="form_lastname">Trình độ học vấn *</label>
+              <input id="form_lastname" type="text" name="surname" class="form-control" placeholder=" học vấn *" required="required" data-error="Nhập học vấn.">
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="form_email">Ngày sinh *</label>
+              <input id="form_email" type="date" name="birthđay" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="form_phone">Số năm kinh nghiệm</label>
+              <input id="form_phone" type="tel" name="number" class="form-control" placeholder="số năm kinh nghiệm">
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="form_email">Mức lương mong muốn *</label>
+              <input id="form_email" type="number" name="birthđay" class="form-control" placeholder="Mức lương mong muốn *" required="required" data-error="Valid email is required.">
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="form_phone">Địa chỉ làm việc mong muốn</label>
+              <input id="form_phone" type="text" name="fdfd" class="form-control" placeholder="Địa chỉ làm việc mong muốn">
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="file btn btn-lg btn-primary btn-upload">
+            Gửi CV của bạn tại đây <span><small><i class="text-danger">Chỉ chấp nhận file định dang .pdf</i></small></span>
+            <input class="file-upload form-control" type="file" name="file" accept=".pdf" (change)="selectFile($event)"/>
+          </div>
+        </div>
+      </div>
+      <div class="mt-2">
+        <h2>Giới thiệu bản thân</h2>
+        <span><i class="text-danger"><small>Hãy giới thiệu bản thân ngắn gọn tại đây để giúp chúng tôi hiểu hơn về bạn</small></i></span>
+        <textarea class="form-control"></textarea>
+      </div>
+      <div>
+        <button type="button" class="btn btn-primary" (click)="upload()">Gửi CV</button>
+      </div>
+    </div>
+  </div>
+</div>

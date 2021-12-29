@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { DataService } from './../../../services/data.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 import { EmployeeService } from './../../../services/employee.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Employee } from './../../../models/employee';
 @Component({
-  selector: 'app-list-user',
-  templateUrl: './list-user.component.html',
-  styleUrls: ['./list-user.component.css']
+  selector: 'app-list-je',
+  templateUrl: './list-je.component.html',
+  styleUrls: ['./list-je.component.css']
 })
-export class ListUserComponent implements OnInit {
+export class ListJeComponent implements OnInit {
 
   showDirectionLinks = true;
   addForm!: FormGroup;
@@ -50,7 +50,7 @@ export class ListUserComponent implements OnInit {
   // dataSource = Object.create(null)
   ngOnInit(): void {
     // this.loaddata();
-    this.EmployeeService.getAllUser().subscribe((data) => {
+    this.EmployeeService.getAllJe().subscribe((data: any[]) => {
       this.employees = data;
 
       console.log(this.employees);
@@ -60,11 +60,10 @@ export class ListUserComponent implements OnInit {
 
     this.btnDisable = true;
 
-    // debugger;
-    this.rest.deleteJE(id).subscribe(data => {
-
-      this.data.success('Employee is save');
+    debugger;
+    this.rest.deleteJE(id).subscribe(() => {
       alert('xoa thanh cong');
+      this.data.success('Employee is save');
       this.btnDisable = false;
 
     },

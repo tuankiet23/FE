@@ -1,7 +1,8 @@
 export class JobModel {
   id: number ;
   jobName: string;
-  salary:number;
+  salaryMax:number;
+  salaryMin: number;
   jobPosition: {
     name : string;
   }

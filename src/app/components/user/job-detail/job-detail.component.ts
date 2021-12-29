@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { job } from 'src/app/models/job';
 import { JobService } from 'src/app/services/job.service';
 import { HttpErrorResponse, HttpParams } from '@angular/common/http';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { TransfereServiceService } from 'src/app/services/transfere-service.service';
+
 
 @Component({
   selector: 'app-job-detail',
@@ -22,6 +24,7 @@ export class JobDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getJobById();
   }
+
   public getJobById(): void{
   const id= this.activeRouter.snapshot.params['id'];
     this.jobService.getJobById(id).subscribe(
@@ -41,7 +44,7 @@ export class JobDetailComponent implements OnInit {
     };
       console.log("is click apply button");
       this.transfereService.setData(datatransfer);
-      this.route.navigate(['/recruitment']);
+      this.route.navigate(['/popup-applyjob']);
       // Chec
       // check token xem da login chua
           //1. Neu chua login thi quay ra trang login, sau khi login xong thi nhay luon poppup
@@ -57,7 +60,6 @@ export class JobDetailComponent implements OnInit {
     const token = localStorage.getItem("token");
     const username = localStorage.getItem("username");
     if (token) return true;
-
     return false;
   }
 

@@ -1,8 +1,8 @@
+import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from './../../../services/data.service';
 import { RestApiService } from './../../../services/rest-api.service';
-import { Router } from '@angular/router';
 import { Employee } from './../../../models/employee';
-import { Component, OnInit } from '@angular/core';
 import { USER_ROLE_KEY } from 'src/app/models/config/local-storage-keys';
 import { environment } from 'src/environments/environment';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
           console.log(data)
           let value = data as { employeeId: string, token: string };
           localStorage.setItem('token', value.token);
+          alert("Đăng nhập thành công!")
           this.rest.get(`${this.apiServerUrl}/user/getProfile`).then((res) => {
             console.log(res)
             let value = res as any[];
@@ -47,10 +48,10 @@ export class LoginComponent implements OnInit {
             this.router.navigate([''])
           }
 
-          
-        }, 
+
+        },
           (error: HttpErrorResponse) => {
-            alert(error.message);
+            alert("Sai tài khoản hoặc mật khẩu!")
           }
         )
     }

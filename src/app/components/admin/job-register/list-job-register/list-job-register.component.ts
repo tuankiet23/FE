@@ -1,13 +1,13 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { jobregister } from 'src/app/models/job-register';
+import { HttpErrorResponse } from '@angular/common/http';
 import { JobRegisterService } from 'src/app/services/job-register.service';
-import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { Form, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { searchJobRegister } from 'src/app/models/jobregister/searchjobregister';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { addjobregister } from 'src/app/models/addjobregister';
 
+import { PageEvent } from '@angular/material/paginator';
+import { formatDate } from '@angular/common';
+import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-list-job-register',
   templateUrl: './list-job-register.component.html',
@@ -22,8 +22,12 @@ export class ListJobRegisterComponent implements OnInit {
     dateInterview: new FormControl(""),
 
   })
+
+  private cvFileName: string;
+
   public searchJR: searchJobRegister;
   public jobjr: addjobregister;
+  public jobregisterps: any;
 
   showDirectionLinks = true;
   public jobregisters: Array<any> = [];
@@ -31,15 +35,14 @@ export class ListJobRegisterComponent implements OnInit {
   constructor(
     private jobregisterService: JobRegisterService,
     public FB: FormBuilder) {
-     }
+  }
 
   ngOnInit(): void {
-    // this.getJobRegister();
-this.onSearchJobRegister();
+    this.onSearchJobRegister();
   }
   public getJobRegister(): void {
 
-    this.jobregisterService.getJobRegister( this.currentPage, this.pageSize).subscribe(
+    this.jobregisterService.getJobRegister(this.currentPage, this.pageSize).subscribe(
       res => {
         if (res === null) {
           res == ''
@@ -55,7 +58,7 @@ this.onSearchJobRegister();
 
 
   onSearchJobRegister() {
-    this.jobregisterService.getSearchJobRegister(this.searchForm.value, this.currentPage, this.pageSize).subscribe( 
+    this.jobregisterService.getSearchJobRegister(this.searchForm.value, this.currentPage, this.pageSize).subscribe(
       res => {
         this.jobregisters = res;
         console.log(this.searchForm.value);
@@ -73,7 +76,7 @@ this.onSearchJobRegister();
   currentPage = 1;
   pageSizeOptions: number[] = [1, 10, 25, 100];
   @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
+  paginator!: any;
   ngAfterViewInit() {
     this.jobregister.paginator = this.paginator;
   }
@@ -93,20 +96,27 @@ this.onSearchJobRegister();
     this.displayStyle = "none";
   }
 
+  licensed = "none";
+  openCombobox() {
+    this.licensed = "block";
+  }
+  closeCombobox() {
+    this.licensed = "none";
+  }
 
   editForm: FormGroup = this.FB.group({
     id: new FormControl(""),
     dateinterview: new FormControl(""),
-    cv: new FormControl(""),
+    methodinterview: new FormControl(""),
   }, {
     updateOn: 'blur'
   });
 
 
   onUpdateJobRegister() {
-    this.jobregisterService.updateJobRegist(this.editForm.value).subscribe(  
+    this.jobregisterService.updateJobRegist(this.editForm.value).subscribe(
       res => {
-      console.log(this.editForm.value);
+        console.log(this.editForm.value);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -115,30 +125,43 @@ this.onSearchJobRegister();
     );
   }
 
-  onDowloadCV(id:any){
-    this.jobregisterService.dowloadcv(id).subscribe(
+  onDownloadCV(id: any) {
+    this.jobregisterService.getJobRegisterById(id).subscribe(
       res => {
-        alert("Dowlaod CV thành công.");
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
+        this.jobregisterps = res;
+        this.cvFileName = this.getCvFileName(this.jobregisterps.jobRegister.cv);})
+
+    this.jobregisterService.dowloadcv(id).subscribe(
+      blod => saveAs(blod, this.cvFileName)
     );
   }
 
-  onAccept(id: String){
-   this.jobjr=this.editForm.value;
-   this.jobjr.id=id;
-   this.jobjr.profilestatus='3'
-   console.log("kkk", this.jobjr);
-   
-   this.jobregisterService.updateJobRegist(this.jobjr).subscribe(  
-    res => {
+
+  getCvFileName(cvFilePath: string) {
+    if (!cvFilePath) {
+      console.error("File path is null or undefined")
+    }
+    let cvFilePaths = cvFilePath.split("/");
+    return cvFilePaths[cvFilePaths.length - 1];
+  }
+
+  onAccept(id: String) {
+    this.jobjr = this.editForm.value;
+    this.jobjr.id = id;
+    this.jobjr.profilestatus = '3';
     console.log(this.jobjr);
-    this.displayStyle = "none"; 
-    },
-  );
-  this.displayStyle = "none"; 
+
+    this.jobregisterService.updateJobRegist(this.jobjr).subscribe(
+      res => {
+        console.log(this.jobjr);
+        this.displayStyle = "none";
+      },
+    );
+    this.displayStyle = "none";
   }
 
 }
+function MatPaginator(MatPaginator: any) {
+  throw new Error('Function not implemented.');
+}
+

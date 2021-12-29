@@ -3,11 +3,11 @@
   style="text-align: center"
   class="btn btn-info"
   style="margin-right: 2px"
-  [routerLink]="['/authen/employee-add']"
+  routerLink="/admin/addJE"
 >
   Thêm
 </buton>
-<form [formGroup]="addForm">
+<!-- <form [formGroup]="addForm"> -->
 
 <table
   id="tb-view"
@@ -33,13 +33,17 @@
       <td>{{ employee.phoneNumber }}</td>
       <td>{{ employee.homeTown }}</td>
       <td>{{ employee.gender }}</td>
-      <td>{{ employee.birthDay }}</td>
-      <td>{{ employee.active }}</td>
+      <td>{{ employee.birthDay | date:'dd-MM-yyyy' }}</td>
+      <td >
+        <div *ngIf="employee.active then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>Đang hoạt đông</ng-template>
+<ng-template #elseBlock> Dừng hoạt động</ng-template>
+      </td>
       <td class="text-nowrap" style="width: 1px">
-        <button type="button" class="btn btn-danger" style="margin-right: 2px" [routerLink]="['/admin/editJE/'+ employee.id]">
+        <button type="button" class="btn btn-success" style="margin-right: 2px" [routerLink]="['/admin/editJE/'+ employee.id]">
           Sửa
         </button>
-        <button type="button" class="btn btn-success" style="margin-right: 2px" (click)="deleteJE(employee.id)" >
+        <button type="button" class="btn btn-danger" style="margin-right: 2px" (click)="deleteJE(employee.id)" *ngIf="employee.active == true" >
           Xóa
         </button>
       </td>
@@ -47,4 +51,5 @@
   </tbody>
 </table>
 
-</form>
+<!-- </form> -->
+

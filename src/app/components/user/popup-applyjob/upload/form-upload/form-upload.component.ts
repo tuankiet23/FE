@@ -14,8 +14,21 @@ export class FormUploadComponent implements OnInit {
   progress: { percentage: number } = { percentage: 0 };
 
   constructor(private uploadService: UploadFileService) { }
+  data: any = {
 
+  }
   ngOnInit() {
+    this.showhideUtility();
+  }
+  visible:boolean = false;
+  showhideUtility(){
+    debugger;
+    if(this.data == null){
+      this.visible =  false;
+      }
+      else{
+        this.visible = true;
+      }
   }
 
   selectFile(event: any) {
