@@ -5,151 +5,192 @@
         <!-- <app-message>
         </app-message> -->
         <hr />
-        <form >
+        <form [formGroup]="addUser" >
           <div class="card">
             <div class="card-header">
-              <h3 class="text-center">Add new user</h3>
+              <h3 class="text-center">Tạo mới tài khoản</h3>
             </div>
             <div class="card-body">
               <div class="form-group col-md-6">
                 <label for="name">Name</label>
                 <input
                   type="text"
-                  [(ngModel)]="employee.fullName"
+                  formControlName="fullName"
                   class="form-control"
                   name="name"
                   id="name"
                   aria-describedby="helpid"
                   placeholder="name"
                 />
-                <small
-                  
-                  id="nameid"
-                  class="form-text text-muted"
-                >
-                  name is required
-                </small>
+                <div *ngIf="fullName?.invalid && (fullName?.dirty || fullName?.touched)" class="alert alert-danger">
+                  <div *ngIf="fullName?.errors?.['required']">
+                    Tên không được để trống
+                  </div>
+                  <div *ngIf="fullName?.errors?.['minlength']">
+                    Tên phải ít nhất 6 kí tự
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label for="email">Email</label>
                 <input
                   type="email"
-                  [(ngModel)]="employee.email"
+                  formControlName="email"
                   class="form-control"
                   name="name"
                   id="email"
                   aria-describedby="emailHid"
                   placeholder="Email"
                 />
-                <small
-                  id="emailHid"
-                  class="form-text text-muted"
-                >
-                  Email is required
-                </small>
+                <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="alert alert-danger">
+                  <div *ngIf="email?.errors?.['required']">
+                    Email không được để trông
+                  </div>
+                  <div *ngIf="email?.errors?.['email']">
+                    Email phải đúng định dạng
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label for="userName">UserName</label>
                 <input
                   type="userName"
-                  [(ngModel)]="employee.userName"
+                  formControlName="userName"
                   class="form-control"
                   name="userName"
                   id="userName"
                   aria-describedby="userNameHid"
                   placeholder="userName"
                 />
-                <small
-                  id="userNameHid"
-                  class="form-text text-muted"
-                >
-                  UserName is required
-                </small>
+                <div *ngIf="userName?.invalid && (userName?.dirty || userName?.touched)" class="alert alert-danger">
+                  <div *ngIf="userName?.errors?.['required']">
+                    Tên tài khoản  không được để trông
+                  </div>
+                  <div *ngIf="userName?.errors?.['minlength']">
+                    Tên tài khoản  phải lớn hơn 5 kí tự
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label for="password">Password</label>
                 <input
                   type="password"
-                  [(ngModel)]="employee.password"
+                  formControlName="password"
                   class="form-control"
                   name="password"
                   id="password"
                   aria-describedby="passwordHid"
                   placeholder="Password"
                 />
-                <small
-                  id="passwordHid"
-                  class="form-text text-muted">
-                  Password is required
-                </small>
+                <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="alert alert-danger">
+                  <div *ngIf="password?.errors?.['required']">
+                    Mật khẩu không được để trống
+                  </div>
+                  <div *ngIf="password?.errors?.['minlength']">
+                    Mật khẩu phải lớn hơn 6 kí tự
+                  </div>
+                  <div *ngIf="password?.errors?.['maxlength']">
+                    Mật khẩu phải nhỏ hơn 8 kí tự
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label for="phone">Phone</label>
                 <input
                   type="phone"
-                  [(ngModel)]="employee.phoneNumber"
+                  formControlName="phoneNumber"
                   class="form-control"
                   name="phone"
                   id="phone"
                   aria-describedby="phoneHid"
                   placeholder="phone"
                 />
-                <small
-                  id="phoneHid"
-                  class="form-text text-muted"
-                >
-                  Phone is required
-                </small>
+                <div *ngIf="phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched)" class="alert alert-danger">
+                  <div *ngIf="phoneNumber?.errors?.['required']">
+                    Sdt không được để trống.
+                  </div>
+                  <div *ngIf="phoneNumber?.errors?.['minlength']">
+                    Sđt phải 10 số.
+                  </div>
+                  <div *ngIf="phoneNumber?.errors?.['maxlength']">
+                    Sđt phải 10 số.
+                  </div>
+                  <div *ngIf="phoneNumber?.errors?.['pattern']">
+                     Sđt phải là số.
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label for="homeTown">HomeTown</label>
                 <input
                   type="homeTown"
-                  [(ngModel)]="employee.homeTown"
+                  formControlName="homeTown"
+
                   class="form-control"
                   name="homeTown"
                   id="homeTown"
                   aria-describedby="homeTownHid"
                   placeholder="homeTown"
                 />
-                <small
-                  id="homeTownHid"
-                  class="form-text text-muted"
-                >
-                  HomeTown is required
-                </small>
+                <div *ngIf="homeTown?.invalid && (homeTown?.dirty || homeTown?.touched)" class="alert alert-danger">
+                  <div *ngIf="homeTown?.errors?.['required']">
+                    Địa chỉ  không được để trống
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label for="gender">Gender</label>
-                <input
+                <!-- <input
                   type="gender"
-                  [(ngModel)]="employee.gender"
+                  formControlName="gender"
                   class="form-control"
                   name="gender"
                   id="gender"
                   aria-describedby="genderHid"
                   placeholder="gender"
-                />
-                <small
-                 id="genderHid" class="form-text text-muted">
-                  gender is required
-                </small>
+                /> -->
+                <select
+                formControlName="gender"
+                class="form-control"
+                name="gender"
+                id="gender"
+                aria-describedby="genderHid"
+                placeholder="gender">
+                  <option  value="Nam">Nam</option>
+                  <option  value="Nữ">Nữ</option>
+              </select>
+
+              <!-- <mat-form-field appearance="fill">
+                <mat-label>Favorite food</mat-label>
+                <mat-select [(ngModel)]="selectedValue" name="food">
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> -->
+
+                <div *ngIf="gender?.invalid && (gender?.dirty || gender?.touched)" class="alert alert-danger">
+                  <div *ngIf="gender?.errors?.['required']">
+                    Giới tính không được để trống
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label for="birthDay">BirthDay</label>
                 <input
                   type="date"
-                  [(ngModel)]="employee.birthDay"
+                  formControlName="birthDay"
                   class="form-control"
                   name="birthDay"
                   id="birthDay"
                   aria-describedby="birthDayHid"
                   placeholder="birthDay"
                 />
-                <small
-                id="birthDayHid" class="form-text text-muted">
-                  birthDay is required
-                </small>
+                <div *ngIf="birthDay?.invalid && (birthDay?.dirty || birthDay?.touched)" class="alert alert-danger">
+                  <div *ngIf="birthDay?.errors?.['required']">
+                    Ngày sinh không được để trống
+                  </div>
+                </div>
 
               </div>
               <button

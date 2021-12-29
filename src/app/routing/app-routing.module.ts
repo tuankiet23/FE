@@ -1,6 +1,7 @@
+import { GuardsGuard } from './../guards/guards.guard';
+import { LoginComponent } from './../components/authen/login/login.component';
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { GuardsGuard } from "../guards/guards.guard";
 const routes: Routes = [
     // {
     //     path: '',
@@ -14,6 +15,10 @@ const routes: Routes = [
     {
         path: 'authen',
         loadChildren: () => import("src/app/components/authen/authen.module").then((m) => m.AuthenModule)
+    },
+    {
+
+      path: 'login', component:LoginComponent
     },
     {
         path: 'admin',

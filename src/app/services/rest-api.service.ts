@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { USERNAME_KEY, USER_ID_KEY, USER_ROLE_KEY, USER_TOKEN_KEY } from '../models/config/local-storage-keys';
@@ -7,7 +8,7 @@ import { USERNAME_KEY, USER_ID_KEY, USER_ROLE_KEY, USER_TOKEN_KEY } from '../mod
 })
 export class RestApiService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient , private router:Router) { }
   getHeaders(){
     const token = localStorage.getItem('token');
     return token? new HttpHeaders().set('Authorization','Bearer ' + token):null;
@@ -50,5 +51,6 @@ export class RestApiService {
     localStorage.removeItem(USER_ROLE_KEY);
     localStorage.removeItem(USERNAME_KEY);
     localStorage.removeItem('token');
+    this.router.navigate(['/login'])
 }
 }

@@ -13,9 +13,11 @@ export class HeaderComponent implements OnInit {
   uploadAvatar: ElementRef;
   loading: boolean = false; // Flag variable
   file: File;
+  name: any;
   constructor( private restapi: RestApiService, private userService: UsersService, private router: Router) { }
 
   ngOnInit(): void {
+    this.name = localStorage.getItem("username");
   }
 
   onLogout() {

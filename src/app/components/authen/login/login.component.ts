@@ -32,8 +32,9 @@ export class LoginComponent implements OnInit {
         .post(this.url, this.employee)
         .then(data => {
           console.log(data)
-          let value = data as { employeeId: string, token: string };
+          let value = data as { employeeId: string, token: string, username:string};
           localStorage.setItem('token', value.token);
+          localStorage.setItem('username', value.username);
           alert("Đăng nhập thành công!")
           this.rest.get(`${this.apiServerUrl}/user/getProfile`).then((res) => {
             console.log(res)

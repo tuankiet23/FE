@@ -26,6 +26,7 @@ import { ListJeComponent } from './list-je/list-je.component';
 import { NgModule } from '@angular/core';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { JobComponent } from './job/job.component';
+
 const Adminroutes: Routes = [
   {
     path: '',
@@ -101,7 +102,8 @@ const Adminroutes: Routes = [
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    NgxPaginationModule,
+    RouterModule
+    // NgxPaginationModule,
   ],
   exports: [RouterModule],
 })
