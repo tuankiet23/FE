@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
 
 
   firstPage:number = 1;
-  pagesize: number = 1;
+  pagesize: number = 20;
   pagesizeAll: number = 1;
   pagesizeSalary: number = 1;
   pagesizeNewJob: number = 1;
@@ -115,7 +115,7 @@ export class HomeComponent implements OnInit {
   searchJob(){
     console.log("is search job");
     console.log(this.searchJobForm.value);
-    this.homeUserService.searchJobHomePage(this.searchJobForm.value,1,1).subscribe(
+    this.homeUserService.searchJobHomePage(this.searchJobForm.value,this.firstPage,this.pagesize).subscribe(
       res => {
           this.datasAll = res;
           this.onsearchjob = true;
