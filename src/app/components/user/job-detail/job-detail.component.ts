@@ -44,17 +44,18 @@ export class JobDetailComponent implements OnInit {
     };
       console.log("is click apply button");
       this.transfereService.setData(datatransfer);
-      this.route.navigate(['/popup-applyjob']);
-      // Chec
+      // this.route.navigate(['/popup-applyjob']);
+     
       // check token xem da login chua
           //1. Neu chua login thi quay ra trang login, sau khi login xong thi nhay luon poppup
           //2. Neu dax login thi nhay luon popup
-          // this.route.navigate(['/recruitment']);
-        //   if(this.checkLogin()){
-        //     // goi puppup ung tuyen
-        //     this.route.navigate(['/recruitment']);
-        //   }
-        // this.route.navigate(['/authen/login']);
+          if(this.checkLogin()){
+            // goi puppup ung tuyen
+            this.route.navigate(['/popup-applyjob'])
+          } else{
+            this.route.navigate(['/login']);
+          }
+      
   }
   checkLogin(){
     const token = localStorage.getItem("token");

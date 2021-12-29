@@ -9,10 +9,9 @@ import { environment } from 'src/environments/environment';
 })
 export class UploadFileService {
   data = this.transfereService.getData();
-  // username: string = this.data.username;
-  // jobid = this.data.jobId;
-  username ="giaphn";
-  jobid=1;
+  username: string = this.data.username;
+  jobid = this.data.jobid;
+
   private urlBase =  environment.apiBaseUrl;
   url : string = this.urlBase + '/user/upload?username='+ this.username + '&jobid='+ this.jobid;
 

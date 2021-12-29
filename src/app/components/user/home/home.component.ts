@@ -116,6 +116,9 @@ export class HomeComponent implements OnInit {
     this.homeUserService.searchJobHomePage(this.searchJobForm.value,this.firstPage,this.pagesize).subscribe(
       res => {
           this.datasAll = res;
+          this.datasJobDeadLine = res
+          this.datasJobHeightSalary = res
+          this.datasJobNew = res
           this.onsearchjob = true;
           console.log(this.datasAll)
       }

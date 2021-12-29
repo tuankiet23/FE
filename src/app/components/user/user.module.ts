@@ -7,13 +7,9 @@ import { ListJobComponent } from './list-job/list-job.component';
 import { UserComponent } from './user.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-
-
 import { PopupApplyjobComponent } from './popup-applyjob/popup-applyjob.component';
-import { FormUploadComponent } from './popup-applyjob/upload/form-upload/form-upload.component';
 import { ListUploadComponent } from './popup-applyjob/upload/list-upload/list-upload.component';
 import { DetailsUploadComponent } from './popup-applyjob/upload/details-upload/details-upload.component';
-
 
 const UserRoutes: Routes = [
   {
@@ -53,7 +49,7 @@ const UserRoutes: Routes = [
 
 @NgModule({
 
-  declarations: [UserComponent, HeaderComponent,  FooterComponent, PopupApplyjobComponent, FormUploadComponent, ListUploadComponent, DetailsUploadComponent ],
+  declarations: [UserComponent, HeaderComponent,  FooterComponent, PopupApplyjobComponent, ListUploadComponent, DetailsUploadComponent ],
 
   imports: [
     CommonModule,

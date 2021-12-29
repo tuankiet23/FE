@@ -45,8 +45,8 @@
     <tr *ngFor="let jobregister of jobregisters ">
       <td>{{jobregister.user.fullName}}</td>
       <td>{{jobregister.job.jobName}}</td>
-      <td>{{jobregister.dateRegister | date:'dd-mm-yyyy'}}</td>
-      <td>{{jobregister.dateInterview | date:'dd-mm-yyyy'}}</td>
+      <td>{{jobregister.dateRegister | date:'dd-MM-yyyy'}}</td>
+      <td>{{jobregister.dateInterview | date:'dd-MM-yyyy'}}</td>
       <td>{{jobregister.user.gender}}</td>
       <td>{{jobregister.user.phoneNumber}}</td>
       <td>{{jobregister.user.email}}</td>
@@ -98,8 +98,8 @@
                       </div>
                       <div class="col-md-6">
                         <label for="validationTooltip04">Hình thức phỏng vấn:</label>
-                        <mat-radio-group aria-label="Select an option">
-                          <mat-radio-button  formControlName="methodinterview" value="offline" style="margin-right: 5px;" (change) ="closeCombobox()">Offline</mat-radio-button>
+                        <mat-radio-group aria-label="Select an option" >
+                          <mat-radio-button formControlName="methodinterview" value="offline" style="margin-right: 5px;" (change) ="closeCombobox()">Offline</mat-radio-button>
                           <mat-radio-button value="online" (change) ="openCombobox()">Online</mat-radio-button>
                           <div [ngStyle]="{'display': licensed}">
                             <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="methodinterview" >

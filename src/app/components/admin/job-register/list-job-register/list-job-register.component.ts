@@ -170,7 +170,7 @@ export class ListJobRegisterComponent implements OnInit {
     var re = /T/gi;
     var str = this.jobjr.dateinterview;
     var newstr = str.replace(re, " ");
-    newstr=newstr +":00"
+    // newstr=newstr +":00"
     this.jobjr.dateinterview= newstr;
     console.log(this.jobjr);
 

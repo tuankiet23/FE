@@ -4,159 +4,30 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="#"
-          >Home
+          >Trang chủ
           <span class="sr-only">(current)</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          id="navbarDropdownMenuLink-555"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-          >Dropdown
-        </a>
-        <div
-          class="dropdown-menu dropdown-secondary"
-          aria-labelledby="navbarDropdownMenuLink-555"
-        >
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
     </ul>
   </div>
   <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
-        <a class="nav-link" href="#" routerLink="/login">Login</a>
+        <a class="nav-link" href="#" routerLink="/login">Đăng Nhập</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link" href="#" (click)="onLogout()">Logout</a>
-      </li>
-      <li>
-        <a href="companies.html" [routerLink]="['/authen/change-password']"
-          >Đổi mật khẩu</a
-        >
-      </li>
-         <span>Xin chao:{{name}}</span>
-      <!-- <li> -->
-      <!-- <div>
-
-          <img
-            [src]="'http://localhost:8080/api/user/files/44'"
-            (click)="uploadAvatar.click()"
-            style="width: 50px; height: 50px; margin: 14px;border-radius: 15px"
-          />
-          <input
-            type="file"
-            (change)="onChange($event, 44)"
-            #uploadAvatar
-            style="display: none"
-          />
-        </div> -->
-      <!-- </li> -->
-<!-- main -->
-      <!-- <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-555" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">Dropdown
-        </a>
-        <div class="dropdown-menu dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-555">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-    </ul>
-</div>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item dropdown">
-          <a class="nav-link" href="#" routerLink="/authen/login">Login</a>
+        <a class="nav-link" href="#" (click)="onLogout()">Đăng xuất</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link" href="#" (click)="onLogout()">Logout</a>
-    </li>
-    <li>
-      <a href="companies.html" [routerLink]="['/authen/change-password']"
-        >Đổi mật khẩu</a
-      >
-    </li>
-    <li>
-      <div> -->
-
-        <!-- <img
-          [src]="'http://localhost:8080/api/user/files/44'"
-          (click)="uploadAvatar.click()"
-          style="width: 50px; height: 50px; margin: 14px;border-radius: 15px"
-        />
-        <input
-          type="file"
-          (change)="onChange($event, 44)"
-          #uploadAvatar
-          style="display: none"
-        />
-      </div>
-    </li> -->
-<!-- >>>>>>> main -->
+        <a class="nav-link" href="companies.html" [routerLink]="['/authen/change-password']"
+          >Đổi mật khẩu</a>
+      </li>
+      <li class="nav-item dropdown">
+        <p style="margin-top: 27.5px;">Xin chao:{{name}}</p>
+      </li>
+        
     </ul>
   </div>
 </nav>
-<!--/.Navbar -->
-<!-- <<<<<<< HEAD
 
-
-=======
-Main jumbotron for a primary marketing message or call to action -->
-<section class="main-banner" style="background:#242c36 url(img/slider-01.jpg) no-repeat">
-  <div class="container">
-      <div class="caption">
-          <h2>TÌM VIỆC NGAY</h2>
-          <form>
-              <fieldset>
-                  <div class="col-md-4 col-sm-4 no-pad">
-                      <input type="text" class="form-control border-right"
-                          placeholder="java , c# , php, angular, nodejs ..." />
-                  </div>
-                  <div class="col-md-3 col-sm-3 no-pad">
-                      <select class="selectpicker border-right">
-                          <option>Kinh Nghiệm</option>
-                          <option>0 Năm</option>
-                          <option>1 Năm</option>
-                          <option>2 Năm</option>
-                          <option>3 Năm</option>
-                          <option>4 Năm</option>
-                          <option>5 Năm</option>
-                          <option>6 Năm</option>
-                          <option>7 Năm</option>
-                          <option>8 Năm</option>
-                          <option>9 Năm</option>
-                          <option>10 Năm</option>
-                      </select>
-                  </div>
-                  <div class="col-md-3 col-sm-3 no-pad">
-                      <select class="selectpicker">
-                          <option>Deverloper</option>
-                          <option>Project Manager</option>
-                          <option>Tester</option>
-                          <option>Business Analyst</option>
-                          <option>Human Resource</option>
-                      </select>
-                  </div>
-                  <div class="col-md-2 col-sm-2 no-pad">
-                      <input type="submit" class="btn seub-btn" value="Tìm kiếm" />
-                  </div>
-              </fieldset>
-          </form>
-      </div>
-  </div>
-</section>
 

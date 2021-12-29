@@ -34,7 +34,6 @@ export class PopupApplyjobComponent implements OnInit {
     }
     visible:boolean = false;
     showhideUtility(){
-      debugger;
       if(this.data2 == null){
         this.visible =  false;
         }

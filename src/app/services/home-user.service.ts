@@ -23,7 +23,7 @@ export class HomeUserService {
   }
   // modelJobVM : Se
 
-   searchJobHomePage(searchJobForm : FormGroup, pageNumber:number, pageSize:number): Observable<JobModel[]> {
+  searchJobHomePage(searchJobForm : FormGroup, pageNumber:number, pageSize:number): Observable<JobModel[]> {
 
     return this.http.put<JobModel[]>(this.urlSearch, searchJobForm)
   }
