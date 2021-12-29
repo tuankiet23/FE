@@ -1,13 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { JobRegisterService } from 'src/app/services/job-register.service';
 import { Form, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { searchJobRegister } from 'src/app/models/jobregister/searchjobregister';
 import { addjobregister } from 'src/app/models/addjobregister';
-
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { formatDate } from '@angular/common';
 import { saveAs } from 'file-saver';
+
 @Component({
   selector: 'app-list-job-register',
   templateUrl: './list-job-register.component.html',
@@ -23,6 +23,7 @@ export class ListJobRegisterComponent implements OnInit {
 
   })
 
+  private totolItem: number;
   private cvFileName: string;
 
   public searchJR: searchJobRegister;
@@ -61,6 +62,15 @@ export class ListJobRegisterComponent implements OnInit {
     this.jobregisterService.getSearchJobRegister(this.searchForm.value, this.currentPage, this.pageSize).subscribe(
       res => {
         this.jobregisters = res;
+        this.totolItem=this.jobregisters[0].totalItem
+        if(this.totolItem % this.pageSize ===0)
+        {
+          this.totalRows=this.totolItem / this.pageSize
+        }
+        else
+        {
+          this.totalRows=Math.floor(this.totolItem / this.pageSize) + 1
+        }
         console.log(this.searchForm.value);
         console.log(res);
       },
@@ -71,7 +81,8 @@ export class ListJobRegisterComponent implements OnInit {
   }
 
   isLoading = false;
-  totalRows = 3;
+
+  totalRows=1;
   pageSize = 1;
   currentPage = 1;
   pageSizeOptions: number[] = [1, 10, 25, 100];
@@ -94,6 +105,13 @@ export class ListJobRegisterComponent implements OnInit {
   }
   closePopup() {
     this.displayStyle = "none";
+  }
+  displayStyle1 = "none";
+  openPopup1() {
+    this.displayStyle1 = "block";
+  }
+  closePopup1() {
+    this.displayStyle1 = "none";
   }
 
   licensed = "none";
@@ -149,19 +167,23 @@ export class ListJobRegisterComponent implements OnInit {
     this.jobjr = this.editForm.value;
     this.jobjr.id = id;
     this.jobjr.profilestatus = '3';
+    var re = /T/gi;
+    var str = this.jobjr.dateinterview;
+    var newstr = str.replace(re, " ");
+    newstr=newstr +":00"
+    this.jobjr.dateinterview= newstr;
     console.log(this.jobjr);
 
     this.jobregisterService.updateJobRegist(this.jobjr).subscribe(
       res => {
         console.log(this.jobjr);
-        this.displayStyle = "none";
+        this.displayStyle1 = "none";
       },
     );
-    this.displayStyle = "none";
+    this.displayStyle1 = "none";
   }
 
 }
 function MatPaginator(MatPaginator: any) {
   throw new Error('Function not implemented.');
 }
-

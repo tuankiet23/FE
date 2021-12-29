@@ -1,4 +1,24 @@
-<buton
+<form class="needs-validation" [formGroup]="searchForm" (ngSubmit)="onSearchJE()">
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationTooltip01">Họ tên</label>
+      <input type="text" class="form-control" placeholder="Họ tên" id="fullName" formControlName="fullName">
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationTooltip02">Tìm theo email</label>
+      <input type="text" class="form-control" id="jobName" formControlName="email" placeholder="Nhập vào email"
+        required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationTooltip02">Tên theo số điện thoại</label>
+      <input type="text" class="form-control" id="jobName" formControlName="phoneNumber" placeholder="số điện thoại"
+        required>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit" style="margin-left: 500px;" (click)="onSearchJE()">Tìm
+    kiếm</button>
+</form>
+<button
   type="button"
   style="text-align: center"
   class="btn btn-info"
@@ -6,7 +26,7 @@
   routerLink="/admin/addJE"
 >
   Thêm
-</buton>
+</button>
 <!-- <form [formGroup]="addForm"> -->
 
 <table
@@ -36,20 +56,24 @@
       <td>{{ employee.birthDay | date:'dd-MM-yyyy' }}</td>
       <td >
         <div *ngIf="employee.active then thenBlock else elseBlock"></div>
-<ng-template #thenBlock>Đang hoạt đông</ng-template>
-<ng-template #elseBlock> Dừng hoạt động</ng-template>
+         <ng-template #thenBlock>Đang hoạt đông</ng-template>
+         <ng-template #elseBlock> Dừng hoạt động</ng-template>
       </td>
       <td class="text-nowrap" style="width: 1px">
-        <button type="button" class="btn btn-success" style="margin-right: 2px" [routerLink]="['/admin/editJE/'+ employee.id]">
+         <button type="button" class="btn btn-success" style="margin-right: 2px" [routerLink]="['/admin/editJE/'+ employee.id]">
           Sửa
+
         </button>
-        <button type="button" class="btn btn-danger" style="margin-right: 2px" (click)="deleteJE(employee.id)" *ngIf="employee.active == true" >
-          Xóa
+        <button type="button" class="btn btn-danger" style="margin-right: 5px" (click)="deleteJE(employee)" *ngIf="employee.active == true" >
+          Hủy kích hoạt
+        </button>
+        <button type="button" class="btn btn-danger" style="margin-right: 2px" (click)="activeJE(employee)" *ngIf="employee.active == false" >
+          Kích hoạt
+
         </button>
       </td>
     </tr>
   </tbody>
 </table>
-
-<!-- </form> -->
-
+<mat-paginator style-paginator showFirstLastButtons [length]="totalRows"
+[pageIndex]="currentPage" [pageSize]="pageSize"  [pageSizeOptions]="pageSizeOptions" (page)="pageChanged($event)"> </mat-paginator>

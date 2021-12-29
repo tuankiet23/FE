@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { job } from '../models/job';
 import { catchError, from, map, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { searchJob } from '../models/job/searchjob';
 @Injectable({
   providedIn: 'root'
 })
@@ -25,6 +26,17 @@ export class JobService {
     );
   }
 
- 
+
+
+  public getJobAd(id: number): Observable<any> {
+    const url = `${this.apiServerUrl}` + "/user/job/detail/" + `${id}`
+    return this.http.get<any>(url)
+  }
+
+  public getSearchJob(search: searchJob,currentPage: number, pageSize: number ): Observable<job[]> {
+    const url = `${this.apiServerUrl}` + "/user/job/search"+`?pageIndex=${currentPage}&pageSize=${pageSize}`
+    return this.http.put<job[]>(url, search);
+  }
+
 
 }

@@ -96,7 +96,6 @@ export class EditJobRegisterComponent implements OnInit {
   }
 
   onDownloadCV(id: any) {
-    debugger
     this.jobRegisterService.dowloadcv(id).subscribe(
 
       blod => saveAs(blod, this.cvFileName)
@@ -139,10 +138,12 @@ export class EditJobRegisterComponent implements OnInit {
     this.closePopup1();
     this.getJobRegisterById();
   }
+
   onRecruit(){
     this.addjr=this.editForm.value;
     this.addjr.profilestatus="4";
-    // this.addjr.dateinterview=this.jobregisterps.jobRegister.dateRegister, 'yyyy-MM-dd', 'en-Us';
+    this.addjr.dateinterview="";
+    console.log("đsfds", this.addjr);
     this.jobRegisterService.updateJobRegist(this.addjr).subscribe(
       res => {
       console.log(this.addjr);
@@ -152,6 +153,7 @@ export class EditJobRegisterComponent implements OnInit {
     this.closePopup1();
     this.getJobRegisterById();
   }
+
   onSchedule(){
     this.addjr=this.editForm.value;
     this.addjr.profilestatus="3";

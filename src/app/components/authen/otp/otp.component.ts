@@ -33,9 +33,11 @@ export class OtpComponent implements OnInit {
           alert("Đổi mật khẩu thành công")
          // await this.data.getProfile();
 
-          this.router.navigate(['/user/home'])
+          this.router.navigate([''])
+
         })
         .catch((error) => {
+          alert("OTP không chính xác vui lòng kiểm tra lại")
           this.data.error(error['error']);
           this.btnDisable = false;
         });

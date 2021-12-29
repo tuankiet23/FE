@@ -1,34 +1,26 @@
-<section class="loginPage">
+<section class="loginPage2">
   <div class="container">
     <div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
-      <form>
+      <form [formGroup]="loginForm" >
         <img class="img-responsive" alt="logo" src="http://itsol.vn/wp-content/uploads/2019/11/logo_itsol.png" />
         <div class="form-gorup">
+          <label for="">Tài khoản</label>
           <input
             type="text"
-            [(ngModel)]="employee.username"
+            formControlName="username"
             class="form-control"
-            name="username"
-            placeholder="User Name"
           />
-          <small id="usernameHid" class="form-text text-muted">
-            username is required
-          </small>
         </div>
         <div class="form-group">
+          <label for="">Mật khẩu</label>
           <input
           type="password"
-          [(ngModel)]="employee.password"
+          formControlName="password"
           class="form-control"
-          name="password"
-          placeholder="Password"
         />
-        <small id="passwordHid" class="form-text text-muted">
-          Password is required
-        </small>
         </div>
         <a type="submit" class="btn btn-primary" href="" [routerLink]="['/authen/fogot-password']">Lấy lại mật khẩu</a>
-        <button type="submit" class="btn btn-primary"  (click)="login()" style="margin: 30px;" >Đăng nhập</button>
+        <button type="button" class="btn btn-primary"  (click)="login()" style="margin: 30px;" >Đăng nhập</button>
         <a type="submit" class="btn btn-primary" href="" [routerLink]="['/authen/employee-add']">Tạo mới tài khoản</a>
       </form>
     </div>
