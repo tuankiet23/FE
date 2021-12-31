@@ -31,7 +31,8 @@ export class JobRegisterService {
 
   public updateJobRegist(jobregister: addjobregister): Observable<addjobregister> {
     const url = `${this.apiServerUrl}` + "/user/jobregister";
-    return this.http.post<addjobregister>(url, jobregister);
+    return this.http.post<addjobregister>(url, jobregister).pipe(
+      tap(notyfy => alert("Cập nhật thành công")))
   }
 
   public delete(id: number): Observable<jobregister> {
@@ -52,6 +53,7 @@ export class JobRegisterService {
   }
   public dowloadcv(id: number) : Observable<Blob>{
     const url = `${this.apiServerUrl}` + "/user/jobregister/download/" + `${id}`
-    return this.http.get(url, {responseType: 'blob'});
+    return this.http.get(url, {responseType: 'blob'}).pipe(
+      tap(notyfy => alert("Dowload cv thành công")))
   }
 }

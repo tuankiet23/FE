@@ -162,6 +162,11 @@
                           </div>
                           <div class="modal-body">
                               <input type="text" class="form-control" id="reason" formControlName="reason">
+                              <div *ngIf="reason?.invalid && (reason?.dirty || reason?.touched)" class="alert alert-danger">
+                                <div *ngIf="reason?.errors?.['required']">
+                                  Lý do không được để trống
+                                </div>
+                              </div>
                           </div>
                           <div class="modal-footer">
                               <button type="button" class="btn btn-danger" (click)="closePopup1()">

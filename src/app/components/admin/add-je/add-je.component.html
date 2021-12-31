@@ -5,7 +5,7 @@
         <!-- <app-message>
         </app-message> -->
         <hr />
-        <form [formGroup]="editForm" (submit)="updateEmployee()">
+        <form [formGroup]="addForm" (submit)="save()">
           <div class="card">
             <div class="card-header">
               <h3 class="text-center">ADD NEW JOB_EDITER</h3>
@@ -147,9 +147,9 @@
               <button
                 type="submit"
                 class="btn btn-primary"
-                [disabled]="!editForm.valid"
+                [disabled]="!addForm.valid"
               >
-                Cập nhật
+               Thêm mới
               </button>
             </div>
             <div class="card-footer text-muted" ></div>

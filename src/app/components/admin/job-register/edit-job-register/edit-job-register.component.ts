@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { formatDate } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
@@ -43,6 +43,7 @@ export class EditJobRegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.getJobRegisterById();
+    this.initForm();
   }
 
 
@@ -193,4 +194,11 @@ export class EditJobRegisterComponent implements OnInit {
     this.displayStyle1 = "none";
   }
 
+  public initForm() {
+    this.editForm = this.FB.group({
+      reason: new FormControl('',[Validators.required,Validators.maxLength(500)]),
+    });
+  } 
+
+  get reason() { return this.editForm.get('reason'); }
 }

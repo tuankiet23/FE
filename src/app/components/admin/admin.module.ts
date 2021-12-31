@@ -38,7 +38,12 @@ const Adminroutes: Routes = [
     component: AdminComponent,
     children: [
       {
-        path:'',
+        path: '',
+        redirectTo: 'je',
+        pathMatch: 'full',
+    },
+      {
+        path:'home',
         component: HomeAdComponent,
         pathMatch:'full'
       },

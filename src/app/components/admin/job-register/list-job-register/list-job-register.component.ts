@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { JobRegisterService } from 'src/app/services/job-register.service';
-import { Form, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { searchJobRegister } from 'src/app/models/jobregister/searchjobregister';
 import { addjobregister } from 'src/app/models/addjobregister';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -38,8 +38,11 @@ export class ListJobRegisterComponent implements OnInit {
     public FB: FormBuilder) {
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.onSearchJobRegister();
+    //this.initForm();
+
+    
   }
   public getJobRegister(): void {
 
@@ -138,7 +141,6 @@ export class ListJobRegisterComponent implements OnInit {
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
-        console.log(this.editForm.value);
       }
     );
   }
@@ -150,7 +152,7 @@ export class ListJobRegisterComponent implements OnInit {
         this.cvFileName = this.getCvFileName(this.jobregisterps.jobRegister.cv);})
 
     this.jobregisterService.dowloadcv(id).subscribe(
-      blod => saveAs(blod, this.cvFileName)
+      blod => saveAs(blod, this.cvFileName),
     );
   }
 
@@ -170,7 +172,6 @@ export class ListJobRegisterComponent implements OnInit {
     var re = /T/gi;
     var str = this.jobjr.dateinterview;
     var newstr = str.replace(re, " ");
-    // newstr=newstr +":00"
     this.jobjr.dateinterview= newstr;
     console.log(this.jobjr);
 
@@ -181,8 +182,18 @@ export class ListJobRegisterComponent implements OnInit {
       },
     );
     this.displayStyle1 = "none";
+    this.onSearchJobRegister();
   }
 
+  public initForm() {
+    this.searchForm = this.FB.group({
+      phoneNumber: new FormControl('',[Validators.pattern("^[0-9]*$"),Validators.maxLength(10)]),
+    });
+  } 
+
+
+
+  get phoneNumber() { return this.searchForm.get('phoneNumber'); }
 }
 function MatPaginator(MatPaginator: any) {
   throw new Error('Function not implemented.');

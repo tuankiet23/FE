@@ -16,7 +16,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 })
 export class AddJEComponent implements OnInit {
   employee: Employee;
-  editForm!: FormGroup;
+  addForm!: FormGroup;
 
   btnDisable = false;
   url = 'http://localhost:8080/api/admin/getje';
@@ -34,7 +34,7 @@ export class AddJEComponent implements OnInit {
     this.getEmployee();
   }
   public initForm() {
-    this.editForm = this.Fb.group({
+    this.addForm = this.Fb.group({
       fullName: new FormControl('',[Validators.required,Validators.minLength(6)]),
       email: new FormControl('',[Validators.required,Validators.email]),
       userName: new FormControl('',[Validators.required,Validators.minLength(5)]),
@@ -48,7 +48,7 @@ export class AddJEComponent implements OnInit {
     this.employeeService
       .getEmployeeById(this.route.snapshot.params['id'])
       .subscribe((data) => {
-        this.editForm.patchValue({
+        this.addForm.patchValue({
           fullName: data.fullName,
           email: data.email,
           userName: data.userName,
@@ -62,26 +62,27 @@ export class AddJEComponent implements OnInit {
       });
   }
 
-  public updateEmployee() {
-    this.employeeService
-      .updateJE(this.editForm.value, this.route.snapshot.params['id'])
-      .subscribe((data) => {
-        alert("update thanh cong")
-        this.router.navigate(['/admin/je'])
-        console.log('data', data);
+  save() {
+    this.btnDisable = true;
+    console.log(this.addForm.value);
 
-      });
+    this.employeeService.addJE(this.addForm.value).subscribe((data) => {
+     alert('đăng kí thành công! Vui lòng check mail và xác nhận.');
+      // this.data.success('Employee is save');
+      this.router.navigate(['/admin/je'])
+      this.btnDisable = false;
+    });
   }
 
 
   get f() {
-    return this.editForm.controls;
+    return this.addForm.controls;
   }
-  get fullName() { return this.editForm.get('fullName'); }
-  get birthDay() { return this.editForm.get('birthDay'); }
-  get email() { return this.editForm.get('email'); }
-  get homeTown() { return this.editForm.get('homeTown'); }
-  get phoneNumber() { return this.editForm.get('phoneNumber'); }
-  get gender() { return this.editForm.get('gender'); }
-  get userName() { return this.editForm.get('numberYearsExperience'); }
+  get fullName() { return this.addForm.get('fullName'); }
+  get birthDay() { return this.addForm.get('birthDay'); }
+  get email() { return this.addForm.get('email'); }
+  get homeTown() { return this.addForm.get('homeTown'); }
+  get phoneNumber() { return this.addForm.get('phoneNumber'); }
+  get gender() { return this.addForm.get('gender'); }
+  get userName() { return this.addForm.get('numberYearsExperience'); }
 }

@@ -15,6 +15,14 @@
       <label for="validationTooltip03">Số điện thoại</label>
       <input type="text" class="form-control" id="validationTooltip03" placeholder="Số điện thoại"
         formControlName="phoneNumber">
+        <div *ngIf="phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched)" class="alert alert-danger">
+          <div *ngIf="phoneNumber?.errors?.['maxlength']">
+            Sđt chỉ có 10 số.
+          </div>
+          <div *ngIf="phoneNumber?.errors?.['pattern']">
+             Sđt phải là số.
+          </div>
+        </div>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationTooltip04">Ngày ứng tuyển</label>
@@ -94,7 +102,7 @@
                       <div class="col-md-12">
                         <label for="validationTooltip03">Thời gian phỏng vấn:</label>
                         <input type="datetime-local" class="form-control" id="dateinterview"
-                          formControlName="dateinterview">
+                          formControlName="dateinterview" >
                       </div>
                       <div class="col-md-6">
                         <label for="validationTooltip04">Hình thức phỏng vấn:</label>
